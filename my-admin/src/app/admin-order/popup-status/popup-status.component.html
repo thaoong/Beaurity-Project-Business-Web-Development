@@ -1,0 +1,20 @@
+<div class="e-dialog">
+  <button mat-icon-button style="float: right;" (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
+  <mat-dialog-content>
+    <header>
+      <h2 mat-dialog-title>Duyệt đơn hàng</h2>
+    </header>
+    <mat-form-field>
+      <mat-select placeholder="Tình trạng đơn" [(ngModel)]="selectedStatus">
+        <mat-option *ngFor="let s of status" [value]="s.Status">
+          {{s.Status}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-dialog-content>
+  <div mat-dialog-actions class="popup-button">
+    <button mat-raised-button (click)="close()">Xác nhận</button>
+  </div>
+</div>

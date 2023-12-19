@@ -1,0 +1,80 @@
+<!-- Add your meta tags and external stylesheets here -->
+
+<a routerLink="./navigate_bar"></a>
+<div class="main">
+    <div class="main-left">
+        <a routerLink=".navigate-bar"></a>
+    </div>
+    <div class="main-right">
+        <div class="admin-info">
+            <span class="material-icons-outlined">notifications</span>
+            <span class="admin-name">Admin</span>
+            <img src="assets/admin-avatar.png" class="admin-ava">
+        </div>
+        <div class="page-title">
+            <div class="page-title-main">
+                <p>Thông tin khách hàng</p>
+            </div>
+            <div class="page-search">
+                <input type="search" id="search" placeholder="Tìm kiếm..." />
+                <span class="material-symbols-outlined">search</span>
+            </div>
+        </div>
+        <div class="page-body">
+            <div class="page-body-header">
+                <div class="cus-info">
+                    <div class="cus-info-title">Thông tin cá nhân</div>
+                    <div class="cus-info-content">
+                        <div class="cus-image">
+                            <img class= "cus-img" src="{{customer.Image}}">
+                        </div>
+                    <tbody class="cus-info-data">
+                        <tr class="cus-info-data-detail">
+                                <td class="cus-title">Tên khách hàng:</td>
+                                <td class="cus-data">{{customer.CustomerName}}</td>
+                        </tr>
+                        <tr class="cus-info-data-detail">
+                                <td class="cus-title">Giới tính:</td>
+                                <td class="cus-data">{{customer.Gender}}</td>
+                        </tr>
+                        <tr class="cus-info-data-detail">
+                                <span class="cus-title">Số điện thoại:</span>
+                                <span class="cus-data">{{customer.Phone}}</span>
+                        </tr>
+                        <tr class="cus-info-data-detail">
+                                <span class="cus-title">Ngày sinh:</span>
+                                <span class="cus-data">{{customer.BOD}}</span>
+                        </tr>
+                        <tr class="cus-info-data-detail">
+                                <span class="cus-title">Email:</span>
+                                <span class="cus-data">{{customer.Mail}}</span>
+                        </tr>
+                        <!-- <tr>
+                            <span> Địa chỉ: </span>
+                            <span>{{customer.Adress}}</span>
+                        </tr> -->
+                        <!-- <tr class="cus-info-data-detail">
+                            <a href="#" class="cus-info-data-detail">
+                                <span class="cus-title">Địa chỉ:</span>
+                                <span class="cus-data">{{customer.Image}}</span>
+                                </a>
+                        </tr> -->
+                    </tbody>
+                    </div>
+                </div>
+            </div>
+            <div class="page-history-order">
+                <div class="order-title">Lịch sử mua hàng</div>
+                <div class="order-content">
+                    <div class="order-status">
+                        <button class="tab_status" onclick="status(event, 'Success')">Thành công</button>
+                        <button class="tab_status" onclick="status(event, 'Canceled')">Đã hủy</button>
+                    </div>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

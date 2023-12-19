@@ -1,0 +1,42 @@
+<header id="header">
+    <div style="background-color: white ;width: 100%;">
+        <div class="row">
+            <div class="menubar" style="background-color: green;">
+                <nav class="header__menu mobile-menu header_nav">
+                    <ul>
+                        <li><a href="/index.html"><img src="assets/images/Logobg.png" id="logo"></a></li>
+                        <span id="text-menubar">
+                            <li id="home"><a href="../index.html">Trang chủ</a></li>
+                            <li id="product"><a routerLink="/app-category" >Sản phẩm</a>
+                                <ul class="dropdown">
+                                    <li id="tatca"><a [routerLink]="['/app-category']">Tất cả</a></li>
+                                    <li id="csd"><a [routerLink]="['/app-category', 'cham-soc-da']">Chăm sóc da</a></li>
+                                    <li id="spnb"><a [routerLink]="['/app-category', 'phuc-hoi-da']">Phục hồi da</a>
+                                    </li>
+                                    <li id="spkm"><a [routerLink]="['/app-category', 'combo']"> Combo </a></li>
+                                </ul>
+                            </li>
+                            <li id="collection"><a href="#">Khuyến mãi</a></li>
+                            <li id="beauritystory"><a href="app-infor">Câu chuyện thương hiệu</a></li>
+                            <li>
+                                <form class="search" (ngSubmit)="search()">
+                                    <span><img src="assets/images/search_header.png" alt="" id="icon-img3"></span>
+                                    <input type="text" placeholder="  Search..." [(ngModel)]="keyword" name="keyword"
+                                        required>
+                                    <button type="submit">Tìm kiếm</button>
+
+                                </form>
+                            </li>
+                            <li><a [routerLink]="['/app-cart']"><img src="assets/images/cart.png" alt=""
+                                        id="icon-img1"></a></li>
+                                        <li *ngIf="!isLoggedIn"><a [routerLink]="['/app-login']"><img src="assets/images/user.png" alt="" id="icon-img2"></a></li>                            <li *ngIf="isLoggedIn">
+                                <a [routerLink]="['/app-profile']"><img src="assets/images/user.png" alt="" id="icon-img2"></a>
+                              </li>
+
+                        </span>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
