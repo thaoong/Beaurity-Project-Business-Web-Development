@@ -49,6 +49,7 @@ const routes: Routes = [
   { path: "app-account", component: AccountComponent },
   { path: "app-category", component: CategoryComponent },
   { path: 'app-category/:category', component: CategoryComponent },
+  { path: 'categories/category/:name', component: CategoryComponent },
   { path: "app-chatbox", component: ChatboxComponent },
   { path: "app-confirm-sign-up", component: ConfirmSignUpComponent },
   { path: "app-footer", component: FooterComponent },

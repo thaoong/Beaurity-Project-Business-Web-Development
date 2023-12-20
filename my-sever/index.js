@@ -131,6 +131,17 @@ app.get("/categories/:id", cors(), async (req, res) => {
   res.send(result[0]);
 });
 
+// Get categories by name
+app.get("/categories/category/:name", cors(), async (req, res) => {
+  try {
+    const result = await categoryCollection.find({ Name: { $regex: new RegExp(req.params["name"], "i") } }).toArray();
+    res.send(result);
+  } catch (err) {
+    res.status(500).json({ error: "Internal Server Error", message: err.message });
+  }
+});
+
+
 app.put("/categories", cors(), async (req, res) => {
   //update json Cosmetic into database
   await categoryCollection.updateOne(

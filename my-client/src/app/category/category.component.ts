@@ -15,8 +15,6 @@ export class CategoryComponent implements OnInit {
   cosmetics: any;
   cosmetic = new Cosmetics();
   errMessage: string = '';
-  displayProduct: boolean = true;
-categoryImages: any;
 
   constructor(
     public _service: CosmeticService,
@@ -25,9 +23,9 @@ categoryImages: any;
     private activateRoute: ActivatedRoute
   ) {
     activateRoute.paramMap.subscribe((param) => {
-      let id = param.get('id');
-      if (id != null) {
-        this.searchCosmetic(id);
+      let category = param.get('category');
+      if (category != null) {
+        this.selectCategory(category);
       }
     });
 
@@ -58,17 +56,6 @@ categoryImages: any;
     });
   }
 
-  searchCosmetic(_id: string) {
-    this._service.getCosmetic(_id).subscribe({
-      next: (data) => {
-        this.cosmetic = data;
-      },
-      error: (err) => {
-        this.errMessage = err;
-      },
-    });
-  }
-
   filterCosmetics(): any[] {
     return this.selectedCategory === '' ? this.cosmetics : this.cosmetics.filter((cosmetic: any) => cosmetic.Category === this.selectedCategory);
   }
@@ -76,8 +63,9 @@ categoryImages: any;
   selectCategory(category: string): void {
     this.selectedCategory = category;
   }
-  viewCosmeticDetail(f: any) {
-    this.router.navigate(['app-product-detail', f._id]).then(() => {
+
+  viewCosmeticDetail(cosmetic: any) {
+    this.router.navigate(['/cosmetics', this.selectedCategory, cosmetic._id]).then(() => {
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     });
   }

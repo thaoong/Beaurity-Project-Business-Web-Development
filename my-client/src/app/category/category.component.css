@@ -54,8 +54,6 @@
     margin: 12px 50px;
     padding: 12px;
     font-weight: bold;
-
-
 }
 
 .home_products--product {
@@ -89,14 +87,12 @@
     width: 100%;
     height: auto;
     padding: 12px;
-
 }
 
 .home_products--product-detail-name {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-
 }
 
 .home_products--product-detail-price {
@@ -114,7 +110,6 @@
     border-radius: 8px;
     padding: 4px;
     font-size: 14px;
-
 }
 
 .home_products--product-detail-button input:hover {
@@ -137,7 +132,6 @@
     padding: 21px 100px;
 }
 
-
 .products-category {
     display: flex;
     align-items: center;
@@ -152,7 +146,6 @@
     color: #000;
     margin: 0 8px;
     text-align: center;
-
 }
 
 .products-category--detail:hover {
@@ -171,7 +164,6 @@
     color: #2D982A;
     border: 1px solid #2D982A;
     border-radius: 8px;
-
 }
 
 .products-view-all:hover {
@@ -208,7 +200,6 @@
     font-weight: bold;
     font-size: 30px;
     padding: 20px;
-
 }
 
 .images-background-big img {
@@ -277,7 +268,6 @@
     border-radius: 50%;
     display: inline-block;
     transition: background-color 0.6s ease;
-
 }
 
 .dot.active,
@@ -292,9 +282,7 @@
     font-size: 16px;
     border-bottom: 2px solid #2D982A;
     cursor: pointer;
-
 }
-
 
 .chungnhan {
     font: 1000 38px/50px;
