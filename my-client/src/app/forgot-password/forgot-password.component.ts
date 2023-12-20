@@ -9,11 +9,11 @@ import { AccountcustomerService } from '../SERVICES/accountcustomer.service';
   styleUrls: ['./forgot-password.component.css']
 })
 export class ForgotPasswordComponent implements OnInit {
-  phoneNumber: string = " ";
+  phoneNumber: string = "";
   phoneNumbers: any;
   isPhoneNumberValid: boolean = true;
   phoneNumberExist = true;
-  phoneData: string = " ";
+  phoneData: string = "";
   errorMessage: string = " ";
 
   constructor(
@@ -29,43 +29,44 @@ export class ForgotPasswordComponent implements OnInit {
   sendCode() {
     if (!this.isPhoneNumberValid) {
       alert('Vui lòng nhập đúng số điện thoại!');
-    }
-    else if(this.phoneNumber.trim().length ===0) {
-      alert ('Vui lòng nhập số điện thoại!');
-    }
-    else {
-      this.accountService.checkPhoneNumberExist(this.phoneNumber).subscribe({
-        next: (data) => {
-          this.phoneNumber = data;
-          if (this.phoneNumbers.phonenumber == this.phoneNumber) {
-            alert ('Gửi mã thành công!')
-          }
-        },
-        error: (err) => {
-          this.errorMessage = err;
-          alert('Số điện thoại không tồn tại!');
-        }
-      });
-    }
-  }
-  resend(){
-    if (!this.isPhoneNumberValid) {
-      alert('Vui lòng nhập đúng số điện thoại!');
-    }
-    else if(this.phoneNumber.trim().length === 0){
-      alert('Vui lòng nhập số điện thoại!');     
-    }
-    else {
+    } else if (this.phoneNumber.trim().length === 0) {
+      alert('Vui lòng nhập số điện thoại!');
+    } else {
       this.accountService.checkPhoneNumberExist(this.phoneNumber).subscribe({
         next: (data) => {
           this.phoneNumbers = data;
           if (this.phoneNumbers.phonenumber == this.phoneNumber) {
-            alert('Đã gửi lại mã xác nhận!')
+            alert('Gửi mã thành công!');
+          } else {
+            alert('Số điện thoại không tồn tại!');
           }
         },
         error: (err) => {
           this.errorMessage = err;
-          alert('Số điện thoại không tồn tại!');
+          alert('Lỗi trong quá trình gửi mã!');
+        }
+      });
+    }
+  }
+  
+  resend() {
+    if (!this.isPhoneNumberValid) {
+      alert('Vui lòng nhập đúng số điện thoại!');
+    } else if (this.phoneNumber.trim().length === 0) {
+      alert('Vui lòng nhập số điện thoại!');
+    } else {
+      this.accountService.checkPhoneNumberExist(this.phoneNumber).subscribe({
+        next: (data) => {
+          this.phoneNumbers = data;
+          if (this.phoneNumbers.phonenumber == this.phoneNumber) {
+            alert('Đã gửi lại mã xác nhận!');
+          } else {
+            alert('Số điện thoại không tồn tại!');
+          }
+        },
+        error: (err) => {
+          this.errorMessage = err;
+          alert('Lỗi trong quá trình gửi mã!');
         }
       });
     }
@@ -98,46 +99,39 @@ export class ForgotPasswordComponent implements OnInit {
     }
   }
 
-  onComplete() {
-      // Kiểm tra số điện thoại hợp lệ và mã xác nhận đúng
-      if (!this.isPhoneNumberValid) {
-        alert('Vui lòng nhập đúng số điện thoại!');
-        return false
-      }
-      else if(this.phoneNumber.trim().length === 0){
-        alert('Vui lòng nhập số điện thoại!');
-        return false     
-      }
-    else if(this.isVerificationCodeValid===false){
+  onComplete(event: Event) {
+    event.preventDefault();
+  
+    if (!this.isPhoneNumberValid) {
+      alert('Vui lòng nhập đúng số điện thoại!');
+      return;
+    } else if (this.phoneNumber.trim().length === 0) {
+      alert('Vui lòng nhập số điện thoại!');
+      return;
+    } else if (!this.isVerificationCodeValid) {
       alert('Vui lòng nhập đúng mã xác nhận!');
-      return false;
-      }
-    else if(this.verificationCode.trim().length === 0){
+      return;
+    } else if (this.verificationCode.trim().length === 0) {
       alert('Vui lòng nhập mã xác nhận!');
-      return false;
-    }
-    else if(!this.isPhoneNumberValid || !this.isVerificationCodeValid) {
+      return;
+    } else if (!this.isPhoneNumberValid || !this.isVerificationCodeValid) {
       alert('Vui lòng nhập đúng số điện thoại và mã xác nhận!');
-      return false;
-    }
-    else {
+      return;
+    } else {
       this.accountService.checkPhoneNumberExist(this.phoneNumber).subscribe({
         next: (data) => {
           this.phoneNumbers = data;
           if (this.phoneNumbers.phonenumber == this.phoneNumber) {
-            // alert('Số điện thoại hợp lệ!');
             this.router.navigate(['/app-reset-password']);
-          }
-          else {
+          } else {
             alert('Số điện thoại không tồn tại!');
           }
         },
         error: (err) => {
           this.errorMessage = err;
-          alert('Số điện thoại không tồn tại!');
+          alert('Lỗi trong quá trình kiểm tra số điện thoại!');
         },
       });
-      return
     }
   }
 }
