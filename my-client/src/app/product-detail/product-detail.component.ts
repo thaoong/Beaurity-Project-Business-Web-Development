@@ -55,7 +55,6 @@ export class ProductDetailComponent {
     });
   }
 
-
   increase() {
     this.quantity++;
   }
@@ -76,7 +75,6 @@ export class ProductDetailComponent {
     this.expandDiv = false;
   }
 
-
   // Thêm vào giỏ hàng
   addToCart(cos: any): void {
     this.cosmetic.quantity = this.quantity;
@@ -92,12 +90,6 @@ export class ProductDetailComponent {
         // Xảy ra lỗi khi thêm sản phẩm vào giỏ hàng
       }
     );
-  }
-
-  viewCosmeticDetail(f: any) {
-    this.router.navigate(['app-product-detail', f._id]).then(() => {
-      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-    });
   }
 
   addToCartToBuy(cos: any): void {
@@ -116,6 +108,28 @@ export class ProductDetailComponent {
         }
       },
       error => {
+        console.log(error);
+        // Xảy ra lỗi khi thêm sản phẩm vào giỏ hàng
+      }
+    );
+  }
+
+  viewCosmeticDetail(f: any) {
+    this.router.navigate(['app-product-detail', f._id]).then(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    });
+  }
+
+  addToCartSame(cos: any): void {
+    cos.quantity = 1;
+    this._service.addToCart(cos).subscribe(
+      (response: any) => {
+        console.log(response);
+        alert("Thêm sản phẩm vào giỏ hàng thành công");
+        window.location.reload();
+        // Thêm sản phẩm vào giỏ hàng thành công
+      },
+      (error: any) => {
         console.log(error);
         // Xảy ra lỗi khi thêm sản phẩm vào giỏ hàng
       }

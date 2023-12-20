@@ -61,8 +61,10 @@ export class CartComponent {
     this.currentUser = this._authService.getCurrentUser();
   }
 
-  viewCosmeticDetail(cosmeticId: string) {
-    this.router.navigate(['app-product-detail', cosmeticId]);
+  viewCosmeticDetail(f: any) {
+    this.router.navigate(['app-product-detail', f._id]).then(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    });
   }
 
   calculateTotalPrice(item: any) {
@@ -122,7 +124,6 @@ export class CartComponent {
       (response: any) => {
         console.log(response);
         alert("Thêm sản phẩm vào giỏ hàng thành công");
-        //this.router.navigate(['app-shoppingcart']);
         window.location.reload();
         // Thêm sản phẩm vào giỏ hàng thành công
       },

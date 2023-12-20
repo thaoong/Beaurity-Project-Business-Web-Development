@@ -13,9 +13,10 @@ export class HomeComponent implements OnInit {
   category: string = '';
   categories: any[] | undefined;
   cosmetics: any[] | undefined;
+  quantity: number = 1;
   randomFeaturedCosmetics: any[] | undefined;
   cosmeticCategory: any;
-  cosmetic = new Cosmetics();
+  cosmetic: any;
   errMessage: string = '';
   displayProduct: boolean = true;
 
@@ -27,6 +28,22 @@ export class HomeComponent implements OnInit {
     });
   }
   
+  addToCart(cos: any): void {
+    cos.quantity = 1;
+    this._service.addToCart(cos).subscribe(
+      (response: any) => {
+        console.log(response);
+        alert("Thêm sản phẩm vào giỏ hàng thành công");
+        window.location.reload();
+        // Thêm sản phẩm vào giỏ hàng thành công
+      },
+      (error: any) => {
+        console.log(error);
+        // Xảy ra lỗi khi thêm sản phẩm vào giỏ hàng
+      }
+    );
+  }
+
   ngOnInit(): void {
     const numRandomCosmetics = 5; // Số lượng sản phẩm ngẫu nhiên cần hiển thị
     this._service.getCosmetics().subscribe({

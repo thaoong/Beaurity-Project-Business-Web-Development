@@ -22,6 +22,11 @@
   font-size: 14px;
   margin: 0 0 12px 100px;;
 }
+.shopping-navigate a {
+  color: #776F6F;
+  font-size: 14px;
+  text-decoration: none;
+}
 .shopping__cart {
   display: flex;
   padding: 0 100px;
