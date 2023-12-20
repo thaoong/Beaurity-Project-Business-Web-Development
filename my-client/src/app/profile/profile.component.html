@@ -55,7 +55,7 @@
             <img src="{{customer.Image}}" class="img-avt" />
           </div>
           <div class="box__content--infordetail">
-            <div class="content__infor--display">
+            <div>
               <div class="content__infor--detail">
                 <ul>
                   <li>Tên khách hàng:</li>
@@ -87,11 +87,8 @@
           <div class="box__content--imginfor">
             <div class="content__img--avt">
               <label for="imgEdit">
-                <input
-                  type="file" 
-                  id="imgEdit"
-                  (change)="onFileSelected($event, customer)" [(ngModel)]="customer.Image"
-                />
+                <input type="file" id="imgEdit" (change)="onFileSelected($event, customer)" 
+                [(ngModel)]="customer.Image"/>
                 <span class="material-symbols-outlined">photo_camera</span>
               </label>
               <img [src]="customer.Image" class="img-avt" />
@@ -109,21 +106,9 @@
                 <ul>
                   <li>Giới tính:</li>
                   <li>
-                    <input
-                      type="radio"
-                      id="male"
-                      name="genderEdit"
-                      [(ngModel)]="customer.Gender"
-                      value="Nam"
-                    />
+                    <input type="radio" id="male" name="genderEdit" [(ngModel)]="customer.Gender" value="Nam" check=“checked”/>
                     <label for="male">Nam</label><br />
-                    <input
-                      type="radio"
-                      id="female"
-                      name="genderEdit"
-                      value="Nữ"
-                      [(ngModel)]="customer.Gender"
-                    />
+                    <input type="radio" id="female" name="genderEdit" value="Nữ" [(ngModel)]="customer.Gender"/>
                     <label for="female">Nữ</label><br />
                   </li>
                 </ul>
@@ -143,9 +128,7 @@
                 </ul>
               </div>
               <div class="edit__infor--button">
-                <button (click)="putCustomer()" (click)="saveInfor()">
-                  Cập nhật
-                </button>
+                <button (click)="putCustomer()" (click)="saveInfor()">Cập nhật</button>
                 <button (click)="cancelEdit()">Hủy</button>
               </div>
             </div>
@@ -177,8 +160,7 @@
             </div>
             <div class="address__default">
               <label for="default">
-                <input type="radio" id="default" name="default" value="true" />
-                Đặt làm địa chỉ mặc định
+                <input type="radio" id="default" name="default" value="true" /> Đặt làm địa chỉ mặc định
               </label>
             </div>
           </div>
@@ -211,37 +193,25 @@
           <div class="content__address--item" *ngIf="adding">
             <div class="address__content--row">
               <div class="address__row--top">
-                <label for="name"
-                  >Tên người nhận:
-                  <input
-                    type="text"
-                    id="name"
-                    [(ngModel)]="delivery.RecipientName"
-                  />
+                <label for="name">Tên người nhận:
+                  <input type="text" id="name" [(ngModel)]="delivery.RecipientName"/>
                   <span class="material">*</span>
                 </label>
-                <label for="phone"
-                  >Số điện thoại người nhận:
+                <label for="phone">Số điện thoại người nhận:
                   <input type="text" id="phone" [(ngModel)]="delivery.Phone" />
                   <span class="material">*</span>
                 </label>
               </div>
               <div class="address__row--bottom">
-                <label for="address"
-                  >Địa chỉ:
+                <label for="address">Địa chỉ:
                   <div>
-                    <input
-                      type="text"
-                      id="address"
-                      [(ngModel)]="delivery.Address"
-                    />
+                    <input type="text" id="address" [(ngModel)]="delivery.Address"/>
                     <span class="material">*</span>
                   </div>
                 </label>
               </div>
               <label for="default">
-                <input type="radio" id="default" name="default" /> Đặt làm địa
-                chỉ mặc định
+                <input type="radio" id="default" name="default" /> Đặt làm địa chỉ mặc định
               </label>
             </div>
             <div class="address__button--function">
@@ -253,37 +223,25 @@
           <div class="content__address--item" *ngIf="editingAddress">
             <div class="address__content--row">
               <div class="address__row--top">
-                <label for="name"
-                  >Tên người nhận:
+                <label for="name">Tên người nhận:
                   <input type="text" id="name" [(ngModel)]="customer.CustomerName" />
                   <span class="material">*</span>
                 </label>
-                <label for="phone"
-                  >Số điện thoại người nhận:
-                  <input
-                    type="text"
-                    if="phone"
-                    [(ngModel)]="customer.Phone"
-                  />
+                <label for="phone">Số điện thoại người nhận:
+                  <input type="text" if="phone" [(ngModel)]="customer.Phone"/>
                   <span class="material">*</span>
                 </label>
               </div>
               <div class="address__row--bottom">
-                <label for="address"
-                  >Địa chỉ:
+                <label for="address">Địa chỉ:
                   <div>
-                    <input
-                      type="text"
-                      id="address"
-                      [(ngModel)]="delivery.Address"
-                    />
+                    <input type="text" id="address" [(ngModel)]="delivery.Address"/>
                     <span class="material">*</span>
                   </div>
                 </label>
               </div>
               <label for="default">
-                <input type="radio" id="default" name="default" /> Đặt làm địa
-                chỉ mặc định
+                <input type="radio" id="default" name="default" /> Đặt làm địa chỉ mặc định
               </label>
             </div>
             <div class="address__button--function">
@@ -293,13 +251,7 @@
           </div>
         </div>
         <div class="address__add">
-          <input
-            type="button"
-            value="Thêm địa chỉ"
-            (click)="addAddress()"
-            class="button"
-            id="button"
-          />
+          <input type="button" value="Thêm địa chỉ" (click)="addAddress()" class="button" id="button"/>
         </div>
       </div>
     </div>
@@ -309,39 +261,19 @@
       <h2>Lịch sử đơn hàng</h2>
       <div>
         <ul class="box__status">
-          <li
-            id="status--all"
-            [class.active2]="st === 'status--all'"
-            (click)="tabStatus('status--all')"
-          >
+          <li id="status--all" [class.active2]="st === 'status--all'" (click)="tabStatus('status--all')">
             Tất cả
           </li>
-          <li
-            id="status--confirm"
-            [class.active2]="st === 'status--confirm'"
-            (click)="tabStatus('status--confirm')"
-          >
+          <li id="status--confirm" [class.active2]="st === 'status--confirm'" (click)="tabStatus('status--confirm')">
             Chờ xác nhận
           </li>
-          <li
-            id="status--delivery"
-            [class.active2]="st === 'status--delivery'"
-            (click)="tabStatus('status--delivery')"
-          >
+          <li id="status--delivery" [class.active2]="st === 'status--delivery'" (click)="tabStatus('status--delivery')">
             Đang giao
           </li>
-          <li
-            id="status--done"
-            [class.active2]="st === 'status--done'"
-            (click)="tabStatus('status--done')"
-          >
+          <li d="status--done" [class.active2]="st === 'status--done'" (click)="tabStatus('status--done')">
             Hoàn thành
           </li>
-          <li
-            id="status--cancel"
-            [class.active2]="st === 'status--cancel'"
-            (click)="tabStatus('status--cancel')"
-          >
+          <li id="status--cancel" [class.active2]="st === 'status--cancel'" (click)="tabStatus('status--cancel')">
             Đã hủy
           </li>
         </ul>
