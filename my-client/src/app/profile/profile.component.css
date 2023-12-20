@@ -7,6 +7,7 @@
     margin-top: 30px;
     font-size: 15px;
     display: flex;
+    justify-content: center;
 }
 .box__left{
     min-width: 20%;
@@ -162,8 +163,6 @@
 .content__infor--detail{
     display: flex;
     flex-direction: column;
-    padding: 0px;
-    width: fit-content;
     height: max-content;
     margin-bottom: 10px;
     margin-right: 100px
@@ -171,29 +170,29 @@
 .content__infor--detail ul{
     display: flex;
     flex-direction: row;
-    width: 100%;
     list-style: none;
-    padding: 0;
     
 }
 .content__infor--detail ul li:nth-child(1){
     font-weight: bold !important;
     width: 115px;
-    margin-right: 67px;
+    height: 10px;
+    margin-right: 7px;
     /* color: #2D982A */
 }
 .content__infor--detail ul li:nth-child(2){
     position: relative;
     float: right;
     width: fit-content;
+    height:15px
     /* color: #2D982A */
 }
 .content__infor--detail ul:nth-child(2) li:nth-child(2){
     display: flex;
     flex-direction: row;
     gap: 15px;
-    /* color: #2D982A */
 }
+
 .box__content--infordetail button{
     width: 90px;
     height: 30px;
@@ -243,7 +242,7 @@ input[type="file"]{
 .edit__infor--button button:nth-child(1){
     margin-left: 10px;
     background: #2D982A;
-    border-radius: 15px;
+    border-radius: 10px;
     color: #FFFFFF;
     font-weight: bold;
     border: none;
@@ -251,7 +250,7 @@ input[type="file"]{
 .edit__infor--button button:nth-child(2){
     background: #E0F8E4;
     border: 1px solid #2D982A;
-    border-radius: 15px;
+    border-radius: 10px;
     color: #2D982A;
     font-weight: bold;
 }
@@ -284,16 +283,20 @@ input[type="file"]{
     flex-direction: row;
     justify-content: space-between;
     height: fit-content;
-    padding: 0;
-    margin: 0;
+    padding-top: 0;
+    margin-top: 0;
 }
 .address__title--infor{
     display: flex;
     flex-direction: row;
-    gap: 14px
+    gap: 14px;
+    margin-top: -20px
 }
 .address__title--infor p:nth-child(1), .address__title--infor p:nth-child(3){
     font-weight: bold;
+}
+.address__body{
+    margin-top:-20px
 }
 .address__function{
     width: fit-content;
@@ -303,7 +306,6 @@ input[type="file"]{
     display: flex;;
 }
 .address__function button{
-    height: -webkit-fill-available;
     width: 90px;
     height: 30px;
     box-sizing: border-box;
@@ -317,7 +319,7 @@ input[type="file"]{
     width: fit-content;
     border: none;
     height: -webkit-fill-available;
-    background-color: transparent;
+    background-color: #E0F8E4;
 }
 .address__function button:nth-child(2) .material-symbols-outlined {
    font-variation-settings:
@@ -334,12 +336,14 @@ input[type="file"]{
 }
 .address__add input{
 width: 110px;
-height: fit-content;
 color: #FFFFFF;
 background: #2D982A !important;
-border-radius: 20px;
+border-radius: 10px;
 font-weight: 400;
 border: none;
+height: 30px;
+
+
 }
 .address__content--row{
     width: max-content;
@@ -408,30 +412,44 @@ border: none;
     color: #FF0F0F;   
 }
 .address__button--function button:nth-child(1){
-    margin-left: 10px;
     background: #2D982A;
-    border-radius: 15px;
+    border-radius: 10px;
     color: #FFFFFF;
     font-weight: bold;
     border: none;
+    width: 90px;
+    height: 30px;
+    text-align: center;
+    justify-content: center;
+
 }
 .address__button--function button:nth-child(2){
     background: #E0F8E4;
     border: 1px solid #2D982A;
-    border-radius: 15px;
+    border-radius: 10px;
     color: #2D982A;
     font-weight: bold;
+    width: 90px;
+    height: 30px;
+    text-align: center;
+    justify-content: center;
 }
 .address__button--function{
     position: relative;
     float: right;
-  
+    text-align: center;
+    
 }
 .address__button--function button{
     width: fit-content;
     padding: 0 30px;
     float: right;
     margin: 5px 10px;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
 }
 .content__address--item:last-child{
     padding: 30px 40px;
