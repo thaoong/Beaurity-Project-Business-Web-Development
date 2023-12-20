@@ -183,7 +183,7 @@
         <span class="material-icons-outlined">
           local_offer
         </span>
-        <input type="text" placeholder="Nhập mã giảm giá">
+        <input type="text" placeholder="Nhập mã giảm giá" [(ngModel)]="discountCode" (input)="applyDiscountCode()">
       </div>
       <div class="order__row">
         <p class="order__row-left bold">
@@ -194,7 +194,7 @@
         </p>
       </div>
       <div class="order__row">
-        <input type="checkbox">
+        <input type="checkbox" [(ngModel)]="isChecked_Confirm">
         <span>Đồng ý với các chính sách của Beaurity để hoàn tất đơn hàng</span>
       </div>
       <div class="orer__row-button">
