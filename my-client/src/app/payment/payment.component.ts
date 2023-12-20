@@ -1,17 +1,17 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Orders } from '../Interfaces/Order';
-import { AuthService } from '../SERVICES/auth.service';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { CosmeticService } from '../SERVICES/cosmetics.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CustomersService } from '../SERVICES/customers.service';
 import { OrdersService } from '../SERVICES/orders.service';
-import { CosmeticService } from '../SERVICES/cosmetic.service';
+import { AuthService } from '../SERVICES/auth.service';
+import { Orders } from '../Interfaces/Order';
 
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
-  styleUrls: ['./payment.component.css']
+  styleUrls: ['./payment.component.css'],
 })
-export class PaymentComponent implements OnInit{
+export class PaymentComponent implements OnInit {
   cartItems: any;
   errMessage: string = '';
   quantityItem: number = 0;
@@ -31,7 +31,7 @@ export class PaymentComponent implements OnInit{
   isDonePayment: boolean = false;
 
   customers: any;
-  deliveries:any;
+  deliveries: any;
   currentUser: any;
   constructor(
     private _service: CosmeticService,
@@ -51,7 +51,7 @@ export class PaymentComponent implements OnInit{
 
         for (let item of this.cartItems) {
           const price: number = parseFloat(
-            item.Price.replace('.', '')
+            item.Price.replace(' đ/Hộp', '').replace('.', '')
           );
           this.totalPrice += price * item.quantity;
         }
@@ -72,32 +72,24 @@ export class PaymentComponent implements OnInit{
         this.errMessage = err;
       }
     });
+
     this.currentUser = this._authService.getCurrentUser();
   }
 
-  findSum(item:any){
-    let sum = 0
-    const price: number = parseFloat(
-      item.Price.replace('.', '')
-    );
-    sum = price * item.quantity
-    return sum.toLocaleString("vi-VN", { minimumFractionDigits: 0 })
+  checkBanking() {
+    this.isChecked_Banking = true;
+    this.isChecked_MoMo = false;
+    this.isChecked_COD = false;
   }
-
-  checkBanking(){
-    this.isChecked_Banking=true;
-    this.isChecked_MoMo=false;
-    this.isChecked_COD=false;
+  checkCOD() {
+    this.isChecked_Banking = false;
+    this.isChecked_MoMo = false;
+    this.isChecked_COD = true;
   }
-  checkCOD(){
-    this.isChecked_Banking=false;
-    this.isChecked_MoMo=false;
-    this.isChecked_COD=true;
-  }
-  checkMoMo(){
-    this.isChecked_Banking=false;
-    this.isChecked_MoMo=true;
-    this.isChecked_COD=false;
+  checkMoMo() {
+    this.isChecked_Banking = false;
+    this.isChecked_MoMo = true;
+    this.isChecked_COD = false;
   }
   applyDiscountCode() {
     if (this.discountCode == '666666') {
@@ -110,46 +102,37 @@ export class PaymentComponent implements OnInit{
   }
 
   onComplete() {
-    this.order.OrderID= Math.floor(Math.random() * 1000000).toString().padStart(6, '0'),
-    this.order.CustomerName= this.currentUser.Name,
-    this.order.OrderDate= new Date().toLocaleDateString(),
-    this.order.ShipDate= new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toLocaleDateString(),
-    this.order.Status= 'Chờ xác nhận',
-    this.order.Phone= this.currentUser.phonenumber,
-    this.order.Email= this.currentUser.Mail,
-    this.order.Address= this.currentUser.Address,
-    this.order.TotalPrice= this.price,
-    this.order.PrePrice= this.prePrice,
-    this.order.DeliveryFee= this.deliveryFee,
-    this.order.DiscountPrice= this.discountPrice,
-    this.order.OrderCosmetic= this.cartItems
-    if(this.isChecked_COD){
+    this.order.OrderID = Math.floor(Math.random() * 1000000).toString().padStart(6, '0'),
+      this.order.CustomerName = this.currentUser.Name,
+      this.order.OrderDate = new Date().toLocaleDateString(),
+      this.order.ShipDate = new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toLocaleDateString(),
+      this.order.Status = 'Chờ xác nhận',
+      this.order.Phone = this.currentUser.phonenumber,
+      this.order.Email = this.currentUser.Mail,
+      this.order.Address = this.currentUser.Address,
+      this.order.TotalPrice = this.price,
+      this.order.PrePrice = this.prePrice,
+      this.order.DeliveryFee = this.deliveryFee,
+      this.order.DiscountPrice = this.discountPrice,
+      this.order.OrderCosmetic = this.cartItems
+    if (this.isChecked_COD) {
       this.order.PaymentMethod = 'Thanh toán khi nhận hàng';
-    } else if (this.isChecked_Banking){
+    } else if (this.isChecked_Banking) {
       this.order.PaymentMethod = 'Thanh toán qua thẻ ATM nội địa/ Internet Banking';
-    } else if(this.isChecked_MoMo){
+    } else if (this.isChecked_MoMo) {
       this.order.PaymentMethod = 'Thanh toán qua ví điện tử Momo';
     }
 
-    this._orderService.postOrder(this.order).subscribe({
-      next: (data) => {
-        this.order = data;
-      },
-      error: (err) => {
-        this.errMessage = err;
-      }
-    });
-
-
     if (this.isChecked_Confirm) {
-      if(this.isChecked_COD){
-        //alert('Thanh toán thành công');
+      if (this.isChecked_COD) {
         this.isDonePayment = true;
+        // Delete the cart items
         // this._service.deleteCart();
+        // Navigate to the order detail page
         // this.router.navigate(['/app-orderdetail']);
-      } else if (this.isChecked_Banking){
+      } else if (this.isChecked_Banking) {
         this.router.navigate(['/app-type-bank-account']);
-      } else if (this.isChecked_MoMo){
+      } else if (this.isChecked_MoMo) {
         this.router.navigate(['/app-payment-momo']);
       } else {
         alert('Vui lòng chọn phương thức thanh toán');
@@ -157,7 +140,25 @@ export class PaymentComponent implements OnInit{
     } else {
       alert('Vui lòng đồng ý với điều khoản và điều kiện của chúng tôi');
     }
+
+
+    if (this.isChecked_COD || this.isChecked_Banking || this.isChecked_MoMo) {
+      if (this.isChecked_Confirm) {
+        this._orderService.postOrder(this.order).subscribe({
+          next: (data) => {
+            this.order = data;
+          },
+          error: (err) => {
+            this.errMessage = err;
+          }
+        });
+      } else {
+        return;
+      }
+    }
   }
+
+
 
   // viewOrderDetail() {
 
@@ -181,54 +182,60 @@ export class PaymentComponent implements OnInit{
   //   }
   //   else{ return false}
 
-    // this._orderService.getOrders().subscribe({
-    //   next: (data) => {
-    //     this.orders = data;
+  // this._orderService.getOrders().subscribe({
+  //   next: (data) => {
+  //     this.orders = data;
 
-    //     this.router.navigate(['/app-orderdetail/detail/', this.orders[this.orders.length - 1]._id]);
-    //   },
-    //   error: (err) => {
-    //     this.errMessage = err;
-    //   }
-    // });
-    // for(let item of this.cartItems){
-    //   this._service.removeFromCart(item._id).subscribe(
-    //     response => {
-    //       console.log(response);
-    //     },
-    //     error => {
-    //       console.log(error);
-    //     }
-    //   );
-    // }
+  //     this.router.navigate(['/app-orderdetail/detail/', this.orders[this.orders.length - 1]._id]);
+  //   },
+  //   error: (err) => {
+  //     this.errMessage = err;
+  //   }
+  // });
+  // for(let item of this.cartItems){
+  //   this._service.removeFromCart(item._id).subscribe(
+  //     response => {
+  //       console.log(response);
+  //     },
+  //     error => {
+  //       console.log(error);
+  //     }
+  //   );
+  // }
   // }
 
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
-    //popup
-    @Input() title: string='';
-    @Input() message: string='';
-    @Output() confirmed = new EventEmitter<boolean>();
+  //popup
+  @Input() title: string = '';
+  @Input() message: string = '';
+  @Output() confirmed = new EventEmitter<boolean>();
 
-    viewDetail() {
-      this.confirmed.emit(true);
-      this._orderService.getOrders().subscribe({
-        next: (data) => {
-          this.orders = data;
+  viewDetail() {
+    this.confirmed.emit(true);
+    this._orderService.getOrders().subscribe({
+      next: (data) => {
+        this.orders = data;
 
-          this.router.navigate(['/app-orderdetail/detail/', this.orders[this.orders.length - 1]._id]).then(() => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          });
-        },
-        error: (err) => {
-          this.errMessage = err;
-        }
-      });
-    }
+        this.router.navigate(['/app-orderdetail/detail/', this.orders[this.orders.length - 1]._id]).then(() => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      },
+      error: (err) => {
+        this.errMessage = err;
+      }
+    });
+  }
 
-    goHome() {
-      this.confirmed.emit(false);
-      this.router.navigate(['/app-home']);
-    }
+  goHome() {
+    this.confirmed.emit(false);
+    this.router.navigate(['/app-home']);
+  }
+  findSum(item: any): string {
+    const price: number = parseFloat(item.Price.replace(' VNĐ', '').replace('.', ''));
+    const sum: number = price * item.quantity;
+    return sum.toString(); // Convert the sum to a string without formatting
+  }
+  
 }
