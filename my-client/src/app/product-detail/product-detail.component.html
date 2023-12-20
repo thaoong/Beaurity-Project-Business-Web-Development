@@ -55,18 +55,16 @@
     <p style="font-weight: bold; font-size: 30px; color: #2D982A; text-align: center;">Sản phẩm liên quan</p>
     <div class="danhmucproduct">
         <div class="product" *ngFor="let same_cosmetic of cosmetics.slice(0,5)">
-            <a (click)="viewCosmeticDetail(same_cosmetic)" class="product-item">
-                <div class="product-item--img">
-                    <img src="{{ same_cosmetic.Image }}" style="width: 180px;">
+            <div class="product-item">
+                <div (click)="viewCosmeticDetail(same_cosmetic)">
+                    <div class="product-item--img">
+                        <img src="{{ same_cosmetic.Image }}" style="width: 180px;">
+                    </div>
+                    <p class="product-item--info">{{ same_cosmetic.Name }}</p>
+                    <p class="product-item--price">{{ same_cosmetic.Price }} VNĐ</p>
                 </div>
-                <p class="product-item--info">
-                    {{ same_cosmetic.Name }}
-                </p>
-                <p class="product-item--price">
-                    {{ same_cosmetic.Price }} VNĐ
-                </p>
-                <a><button class="product-item--add" (click)="addToCart(cosmetic)">Thêm vào giỏ hàng</button></a>
-            </a>
+                <button class="product-item--add" (click)="addToCartSame(same_cosmetic)">Thêm vào giỏ hàng</button>
+            </div>
         </div>
     </div>
 
@@ -170,14 +168,14 @@
 </div>
 
 <!-- popup  -->
- <div class="popup" id="ngIFlogin">
+ <div class="popup" *ngIf="isLogin">
   <div class="popup-container">
     <h2 class="popup-title">Đặt hàng</h2>
     <hr>
     <p class="popup-message">Bạn vui lòng <span class="main-color">đăng nhập</span> để tiếp tục đặt hàng nhé!</p>
     <div class="popup-buttons">
-      <button class="popup-button" id="clickdangnhap" (click)="onLogin()">Đăng nhập</button>
-      <button class="popup-button" id="clicktrolai" (click)="onBack()">Trở lại</button>
+      <button class="popup-button" (click)="onLogin()">Đăng nhập</button>
+      <button class="popup-button" (click)="onBack()">Trở lại</button>
     </div>
   </div>
 </div>
