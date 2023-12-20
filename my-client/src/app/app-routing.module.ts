@@ -74,7 +74,7 @@ const routes: Routes = [
   { path: "app-profile", component: ProfileComponent },
   { path: "app-blog", component: BlogComponent },
   { path: "app-signup-otp", component: SignupOtpComponent },
-  { path: "products", component: ProductsComponent }
+  { path: "products", component: ProductsComponent },
 ];
 
 @NgModule({

@@ -7,6 +7,7 @@ import { Cosmetics } from '../Interfaces/Cosmetic';
   providedIn: 'root',
 })
 export class CosmeticService {
+  deleteCart: any;
   constructor(private _http: HttpClient) {}
   getCosmetics(): Observable<any> {
     const headers = new HttpHeaders().set(
