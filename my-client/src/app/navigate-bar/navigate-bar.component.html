@@ -30,14 +30,26 @@
               <li><a [routerLink]="['/app-cart']"><img src="assets/images/cart.png" alt="" id="icon-img1"></a></li>
               <li *ngIf="!isLoggedIn"><a [routerLink]="['/app-login']"><img src="assets/images/user.png" alt=""
                     id="icon-img2"></a></li>
-              <li *ngIf="isLoggedIn">
-                <a [routerLink]="['/app-profile']"><img src="assets/images/user.png" alt="" id="icon-img2"></a>
-              </li>
 
-            </span>
-          </ul>
-        </nav>
-      </div>
-    </div>
-  </div>
+            <!-- ĐĂNG NHẬP RỒI -->
+            <li>
+            <div class="dropdown--signIn">
+                
+                <div class="content__dropdown--signIn" *ngIf="isLoggedIn">
+                    <span class="username">{{Name}}</span>
+                    <span class="material-icons"><img src="assets/images/user.png" alt="" id="icon-img2"></span>
+                </div>
+                <ul class="dropdown__menu--item" *ngIf="isLoggedIn">
+                    <li><a [routerLink]="'app-profile'">Trang cá nhân</a></li>
+                    <li><a href="app-change-psw">Đổi mật khẩu</a></li>
+                    <li><a (click)="logOut()">Đăng xuất</a></li>
+                </ul>
+            </div>
+            </li>
+        </span>
+    </ul>
+</nav>
+</div>
+</div>
+</div>
 </header>

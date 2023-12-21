@@ -47,12 +47,28 @@ export class NavigateBarComponent implements OnInit {
     this.currentUser = this.authService.getCurrentUser();
   }
 
+  Name:any
   ngOnInit(): void {
     const user = JSON.parse(sessionStorage.getItem('CurrentUser')!);
-    if (user) {
-      this.currentUser = user.Name;
+      if (user) {
+        this.Name = user.Name;
+      }}
+      isDropdownVisible: boolean = false;
+    logOut() {
+      const confirmed = confirm('Bạn có muốn đăng xuất không?');
+      if(confirmed) {
+        sessionStorage.removeItem('CurrentUser');
+        this.router.navigate(['/']);
+        window.location.reload();
+      }
+
     }
-  }
+
+    keyword: string='';
+    search() {
+    this.searchService.setKeyword(this.keyword);
+    this.router.navigate(['/app-search-result']);
+    }
 
   loadData(): void {
     this._service.getCosmetics().subscribe({
@@ -84,22 +100,10 @@ export class NavigateBarComponent implements OnInit {
     });
   }
 
-  logOut(): void {
-    const confirmed = confirm('Bạn có muốn đăng xuất không?');
-    if (confirmed) {
-      sessionStorage.removeItem('CurrentUser');
-      this.router.navigate(['/']);
-      window.location.reload();
-    }
-  }
-
-  keyword: string = '';
-  search(): void {
-    this.searchService.setKeyword(this.keyword);
-    this.router.navigate(['/app-search-result']);
-  }
-
   selectCategory(category: string): void {
     this.router.navigate(['/app-category', category]);
   }
+
+  
+
 }
