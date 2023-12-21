@@ -38,7 +38,7 @@ export class OrdersService {
       responseType: 'text',
     };
     return this._http
-      .get<any>('/orders/detail/' + orderId, requestOptions)
+      .get<any>('/orders/' + orderId, requestOptions)
       .pipe(
         map((res) => JSON.parse(res) as Orders),
         retry(3),

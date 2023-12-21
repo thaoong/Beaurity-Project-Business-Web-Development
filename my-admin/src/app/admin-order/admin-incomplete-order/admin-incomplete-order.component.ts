@@ -12,8 +12,6 @@ export class AdminIncompleteOrderComponent {
   orders: any;
   customer: any;
   errMessage: string = ""
-  page: number = 1;
-  count: number = 0;
   result: number = 0;
   value: any;
   order = new Order()
@@ -35,18 +33,6 @@ export class AdminIncompleteOrderComponent {
     this.value = data
     return this.result = data.length
   }
-
-  totalProduct(order: any) {
-    let totalQuantity = 0;
-    if (order.OrderCosmetic && order.OrderCosmetic.length > 0) {
-      for (const cosmetic of order.OrderCosmetic) {
-        const quantity = parseInt(cosmetic.Quantity, 10);
-        if (!isNaN(quantity)) {
-          totalQuantity += quantity;
-        }
-      }
-    }
-    return totalQuantity;  }
 
   orderConfirm(_id: any) {
     if (window.confirm('Bạn có chắc muốn xác nhận đơn hàng này?')) {

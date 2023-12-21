@@ -31,18 +31,6 @@ export class AdminOrderComponent {
     return this.result = data.length
   }
 
-  totalProduct(order:any){
-    let totalQuantity = 0;
-    if (order.OrderCosmetic && order.OrderCosmetic.length > 0) {
-      for (const cosmetic of order.OrderCosmetic) {
-        const quantity = parseInt(cosmetic.Quantity, 10);
-        if (!isNaN(quantity)) {
-          totalQuantity += quantity;
-        }
-      }
-    }
-    return totalQuantity;  }
-
   deleteOrder(_id: string) {
     if (window.confirm('Bạn có chắc muốn xóa đơn hàng này?')) {
       this._service.deleteOrder(_id).subscribe(

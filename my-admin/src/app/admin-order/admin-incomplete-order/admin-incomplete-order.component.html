@@ -34,7 +34,7 @@
                     <th>Mã đơn hàng</th>
                     <th>Tên khách hàng</th>
                     <th>Ngày tạo </th>
-                    <th>Số sản phẩm</th>
+                    <th>Tổng tiền</th>
                     <th>Tình trạng</th>
                     <th></th>
                 </thead>
@@ -44,7 +44,9 @@
                         <td>{{order.OrderID}}</td>
                         <td>{{order.CustomerName}}</td>
                         <td>{{order.OrderDate}}</td>
-                        <td>{{totalProduct(order)}}</td>
+                        <td>
+                            {{order.TotalPrice.toLocaleString("vi-VN", {minimumFractionDigits: 0})}}đ
+                        </td>
                         <td>{{order.Status}}</td>
                         <td>
                             <button id="visual" (click)="viewOrderDetail(order)" (click)="searchCustomer(order.CustomerID)">

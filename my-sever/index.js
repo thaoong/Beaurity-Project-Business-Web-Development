@@ -404,7 +404,7 @@ app.get("/orders", cors(), async (req, res) => {
   res.send(result);
 });
 
-app.get("/orders/detail/:id", cors(), async (req, res) => {
+app.get("/orders/:id", cors(), async (req, res) => {
   var o_id = new ObjectId(req.params["id"]);
   const result = await orderCollection.find({ _id: o_id }).toArray();
   res.send(result[0])
@@ -459,27 +459,11 @@ app.put("/orders", cors(), async (req, res) => {
   res.send(result[0]);
 });
 
-app.get("/orders/:id", cors(), async (req, res) => {
-  var o_id = new ObjectId(req.params["id"]);
-  const result = await orderCollection.find({ _id: o_id }).toArray();
-  res.send(result[0])
-})
-
 //Get order by customer name
 app.get("/orders/customer/:name", cors(), async (req, res) => {
   const customerName = req.params["name"];
   const result = await orderCollection.find({ CustomerName: customerName }).toArray();
   res.send(result);
-});
-
-app.delete("/orders/:id", cors(), async (req, res) => {
-  //find detail Order with id
-  var o_id = new ObjectId(req.params["id"]);
-  const result = await orderCollection.find({ _id: o_id }).toArray();
-  //update json Fashion into database
-  await orderCollection.deleteOne({ _id: o_id });
-  //send Order after remove
-  res.send(result[0]);
 });
 
 app.get('/search', cors(), async (req, res) => {
