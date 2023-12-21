@@ -82,22 +82,6 @@ export class AdminOrderService {
     );
   }
 
-  // cancelOrder(aOrder:any): Observable<any> {
-  //   const headers = new HttpHeaders().set(
-  //     'Content-Type',
-  //     'application/json;charset=utf-8'
-  //   );
-  //   const requestOptions: Object = {
-  //     headers: headers,
-  //     responseType: 'text',
-  //   };
-  //   return this._http.put<any>('/orders', JSON.stringify(aOrder), requestOptions).pipe(
-  //     map((res) => JSON.parse(res) as Order),
-  //     retry(3),
-  //     catchError(this.handleError)
-  //   );
-  // }
-
   updateOrderStatus(aOrder:any): Observable<any> {
     const headers = new HttpHeaders().set("Content-Type", "application/json;charset=utf-8");
     const requestOptions: Object = {
@@ -106,6 +90,21 @@ export class AdminOrderService {
     };
     return this._http.put<any>('/orders', JSON.stringify(aOrder), requestOptions).pipe(
       map(res => JSON.parse(res) as Order),
+      retry(3),
+      catchError(this.handleError)
+    );
+  }
+  getOrderCustomer(name: string): Observable<any> {
+    const headers = new HttpHeaders().set(
+      'Content-Type',
+      'text/plain;charset=utf8'
+    );
+    const requestOptions: Object = {
+      headers: headers,
+      responseType: 'text',
+    };
+    return this._http.get<any>('/orders/customer/' + name, requestOptions).pipe(
+      map((res) => JSON.parse(res) as Array<Order>),
       retry(3),
       catchError(this.handleError)
     );

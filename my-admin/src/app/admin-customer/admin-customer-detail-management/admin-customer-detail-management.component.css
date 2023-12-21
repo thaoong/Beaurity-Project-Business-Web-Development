@@ -273,3 +273,142 @@
     height: 20px;
     font-size: 10px;
 }
+
+
+
+.box__order {
+    width: 904px;
+}
+
+.box__order--status {
+    width: 904px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.emptyorder {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.emptyorder p {
+    margin-top: 5px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.box__history--order {
+    width: 904px;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    background-color: #FFFFFF;
+    border-radius: 15px;
+    padding: 18px 23px;
+}
+
+.box__history--order--title {
+    width: 804px;
+    height: 55px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #7C7C7C;
+    margin-bottom: 5px;
+}
+
+.box__history--order--title h3 {
+    width: fit-content;
+    height: 23px;
+    display: flex;
+    flex-direction: row;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+
+    color: #000000;
+}
+
+.box__history--order--title h3 span {
+    font-size: 12px;
+    width: 90px;
+    height: max-content;
+    text-align: center;
+    color: white;
+    border-radius: 15px;
+    margin-left: 15px;
+}
+
+.cancelled {
+    background-color: rgb(226, 81, 81);
+}
+
+.completed {
+    background-color: #52b54f;
+}
+
+.delivering {
+    background-color: #98dfea;
+    color: #000000 !important;
+}
+
+.confirming {
+    background-color: hsl(62, 91%, 87%);
+    color: #000000 !important;
+}
+
+.box__history--order--title button {
+    height: max-content;
+    width: 100px;
+
+    background: #F2F2F2;
+    border: 1px solid #000000;
+    border-radius: 15px;
+    float: right;
+}
+
+.cart__main {
+    padding: 0 40px;
+}
+
+.cart__main-row {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 16px 0;
+}
+
+.cart__main-row:nth-child(1):hover {
+    background-color: transparent;
+}
+
+.cart__main-row:hover {
+    background-color: #ffff;
+}
+
+.cart__main-row--product {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+}
+
+.cart__main-row--product img {
+    width: 100px;
+    height: auto;
+    margin-right: 12px;
+}
+
+.cart__main-row--price {
+    width: 15%;
+    font-weight: bold;
+}
+
+.cart__main-row--quantity {
+    width: 15%;
+}

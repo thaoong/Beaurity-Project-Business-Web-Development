@@ -17,7 +17,8 @@ export class EditProductComponent {
   constructor(public _service: AdminCosmeticService,
     public _fs: AdminCategoryService,
     private router: Router,
-    private activateRoute: ActivatedRoute) {
+    private activateRoute: ActivatedRoute) 
+    {
     activateRoute.paramMap.subscribe((param) => {
       let id = param.get('id');
       if (id != null) {
