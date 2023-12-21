@@ -35,6 +35,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { BlogComponent } from './blog/blog.component';
 import { SignupOtpComponent } from './sign-up/signup-otp/signup-otp.component';
 import { ProductsComponent } from './products/products.component';
+import { DealsComponent } from './deals/deals.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -73,7 +74,8 @@ const routes: Routes = [
   { path: "app-profile", component: ProfileComponent },
   { path: "app-blog", component: BlogComponent },
   { path: "app-signup-otp", component: SignupOtpComponent },
-  { path: "products", component: ProductsComponent },
+  { path: "app-products", component: ProductsComponent },
+  { path: "app-deals", component: DealsComponent}
 ];
 
 @NgModule({

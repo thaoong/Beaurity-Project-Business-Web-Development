@@ -41,6 +41,7 @@ import { BlogComponent } from './blog/blog.component';
 import { SignupOtpComponent } from './sign-up/signup-otp/signup-otp.component';
 import { ProductsComponent } from './products/products.component';
 import { AccountcustomerService } from './SERVICES/accountcustomer.service';
+import { DealsComponent } from './deals/deals.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,6 +80,7 @@ import { AccountcustomerService } from './SERVICES/accountcustomer.service';
     BlogComponent,
     SignupOtpComponent,
     ProductsComponent,
+    DealsComponent,
     
   ],
   imports: [
