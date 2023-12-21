@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../SERVICES/auth.service';
 import { SearchService } from '../SERVICES/search.service';
@@ -17,11 +17,13 @@ export class NavigateBarComponent implements OnInit {
   category: string = '';
   categories: any[] | undefined;
   cosmetics: any;
-  cosmetic = new Cosmetics();
   cartItems: any[] = [];
   quantityItem: number = 0;
   displayItem: boolean = true;
   errMessage: string = '';
+  Name: any;
+
+  isDropdownVisible: boolean = false;
 
   constructor(
     private searchService: SearchService,
@@ -47,28 +49,28 @@ export class NavigateBarComponent implements OnInit {
     this.currentUser = this.authService.getCurrentUser();
   }
 
-  Name:any
   ngOnInit(): void {
     const user = JSON.parse(sessionStorage.getItem('CurrentUser')!);
-      if (user) {
-        this.Name = user.Name;
-      }}
-      isDropdownVisible: boolean = false;
-    logOut() {
-      const confirmed = confirm('Bạn có muốn đăng xuất không?');
-      if(confirmed) {
-        sessionStorage.removeItem('CurrentUser');
-        this.router.navigate(['/']);
-        window.location.reload();
-      }
-
+    if (user) {
+      this.Name = user.Name;
     }
+  }
 
-    keyword: string='';
-    search() {
+  logOut() {
+    const confirmed = confirm('Bạn có muốn đăng xuất không?');
+    if (confirmed) {
+      sessionStorage.removeItem('CurrentUser');
+      this.router.navigate(['/']);
+      window.location.reload();
+    }
+  }
+
+  keyword: string = '';
+
+  search() {
     this.searchService.setKeyword(this.keyword);
     this.router.navigate(['/app-search-result']);
-    }
+  }
 
   loadData(): void {
     this._service.getCosmetics().subscribe({
@@ -104,6 +106,10 @@ export class NavigateBarComponent implements OnInit {
     this.router.navigate(['/app-category', category]);
   }
 
-  
+  isFixed = false;
 
+  @HostListener('window:scroll', ['$event'])
+  onScroll() {
+    this.isFixed = window.scrollY > 320;
+  }
 }
