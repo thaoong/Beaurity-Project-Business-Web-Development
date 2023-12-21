@@ -58,31 +58,31 @@
                 <td class="image"><img src="{{prod.Image}}">
                 <td>{{prod.Name}}</td>
                 <td>{{prod.quantity}}</td>
-                <td>{{prod.Price}}đ</td>
-                <td>{{findSum(prod)}}đ</td>
+                <td>{{prod.Price}} VNĐ</td>
+                <td>{{findSum(prod)}} VNĐ</td>
             </tr>
             <tr>
                 <td colspan="4" class="text-end">Tạm tính</td>
                 <td>
-                    {{order.PrePrice.toLocaleString("vi-VN", {minimumFractionDigits: 0})}}đ
+                    {{order.PrePrice.toLocaleString("vi-VN", {minimumFractionDigits: 0})}} VNĐ
                 </td>
             </tr>
             <tr>
                 <td colspan="4" class="text-end">Phí vận chuyển</td>
                 <td>
-                    {{order.DeliveryFee.toLocaleString("vi-VN", {minimumFractionDigits: 0})}}đ
+                    {{order.DeliveryFee.toLocaleString("vi-VN", {minimumFractionDigits: 0})}} VNĐ
                 </td>
             </tr>
             <tr>
                 <td colspan="4" class="text-end">Giảm giá</td>
                 <td>
-                    {{order.DiscountPrice.toLocaleString("vi-VN", {minimumFractionDigits: 0})}}đ
+                    {{order.DiscountPrice.toLocaleString("vi-VN", {minimumFractionDigits: 0})}} VNĐ
                 </td>
             </tr>
             <tr class="table_data table-lg">
                 <td colspan="4" class="total text-end">Tổng cộng</td>
                 <td style="font-weight: bold; color:#2D982A; font-size:15pt">
-                    {{order.TotalPrice.toLocaleString("vi-VN", {minimumFractionDigits: 0})}}đ
+                    {{order.TotalPrice.toLocaleString("vi-VN", {minimumFractionDigits: 0})}} VNĐ
                 </td>
             </tr>
         </tbody>
