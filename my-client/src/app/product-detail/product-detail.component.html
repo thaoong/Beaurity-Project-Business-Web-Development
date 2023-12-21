@@ -7,9 +7,10 @@
 <div class="container">
     <div class="section">
         <ol>
-            <li>Trang chủ</li>
-            <li><a>{{cosmetic.Category}}</a></li>
-            <li>{{cosmetic.Name}}</li>
+            <li> <a routerLink="/app-home"> Trang chủ</a>
+            <li> <a routerLink="/app-category">{{ cosmetic.Category }}</a> </li>
+            <li> <a routerLink="/app-product-detail/{{ cosmetic.Id }}">{{ cosmetic.Name }}</a> </li>
+    
         </ol>
     </div>
     <div class="content">

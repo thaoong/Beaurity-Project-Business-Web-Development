@@ -176,4 +176,8 @@ export class CartComponent {
     this.confirmed.emit(false);
     this.isLogin = false;
   }
+  clicktoreturn(){
+    this.router.navigate(['app-home'])
+  }
+
 }
