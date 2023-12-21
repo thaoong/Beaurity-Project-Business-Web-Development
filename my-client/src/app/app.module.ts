@@ -40,7 +40,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { BlogComponent } from './blog/blog.component';
 import { SignupOtpComponent } from './sign-up/signup-otp/signup-otp.component';
 import { ProductsComponent } from './products/products.component';
-
+import { AccountcustomerService } from './SERVICES/accountcustomer.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -88,7 +88,7 @@ import { ProductsComponent } from './products/products.component';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [AccountcustomerService],
+  bootstrap: [AppComponent, LoginComponent]
 })
 export class AppModule { }

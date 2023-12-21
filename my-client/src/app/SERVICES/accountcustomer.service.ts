@@ -52,4 +52,10 @@ export class AccountcustomerService {
     const body = { phoneNumber, oldPassword, newPassword };
     return this._http.put<any>(url, body);
   }
+
+  checkPasswordResetSuccess(phonenumber: string) {
+    // Gửi yêu cầu đến API để kiểm tra trạng thái đặt lại mật khẩu
+    return this._http.get<any>(`/api/check-password-reset/${phonenumber}`);
+  }
+
 }

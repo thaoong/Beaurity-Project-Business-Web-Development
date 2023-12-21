@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
-import { catchError, map, Observable, retry, throwError } from 'rxjs';
+import { catchError, map, Observable, throwError } from 'rxjs';
 import { AccountCustomer } from '../Interfaces/AccountCustomer';
 
 @Injectable({
@@ -17,7 +17,9 @@ export class AuthService {
   }
 
   logout() {
-    sessionStorage.removeItem('CurrentUser');
+    if (sessionStorage.getItem('CurrentUser') !== null) {
+      sessionStorage.removeItem('CurrentUser');
+    }
   }
 
   setCurrentUser(user: any) {
@@ -34,7 +36,7 @@ export class AuthService {
 
   public setCookie(name: string, value: string, expireDays: number): void {
     const date = new Date();
-    date.setTime(date.getTime() + (expireDays * 24 * 60 * 60 * 1000));
+    date.setTime(date.getTime() + expireDays * 24 * 60 * 60 * 1000);
     const expires = 'expires=' + date.toUTCString();
     document.cookie = name + '=' + value + ';' + expires + ';path=/';
   }
@@ -42,7 +44,7 @@ export class AuthService {
   public getCookie(name: string): string {
     const cookieName = name + '=';
     const cookies = document.cookie.split(';');
-    for(let i = 0; i < cookies.length; i++) {
+    for (let i = 0; i < cookies.length; i++) {
       let cookie = cookies[i];
       while (cookie.charAt(0) === ' ') {
         cookie = cookie.substring(1);
@@ -51,26 +53,38 @@ export class AuthService {
         return cookie.substring(cookieName.length, cookie.length);
       }
     }
-    return "";
+    return '';
   }
 
   public deleteCookie(name: string): void {
     this.setCookie(name, '', -1);
   }
   private apiUrl = 'http://localhost:3000';
+
   async changePassword(phonenumber: string, oldPassword: string, newPassword: string): Promise<string> {
     try {
-      const response = await this.http.put<any>(`${this.apiUrl}/change-password`, { phonenumber, oldPassword, newPassword }).toPromise();
+      const response = await this.http
+        .put<any>(`${this.apiUrl}/change-password`, { phonenumber, oldPassword,newPassword })
+        .pipe(
+          catchError(error => {
+            this.handleError(error);
+            return throwError(error);
+          })
+        )
+        .toPromise();
       return response.message;
-    } catch (error:any) {
+    } catch (error) {
       console.error(error);
-      if (error.status === 401) {
-        alert(error.error.message);
-      } else {
-        alert('An error occurred while changing password. Please try again later.');
-      }
+      this.handleError(error);
       throw error;
     }
   }
 
+  private handleError(error: any): void {
+    if (error.status === 401) {
+      alert(error.error.message);
+    } else {
+      alert('An error occurred while changing password. Please try again later.');
+    }
+  }
 }
