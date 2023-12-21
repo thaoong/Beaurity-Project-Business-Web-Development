@@ -1,43 +1,45 @@
-<header id="header">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+
+<header id="header" [class.fixed-navbar]="isFixed" (scroll)="onScroll()">
   <div style="background-color: white ;width: 100%;">
-    <div class="row">
       <div class="menubar" style="background-color: green;">
-        <nav class="header__menu mobile-menu header_nav">
+        <nav class="header__menu">
           <ul>
             <li><a href="/index.html"><img src="assets/images/Logobg.png" id="logo"></a></li>
-            <span id="text-menubar">
-              <li id="home"><a href="../index.html">Trang chủ</a></li>
-              <li id="product" class="dropdown"><a routerLink="/app-category">Sản phẩm</a>
-                <!-- <div class="dropdown-center"> -->
-                  <ul>
-                    <li id="tatca" (click)="selectCategory('')">Tất cả</li>
-                    <li *ngFor="let category of categories">
-                      <a (click)="selectCategory(category.Category)">{{ category.Category }}</a>
-                    </li>
-                  </ul>
-                <!-- </div> -->
-              </li>
-              <li id="collection"><a routerLink="/app-category/id">Hot Combo</a></li>
+            <li id="home"><a href="../index.html">Trang chủ</a></li>
+
+            <li id="product" class="dropdown">
+              <a routerLink="/app-category">Sản phẩm</a>
+              <div class="dropdown-center">
+                <ul>
+                  <li *ngFor="let category of categories">
+                    <a (click)="selectCategory(category.Category)">{{ category.Category }}</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+
+              <li id="collection"><a routerLink="">Hot Combo</a></li>
               <li id="beauritystory"><a href="app-infor">Câu chuyện thương hiệu</a></li>
               <li>
                 <form class="search" (ngSubmit)="search()">
-                  <span><img src="assets/images/search_header.png" alt="" id="icon-img3"></span>
+                  <span class="material-icons-outlined">search</span>
                   <input type="text" placeholder="  Search..." [(ngModel)]="keyword" name="keyword" required>
                   <button type="submit">Tìm kiếm</button>
 
                 </form>
               </li>
-              <li><a [routerLink]="['/app-cart']"><img src="assets/images/cart.png" alt="" id="icon-img1"></a></li>
-              <li *ngIf="!isLoggedIn"><a [routerLink]="['/app-login']"><img src="assets/images/user.png" alt=""
-                    id="icon-img2"></a></li>
-
+              <a [routerLink]="['/app-cart']"><span class="material-icons-outlined">shopping_bag</span></a>
+              <li class="item"><button>{{quantityItem}}</button></li>
+              <a *ngIf="!isLoggedIn"><a [routerLink]="['/app-login']"><span class="material-icons-outlined">account_circle</span></a></a>
             <!-- ĐĂNG NHẬP RỒI -->
             <li>
             <div class="dropdown--signIn">
                 
                 <div class="content__dropdown--signIn" *ngIf="isLoggedIn">
-                    <span class="username">{{Name}}</span>
-                    <span class="material-icons"><img src="assets/images/user.png" alt="" id="icon-img2"></span>
+                  <span class="material-icons-outlined">account_circle</span>
+                  <span class="username">{{Name}}</span>
                 </div>
                 <ul class="dropdown__menu--item" *ngIf="isLoggedIn">
                     <li><a [routerLink]="'app-profile'">Trang cá nhân</a></li>
@@ -46,10 +48,10 @@
                 </ul>
             </div>
             </li>
-        </span>
+        
+
     </ul>
 </nav>
-</div>
 </div>
 </div>
 </header>
