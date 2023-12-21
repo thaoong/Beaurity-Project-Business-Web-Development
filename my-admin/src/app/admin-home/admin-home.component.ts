@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef, VERSION } from '@angular/core';
 import { AdminCosmeticService } from '../services/admin-cosmetic.service';
-import { Router, ActivatedRoute } from '@angular/router';
 import { AdminCategoryService } from '../services/admin-category.service';
 import { AdminCustomerService } from '../services/admin-customer.service';
 import { AdminOrderService } from '../services/admin-order.service';
+// import * as Chart from 'chart.js';
+import { Chart } from 'chart.js';
 
 @Component({
   selector: 'app-admin-home',
@@ -11,24 +12,24 @@ import { AdminOrderService } from '../services/admin-order.service';
   styleUrls: ['./admin-home.component.css']
 })
 export class AdminHomeComponent {
-  totalCategories: number = 234; // Replace with your actual value
-  totalCustomers: number = 567; // Replace with your actual value
-  totalOrders: number = 890; // Replace with your actual value
-  totalCosmetics: number=0;
-  totalUncompletedOrders: number=0;
+  totalCategories: number = 234;
+  totalCustomers: number = 567;
+  totalOrders: number = 890;
+  totalCosmetics: number = 0;
+  totalUncompletedOrders: number = 0;
   cosmetics: any;
   categories: any;
   customers: any;
   orders: any;
   uncompletedOrders: any;
   errMessage: string = '';
-
-  constructor(public _service: AdminCosmeticService, 
-              public category_service: AdminCategoryService,
-              public customer_service: AdminCustomerService,
-              public order_service: AdminOrderService,
-              private router: Router, 
-              private activatedRoute: ActivatedRoute) {
+  
+  constructor(
+    public _service: AdminCosmeticService,
+    public category_service: AdminCategoryService,
+    public customer_service: AdminCustomerService,
+    public order_service: AdminOrderService
+  ) {
     this._service.getCosmetics().subscribe({
       next: (data) => {
         // Lấy danh sách các Cosmetics
@@ -68,6 +69,7 @@ export class AdminHomeComponent {
         this.errMessage = err;
       },
     });
+
     this.order_service.searchUncompletedOrder().subscribe({
       next: (data) => {
         // Lấy danh sách các Orders
@@ -78,22 +80,66 @@ export class AdminHomeComponent {
       },
     });
   }
-  
-  totalCosmetic(data: any) {
-    return this.totalCosmetics = data.length
-  }
-  totalCategory(data: any) {
-    return this.totalCategories = data.length
-  }
-  totalCustomer(data: any) {
-    return this.totalCustomers = data.length
-  }
-  totalOrder(data: any) {
-    return this.totalOrders = data.length
-  }
-  totalUncompletedOrder(data: any) {
-    return this.totalUncompletedOrders = data.length
+
+  @ViewChild('myChart') private myChart!: ElementRef;
+
+  ngAfterViewInit() {
+    this.createChart();
   }
 
-  
+  createChart() {
+    const ctx = this.myChart.nativeElement.getContext('2d');
+
+    const myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Label 1', 'Label 2', 'Label 3'],
+        datasets: [{
+          label: 'Dataset 1',
+          data: [10, 20, 30],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255,99,132,1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            } 
+          }]
+        }
+      } as any // Cast the entire options object as 'any'
+    });
+  }
+
+
+  totalCosmetic(data: any) {
+    return this.totalCosmetics = data.length;
+  }
+
+  totalCategory(data: any) {
+    return this.totalCategories = data.length;
+  }
+
+  totalCustomer(data: any) {
+    return this.totalCustomers = data.length;
+  }
+
+  totalOrder(data: any) {
+    return this.totalOrders = data.length;
+  }
+
+  totalUncompletedOrder(data: any) {
+    return this.totalUncompletedOrders = data.length;
+  }
 }

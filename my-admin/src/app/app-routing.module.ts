@@ -22,7 +22,7 @@ import { MatButton } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card'; 
 
 const routes: Routes = [
-  // { path: "", redirectTo:"admin-login", pathMatch:"full"},
+  { path: "", redirectTo:"admin-login", pathMatch:"full"},
   { path: "admin-login", component: AdminLoginComponent},
   { path: "admin-home", component: AdminHomeComponent },
   { path: "admin-category-management", component: AdminCaterogyComponent},

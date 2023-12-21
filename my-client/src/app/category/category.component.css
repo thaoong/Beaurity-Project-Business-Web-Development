@@ -140,6 +140,38 @@
     margin: 5px auto 0;
 }
 
+@media (max-width: 1300px) {
+    .danhmucproduct {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* Additional styles for other elements at this breakpoint if needed */
+}
+
+@media (max-width: 1080px) {
+    .danhmucproduct {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Additional styles for other elements at this breakpoint if needed */
+}
+
+@media (max-width: 768px) {
+    .danhmucproduct {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Additional styles for other elements at this breakpoint if needed */
+}
+
+@media (max-width: 500px) {
+    .danhmucproduct {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    /* Additional styles for other elements at this breakpoint if needed */
+}
+
 .products-category--detail {
     padding: 10px;
     text-decoration: none;
@@ -341,15 +373,19 @@
 
 .product {
     display: flex;
-    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 -5px;
 }
 
 .product-item {
+    box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 12px;
-    padding: 16px;
-    width: 70%;
-    margin: 10px 10px;
+    padding: 10px 0px;
+    width: calc(10%);
+    margin: 5px 15px;
+    flex-grow: 1;
 }
 
 .product-item:hover {
@@ -358,8 +394,8 @@
 }
 
 .product-item--img img {
-    /* width: 100%; */
-    height: 187px;
+    width: 250px;
+    height: 200px;
     border-radius: 12px;
 }
 
@@ -386,7 +422,7 @@
     font-weight: bold;
     border-radius: 10px;
     border: none;
-    width: 70%;
+    width: 50%;
     height: 30px;
     font-size: 13px;
     transition: opacity 0.3s ease;
@@ -419,10 +455,9 @@
     /* Set a fixed width for the navigation */
     background-color: #C2F4C0;
     padding: 30px 20px;
-    margin-top: 15px;
 }
 
-.category-navigation strong{
+.category-navigation strong {
     font-size: 20px;
     padding-top: 20px;
     text-align: center !important;
@@ -450,9 +485,10 @@
 
 /* Adjust styles for the product section */
 .product-section {
-    margin-left: 20px;
-    width:90%;
+    margin-left: 10px;
+    width: 90%;
 }
-.product-section img{
-    margin-top: 15px;
-} 
+
+.product-section img {
+    /* margin-top: 15px; */
+}

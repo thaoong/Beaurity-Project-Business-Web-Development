@@ -1,8 +1,9 @@
-*{
+* {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
-.home_banner{
-    background-color:#F8FAE1; 
+
+.home_banner {
+    background-color: #F8FAE1;
     text-align: left;
     vertical-align: top;
     color: green;
@@ -12,26 +13,26 @@
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-#logo{
+#logo {
     width: 140px;
     object-fit: contain;
     align-items: center;
     border-radius: 10px;
-  }
+}
 
-.bar{
+.bar {
     padding-top: 20px;
     height: 60px;
     width: 8px;
 }
 
-.content{
+.content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.bold{
+.bold {
     font-weight: bold;
     font-size: 30px;
 }
@@ -42,36 +43,40 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  .image-container img {
+}
+
+.image-container img {
     max-width: 100%;
     height: auto;
-  }
+}
 
-.main-home{
+.main-home {
     margin-top: 160px;
 }
 
 .home_products {
     margin-bottom: 20px;
 }
+
 .home_products-bestseller {
     background-color: #E0F8E4;
     padding-top: 8px;
 }
+
 .home_products--header {
     font-size: 24px;
     margin: 12px 50px;
     padding: 12px;
     font-weight: bold;
 }
+
 .home_products--product {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     padding: 0 90px;
 }
+
 .home_products--product-detail {
     width: 17%;
     background-color: #F2F2F2;
@@ -83,33 +88,39 @@
     color: #000;
     margin: 12px;
 }
+
 .home_products--product-detail:nth-child(n+11) {
-  display: none;
+    display: none;
 }
+
 .home_products--product-detail:hover {
     border: 1px solid #2D982A;
 }
 
-.home_products--products img{
+.home_products--products img {
     width: 100%;
     height: auto;
     padding: 12px;
 
 }
+
 .home_products--product-detail-name {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
 }
+
 .home_products--product-detail-price {
     font-weight: bold;
 }
+
 .home_products--product-detail-button {
     width: 100%;
     text-align: center;
 }
-.home_products--product-detail-button input{
+
+.home_products--product-detail-button input {
     width: 100%;
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -117,6 +128,7 @@
     font-size: 14px;
 
 }
+
 .home_products--product-detail-button input:hover {
     background-color: #2D982A;
     color: #fff;
@@ -126,17 +138,19 @@
     background-color: #ffffff;
     padding-top: 8px;
 }
-.background-space{
+
+.background-space {
     height: fit-content;
 }
-.background-space img{
+
+.background-space img {
     height: 198px;
     width: 100%;
     padding: 21px 100px;
 }
 
 
-.products-category{
+.products-category {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -144,7 +158,7 @@
     margin: 5px auto 0;
 }
 
-.products-category--detail{
+.products-category--detail {
     padding: 10px;
     text-decoration: none;
     color: #000;
@@ -153,7 +167,7 @@
 
 }
 
-.products-category--detail:hover{
+.products-category--detail:hover {
     border-bottom: 2px solid #2D982A;
     color: #2D982A;
 }
@@ -171,23 +185,26 @@
     border-radius: 8px;
 
 }
+
 .products-view-all:hover {
-  background-color: #2D982A;
-  font-weight: bold;
-  color: #fff;
+    background-color: #2D982A;
+    font-weight: bold;
+    color: #fff;
 }
 
-.easy__buy{
+.easy__buy {
     display: flex;
     justify-content: center;
     margin: 40px auto;
     width: 80%;
 }
-.easy__buy div:first-child{
+
+.easy__buy div:first-child {
     flex: 1;
     border-right: 1px solid #2D982A;
 }
-.easy__buy div:last-child{
+
+.easy__buy div:last-child {
     flex: 1;
     border-left: 1px solid #2D982A;
 }
@@ -197,6 +214,7 @@
     margin: 20px;
     padding: 10px 0;
 }
+
 .easy__buy-header {
     text-align: center;
     font-weight: bold;
@@ -205,13 +223,13 @@
 
 }
 
-.images-background-big img{
+.images-background-big img {
     height: 300px;
     width: 100%;
     background-color: #197b14;
 }
 
-.images-background-small{
+.images-background-small {
     margin: 0px auto;
     position: relative;
     top: -50px;
@@ -219,7 +237,8 @@
     justify-content: center;
     align-items: center;
 }
-.container-banner{
+
+.container-banner {
     width: 100%;
     position: relative;
     margin: auto;
@@ -227,27 +246,32 @@
     padding-left: 100px;
     align-items: self-end;
 }
-.slider-main{
+
+.slider-main {
     height: 227px;
     width: 626px;
     display: flex;
     margin-bottom: 19px;
 }
-.slide-fade{
+
+.slide-fade {
     display: flex;
     flex-direction: row;
 }
-.slider-main img{
+
+.slider-main img {
     height: 227px;
     width: 611px;
     position: relative;
     margin: 0 12px;
     padding: 0px;
 }
-.slide{
+
+.slide {
     display: none;
 }
-.slide.active{
+
+.slide.active {
     transition: background-color 1.2s left;
     animation-name: slide;
     animation-duration: 10s;
@@ -255,8 +279,9 @@
     animation-timing-function: ease;
     animation-iteration-count: infinite;
 }
+
 .dot {
-    cursor:pointer;
+    cursor: pointer;
     height: 5px;
     width: 5px;
     margin: 0 2px;
@@ -265,12 +290,14 @@
     display: inline-block;
     transition: background-color 0.6s ease;
 
-  }
-.dot.active, .dot:hover {
+}
+
+.dot.active,
+.dot:hover {
     background-color: #717171;
 }
 
-.active{
+.active {
     color: #2D982A;
     font-weight: bold;
     justify-items: center;
@@ -281,7 +308,7 @@
 }
 
 
-.chungnhan{
+.chungnhan {
     font: 1000 38px/50px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     text-align: center;
@@ -290,13 +317,13 @@
     flex-direction: column;
 }
 
-.chungnhandetail{
+.chungnhandetail {
     display: grid;
     grid-template-columns: 0.2fr 3fr 0.5fr 3fr 0.5fr 3fr 0.2fr;
 }
 
-.sanpham{
-    background-color:#2D982A;
+.sanpham {
+    background-color: #2D982A;
     font: 1000 38px/50px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     text-align: center;
@@ -319,12 +346,13 @@
     height: 40px;
     font-size: 18px;
     transition: opacity 0.3s ease;
-  }
+}
+
 .sanpham button:hover {
     opacity: 0.6;
-  }
+}
 
-.danhmucproduct{
+.danhmucproduct {
     font: 1000 38px/50px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     text-align: center;
@@ -337,36 +365,36 @@
 
 @media (max-width: 1300px) {
     .danhmucproduct {
-      grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(4, 1fr);
     }
-  }
+}
 
 @media (max-width: 1080px) {
     .danhmucproduct {
-      grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
-  }
+}
 
 @media (max-width: 768px) {
     .danhmucproduct {
-      grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
-  }
+}
 
 @media (max-width: 500px) {
     .danhmucproduct {
-      grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: repeat(1, 1fr);
     }
-  }
+}
 
 .product {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     margin: 0 -5px;
-  }
-  
-  .product-item {
+}
+
+.product-item {
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 12px;
@@ -374,7 +402,7 @@
     width: calc(10%);
     margin: 5px 15px;
     flex-grow: 1;
-  }
+}
 
 .product-item:hover {
     border: 1px solid #2D982A;
@@ -416,10 +444,8 @@
     transition: opacity 0.3s ease;
 }
 
-
-
-.feedback{
-    background-color:#F8FAE1; 
+.feedback {
+    background-color: #F8FAE1;
     font: 1000 38px/50px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     text-align: center;
@@ -429,7 +455,7 @@
     justify-content: space-between;
 }
 
-.feedbackdetails{
+.feedbackdetails {
     display: grid;
     grid-template-columns: 1fr 3fr 0.25fr 4.75fr 1fr;
 }

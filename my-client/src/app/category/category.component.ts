@@ -64,9 +64,26 @@ export class CategoryComponent implements OnInit {
     this.selectedCategory = category;
   }
 
-  viewCosmeticDetail(cosmetic: any) {
-    this.router.navigate(['/cosmetics', this.selectedCategory, cosmetic._id]).then(() => {
+  viewCosmeticDetail(f: any) {
+    this.router.navigate(['app-product-detail', f._id]).then(() => {
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     });
   }
+
+  addToCart(cos: any): void {
+    cos.quantity = 1;
+    this._service.addToCart(cos).subscribe(
+      (response: any) => {
+        console.log(response);
+        alert("Thêm sản phẩm vào giỏ hàng thành công");
+        window.location.reload();
+        // Thêm sản phẩm vào giỏ hàng thành công
+      },
+      (error: any) => {
+        console.log(error);
+        // Xảy ra lỗi khi thêm sản phẩm vào giỏ hàng
+      }
+    );
+  }
+
 }

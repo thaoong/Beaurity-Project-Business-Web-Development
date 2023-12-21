@@ -27,14 +27,12 @@ import { PopupStatusComponent } from './admin-order/popup-status/popup-status.co
 import { AdminOrderDetailComponent } from './admin-order/admin-order-detail/admin-order-detail.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-
-import { MatDialogRef } from '@angular/material/dialog';
-import {MatSelectModule} from '@angular/material/select';
-import {MatIconModule} from '@angular/material/icon';
+import { HighchartsChartModule } from 'highcharts-angular';
+import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -72,7 +70,7 @@ import { PopupDeleteComponent } from './admin-caterogy/popup-delete/popup-delete
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-   
+    HighchartsChartModule,
     NgxPaginationModule,
     MatTableModule,
     MatButtonModule,

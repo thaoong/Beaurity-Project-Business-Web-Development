@@ -16,7 +16,7 @@
                 <button id="add" (click)="addCatLevel1()" class="add-button">Thêm danh mục</button>
             </div>
             <div class="page-search">
-                <input type="search" id="search" placeholder="Tìm kiếm..." />
+                <input type="text" placeholder="  Search..." [(ngModel)]="keyword" name="keyword" required>
                 <span class="material-symbols-outlined">search</span>
             </div>
         </div>
