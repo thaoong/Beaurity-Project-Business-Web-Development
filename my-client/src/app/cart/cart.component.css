@@ -34,7 +34,6 @@
 .shopping__cart-left {
   flex-basis: 100%;
   background-color: #Fff;
-  border-radius: 10px;
   padding: 12px;
 }
 .shopping__cart-left--header h3{
@@ -93,25 +92,39 @@
   font-weight: bold;
 }
 .shopping__cart-left--detail-row-quantity {
-  width: 20%;
-  display: flex;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+    margin-left: 40px;
 }
-.shopping__cart-left--detail-row-quantity button {
-  width: 15%;
 
-}
-.shopping__cart-left--detail-row-quantity button:nth-child(1) {
-  border-top-left-radius: 25px;
-  border-bottom-left-radius: 25px;
-}
-.shopping__cart-left--detail-row-quantity button:last-child {
-  border-top-right-radius: 25px;
-  border-bottom-right-radius: 25px;
-}
 .shopping__cart-left--detail-row-quantity input {
-  width: 30%;
-  text-align: center;
+    width: 40px;
+    height: 28px;
+    border: 1px solid #2D982A;
+    text-align: center;
+    font-weight: bold;
+}
+
+.shopping__cart-left--detail-row-quantity button {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 28px; /* Set the height of the buttons to match the height of the input */
+    width: 25px;
+    border: none;
+    background-color: #2D982A;
+    color: white;
+    cursor: pointer;
+}
+
+.shopping__cart-left--detail-row-quantity button:hover {
+    background-color: #1F6E1C; /* Hover effect */
+}
+
+.shopping__cart-left--detail-row-quantity span {
+    font-size: 15px;
 }
 .shopping__cart-left--detail-row-delete {
   width: 10%;
