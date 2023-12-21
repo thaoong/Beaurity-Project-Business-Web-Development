@@ -20,14 +20,14 @@ export class HomeComponent implements OnInit {
   errMessage: string = '';
   displayProduct: boolean = true;
 
-  constructor(public _service: CosmeticService, private router: Router, private activateRoute: ActivatedRoute) {}
+  constructor(public _service: CosmeticService, private router: Router, private activateRoute: ActivatedRoute) { }
 
   viewCosmeticDetail(f: any) {
     this.router.navigate(['app-product-detail', f._id]).then(() => {
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     });
   }
-  
+
   addToCart(cos: any): void {
     cos.quantity = 1;
     this._service.addToCart(cos).subscribe(
@@ -56,11 +56,11 @@ export class HomeComponent implements OnInit {
       }
     });
   }
-  
+
   getRandomCosmetics(numRandomCosmetics: number, sourceCosmetics: any[] | undefined = this.cosmetics) {
     const totalCosmetics = sourceCosmetics?.length ?? 0;
     const randomIndices: number[] = [];
-  
+
     // Generate a single set of random indices
     while (randomIndices.length < numRandomCosmetics && totalCosmetics > 0) {
       const randomIndex = Math.floor(Math.random() * totalCosmetics);
@@ -70,7 +70,7 @@ export class HomeComponent implements OnInit {
     }
     // Retrieve the corresponding products using the random indices
     const randomCosmetics = randomIndices.map(index => sourceCosmetics?.[index]);
-  
+
     return randomCosmetics;
   }
 }

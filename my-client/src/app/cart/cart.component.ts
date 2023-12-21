@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { CosmeticService } from '../SERVICES/cosmetics.service';
 import { AuthService } from '../SERVICES/auth.service';
 
@@ -153,7 +153,12 @@ export class CartComponent {
 
   makePayment(){
     if(this.currentUser != null){
-      this.router.navigate(['app-payment']);
+      const navigationExtras: NavigationExtras = {
+        queryParams: {
+          selectedItems: JSON.stringify(this.selectedItems)
+        }
+      };
+      this.router.navigate(['app-payment'], navigationExtras);
     } else {
       this.isLogin = true;
     }
@@ -176,8 +181,4 @@ export class CartComponent {
     this.confirmed.emit(false);
     this.isLogin = false;
   }
-  clicktoreturn(){
-    this.router.navigate(['app-home'])
-  }
-
 }

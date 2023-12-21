@@ -34,7 +34,7 @@
               </p>
             </div>
 
-            <div class="cart__main-row" *ngFor="let item of cartItems">
+            <div class="cart__main-row" *ngFor="let item of selectedItems">
               <div class="cart__main-row--product">
                 <div class="cart__main-row--product-img">
                   <img src="{{item.Image}}" alt="">
@@ -221,7 +221,7 @@
       <br>Vui lòng theo dõi đơn hàng nhé!
     </p>
     <div class="popup-buttons">
-      <button class="popup-button" (click)="viewDetail()">Xem chi tiết</button>
+      <button class="popup-button" (click)="viewDetail(order.OrderID)">Xem chi tiết</button>
       <button class="popup-button" (click)="goHome()">Trở lại</button>
     </div>
   </div>
