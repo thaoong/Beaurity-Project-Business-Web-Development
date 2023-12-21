@@ -59,15 +59,6 @@ app.get("/cosmetics/:category", cors(), async (req, res) => {
   res.send(result);
 });
 
-app.get("/cosmetics/:category/:subcategory", cors(), async (req, res) => {
-  const category = req.params["category"];
-  const subcategory = req.params["subcategory"];
-  const result = await cosmeticCollection
-    .find({ Category: category, SubCategory: subcategory })
-    .toArray();
-  res.send(result);
-});
-
 app.post("/cosmetics", cors(), async (req, res) => {
   //put json into database
   await cosmeticCollection.insertOne(req.body);
@@ -181,64 +172,58 @@ app.delete("/categories/:id", cors(), async (req, res) => {
 //Thông tin của Giỏ hàng
 const session = require('express-session');
 const { hasSubscribers } = require('diagnostics_channel');
-app.use(session({secret: "Shh, its a secret!"}));
-app.get("/contact",cors(),(req,res)=>{
-    if(req.session.visited!=null)
-    {
-        req.session.visited++
-        res.send("You visited this page "+req.session.visited +" times")
-    }
-    else
-    {
-        req.session.visited=1
-        res.send("Welcome to this page for the first time!")
-    }
+app.use(session({ secret: "Shh, its a secret!" }));
+app.get("/contact", cors(), (req, res) => {
+  if (req.session.visited != null) {
+    req.session.visited++
+    res.send("You visited this page " + req.session.visited + " times")
+  }
+  else {
+    req.session.visited = 1
+    res.send("Welcome to this page for the first time!")
+  }
 })
 
-app.post("/cart/",cors(),(req,res)=>{
+app.post("/cart/", cors(), (req, res) => {
   const med = req.body
-  if(req.session.carts==null){
-      req.session.carts=[]
+  if (req.session.carts == null) {
+    req.session.carts = []
   }
   const existingMed = req.session.carts.find((m) => m._id === med._id);
 
   if (existingMed) {
     // Nếu sản phẩm đã tồn tại trong giỏ hàng, tăng số lượng sản phẩm của sản phẩm đó
     existingMed.quantity += med.quantity;
-  }else{
+  } else {
     req.session.carts.push(med)
   }
   res.send(med)
 })
-app.get("/cart",cors(),(req,res)=>{
+app.get("/cart", cors(), (req, res) => {
   res.send(req.session.carts)
 })
-app.get("/cart/:id",cors(),(req,res)=>{
-  if(req.session.carts!=null)
-  {
-    p=req.session.carts.find(x=>x.barcode==req.body.barcode)
+app.get("/cart/:id", cors(), (req, res) => {
+  if (req.session.carts != null) {
+    p = req.session.carts.find(x => x.barcode == req.body.barcode)
     res.send(p)
   }
   else
-      res.send(null)
+    res.send(null)
 })
-app.delete("/cart/delete/:id",cors(),(req,res)=>{
-  if(req.session.carts!=null)
-  {
-      id=req.params["id"]
-      req.session.carts =req.session.carts.filter(x => x._id !== id);        
+app.delete("/cart/delete/:id", cors(), (req, res) => {
+  if (req.session.carts != null) {
+    id = req.params["id"]
+    req.session.carts = req.session.carts.filter(x => x._id !== id);
   }
   res.send(req.session.carts)
 })
-app.put("/cart",cors(),(req,res)=>{
-  if(req.session.carts!=null)
-  {
+app.put("/cart", cors(), (req, res) => {
+  if (req.session.carts != null) {
 
-      p=req.session.carts.find(x=>x._id==req.body._id)
-      if(p!=null)
-      {
-          p.quantity=req.body.quantity            
-      }
+    p = req.session.carts.find(x => x._id == req.body._id)
+    if (p != null) {
+      p.quantity = req.body.quantity
+    }
   }
   res.send(req.session.carts)
 })
@@ -252,7 +237,7 @@ app.get("/accounts", cors(), async (req, res) => {
 app.get("/accounts/:phonenumber", cors(), async (req, res) => {
   const phone = req.params["phonenumber"];
   const result = await accountCollection
-    .find({ phonenumber: phone})
+    .find({ phonenumber: phone })
     .toArray();
   res.send(result[0]);
 });
@@ -267,16 +252,16 @@ app.get("/customer", cors(), async (req, res) => {
   res.send(result);
 });
 
-app.get("/customer/:id",cors(), async (req, res) =>{
+app.get("/customer/:id", cors(), async (req, res) => {
   var o_id = new ObjectId(req.params["id"]);
-  const result = await customerCollection.find({_id:o_id}).toArray();
+  const result = await customerCollection.find({ _id: o_id }).toArray();
   res.send(result[0])
 })
 
 
-app.get("/customers/:phonenumber",cors(), async (req, res) =>{
+app.get("/customers/:phonenumber", cors(), async (req, res) => {
   var phone = req.params["phonenumber"];
-  const result = await customerCollection.find({Phone:phone}).toArray();
+  const result = await customerCollection.find({ Phone: phone }).toArray();
   res.send(result[0])
 });
 
@@ -305,7 +290,7 @@ app.put("/customers", cors(), async (req, res) => {
       },
     }
   )
-    //send Fahsion after updating
+  //send Fahsion after updating
   var o_id = new ObjectId(req.body._id);
   const result = await customerCollection.find({ _id: o_id }).toArray();
   res.send(result[0])
@@ -314,7 +299,7 @@ app.put("/customers", cors(), async (req, res) => {
 app.put("/customers", cors(), async (req, res) => {
   //update json Fashion into database
   await customerCollection.updateOne(
-    {_id: new ObjectId(req.body._id) }, //condition for update
+    { _id: new ObjectId(req.body._id) }, //condition for update
     {
       $set: {
         //Field for updating
@@ -326,9 +311,9 @@ app.put("/customers", cors(), async (req, res) => {
       },
     }
   )
-    //send Fahsion after updating
+  //send Fahsion after updating
   var o_id = req.params._id;
-  const result = await customerCollection.find({_id:o_id}).toArray();
+  const result = await customerCollection.find({ _id: o_id }).toArray();
   res.send(result[0])
 });
 
@@ -338,21 +323,21 @@ app.get("/delivery", cors(), async (req, res) => {
   res.send(result);
 });
 
-app.post("/delivery", cors(), async (req, res) =>{
+app.post("/delivery", cors(), async (req, res) => {
   await deliveryCustomerCollection.insertOne(req.body)
   res.send(req.body)
 })
 
-app.get("/delivery/:phonenumber",cors(), async (req, res) =>{
+app.get("/delivery/:phonenumber", cors(), async (req, res) => {
   var phone = req.params["phonenumber"];
-  const result = await deliveryCustomerCollection.find({Phone:phone}).toArray();
+  const result = await deliveryCustomerCollection.find({ Phone: phone }).toArray();
   res.send(result[0])
 });
 
 app.put("/delivery", cors(), async (req, res) => {
   //update json Fashion into database
   await deliveryCustomerCollection.updateOne(
-    {_id: new ObjectId(req.body._id) }, //condition for update
+    { _id: new ObjectId(req.body._id) }, //condition for update
     {
       $set: {
         //Field for updating
@@ -360,21 +345,21 @@ app.put("/delivery", cors(), async (req, res) => {
       },
     }
   )
-    //send Fahsion after updating
+  //send Fahsion after updating
   var o_id = req.params._id;
-  const result = await deliveryCustomerCollection.find({_id:o_id}).toArray();
+  const result = await deliveryCustomerCollection.find({ _id: o_id }).toArray();
   res.send(result[0])
-  })
+})
 
 //Phần này là Đăng ký và Đăng nhập
-app.post("/accounts", cors(), async(req, res) => {
+app.post("/accounts", cors(), async (req, res) => {
   var crypto = require('crypto');
   salt = crypto.randomBytes(16).toString('hex');
   userCollection = database.collection("AccountCustomerData");
-  user=req.body;
-  hash = crypto.pbkdf2Sync(user.password, salt,1000, 64, `sha512`).toString(`hex`);
-  user.password=hash;
-  user.salt=salt
+  user = req.body;
+  hash = crypto.pbkdf2Sync(user.password, salt, 1000, 64, `sha512`).toString(`hex`);
+  user.password = hash;
+  user.salt = salt
   await userCollection.insertOne(user)
   res.send(req.body)
 })
@@ -395,7 +380,7 @@ app.post('/login', cors(), async (req, res) => {
   }
 });
 app.put('/change-password', cors(), async (req, res) => {
-  const {phonenumber, oldPassword, newPassword } = req.body;
+  const { phonenumber, oldPassword, newPassword } = req.body;
   const crypto = require('crypto');
   const userCollection = database.collection('AccountCustomerData');
   const user = await userCollection.findOne({ phonenumber });
@@ -419,9 +404,9 @@ app.get("/orders", cors(), async (req, res) => {
   res.send(result);
 });
 
-app.get("/orders/detail/:id",cors(), async (req, res) =>{
+app.get("/orders/detail/:id", cors(), async (req, res) => {
   var o_id = new ObjectId(req.params["id"]);
-  const result = await orderCollection.find({_id:o_id}).toArray();
+  const result = await orderCollection.find({ _id: o_id }).toArray();
   res.send(result[0])
 })
 
@@ -453,7 +438,7 @@ app.put("/orderConfirm/:id", cors(), async (req, res) => {
       },
     }
   );
-  //send Fahsion after updating
+  //send Order after updating
   var o_id = new ObjectId(req.body._id);
   const result = await orderCollection.find({ _id: o_id }).toArray();
   res.send(result[0]);
@@ -474,11 +459,18 @@ app.put("/orders", cors(), async (req, res) => {
   res.send(result[0]);
 });
 
-app.get("/orders/:id",cors(), async (req, res) =>{
+app.get("/orders/:id", cors(), async (req, res) => {
   var o_id = new ObjectId(req.params["id"]);
-  const result = await orderCollection.find({_id:o_id}).toArray();
+  const result = await orderCollection.find({ _id: o_id }).toArray();
   res.send(result[0])
 })
+
+//Get order by customer name
+app.get("/orders/customer/:name", cors(), async (req, res) => {
+  const customerName = req.params["name"];
+  const result = await orderCollection.find({ CustomerName: customerName }).toArray();
+  res.send(result);
+});
 
 app.delete("/orders/:id", cors(), async (req, res) => {
   //find detail Order with id

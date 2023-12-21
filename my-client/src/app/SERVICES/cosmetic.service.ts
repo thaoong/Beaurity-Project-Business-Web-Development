@@ -61,27 +61,6 @@ export class CosmeticService {
       catchError(this.handleError)
     );
   }
-  getCosmeticSubCategory(
-    category: string,
-    subcategory: string
-  ): Observable<any> {
-    const headers = new HttpHeaders().set(
-      'Content-Type',
-      'text/plain;charset=utf8'
-    );
-    const requestOptions: Object = {
-      headers: headers,
-      responseType: 'text',
-    };
-    return this._http
-      .get<any>('/cosmetics/' + category + '/' + subcategory, requestOptions)
-      .pipe(
-        map((res) => JSON.parse(res) as Array<Cosmetics>),
-        retry(3),
-        catchError(this.handleError)
-      );
-  }
-
   addToCart(med: any): Observable<any> {
     return this._http.post('/cart', med);
   }

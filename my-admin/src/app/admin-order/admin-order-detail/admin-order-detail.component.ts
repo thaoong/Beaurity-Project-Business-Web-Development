@@ -1,11 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AdminOrderService } from 'src/app/services/admin-order.service';
-import { AdminCustomerService } from 'src/app/services/admin-customer.service';
 import { Order } from 'src/app/interfaces/order';
-import { PopupStatusComponent } from '../popup-status/popup-status.component';
-import { MatDialog } from '@angular/material/dialog';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-admin-order-detail',
@@ -17,7 +13,6 @@ export class AdminOrderDetailComponent {
   public setOrder(o: Order) {
     this.order = o;
   }
-  customer: any;
   orders: any;
   price: number = 0;
   total: number = 0;
@@ -26,8 +21,6 @@ export class AdminOrderDetailComponent {
   constructor(private activateRoute: ActivatedRoute,
     private _fs: AdminOrderService,
     private router: Router,
-    private _service: AdminCustomerService,
-    private matDialog: MatDialog,
   ) {
     activateRoute.paramMap.subscribe(
       (param) => {
@@ -38,16 +31,7 @@ export class AdminOrderDetailComponent {
       }
     );
   }
-  // openDialog() {
-  //   const dialogRef = this.matDialog.open(PopupStatusComponent, {
-  //     width: '320px',
-  //     // data: {status: this.status}
-  //   });
-  //   dialogRef.afterClosed().subscribe(
-  //     result => console.log("Dialog output:", result)
-  //   );
-  // }
-
+  
   searchOrder(_id: string) {
     this._fs.getOrderDetail(_id).subscribe({
       next: (data) => {

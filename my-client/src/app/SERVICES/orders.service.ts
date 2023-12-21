@@ -46,6 +46,22 @@ export class OrdersService {
       );
   }
 
+  getOrderCustomer(name: string): Observable<any> {
+    const headers = new HttpHeaders().set(
+      'Content-Type',
+      'text/plain;charset=utf8'
+    );
+    const requestOptions: Object = {
+      headers: headers,
+      responseType: 'text',
+    };
+    return this._http.get<any>('/orders/customer/' + name, requestOptions).pipe(
+      map((res) => JSON.parse(res) as Array<Orders>),
+      retry(3),
+      catchError(this.handleError)
+    );
+  }
+
   postOrder(order: any): Observable<any> {
     const headers = new HttpHeaders().set(
       'Content-Type',
@@ -63,5 +79,4 @@ export class OrdersService {
         catchError(this.handleError)
       );
   }
-
 }

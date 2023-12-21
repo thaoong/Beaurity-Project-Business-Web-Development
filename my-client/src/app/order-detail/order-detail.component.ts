@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { CosmeticService } from '../SERVICES/cosmetics.service';
 import { AuthService } from '../SERVICES/auth.service';
-import { OrdersService } from '../SERVICES/orders.service';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Orders } from '../Interfaces/Order';
-
+import { ActivatedRoute, Router } from '@angular/router';
+import { OrdersService } from '../SERVICES/orders.service';
 
 @Component({
   selector: 'app-order-detail',
@@ -12,53 +11,41 @@ import { Orders } from '../Interfaces/Order';
   styleUrls: ['./order-detail.component.css']
 })
 export class OrderDetailComponent {
-  cartItems: any;
-  errMessage: string = '';
-  quantityItem: number = 0;
-  displayNumberItem: boolean = true;
-  currentUser: any;
-  order = new Orders();
+
+  order: any;
+  price: number = 0;
+  total: number = 0;
+  errMessage: string = "";
+
   constructor(
-    private _service: CosmeticService,
-    private _authService: AuthService,
+    private activateRoute: ActivatedRoute, 
     private _orderService: OrdersService,
-    private router: Router,
-    private activateRoute: ActivatedRoute
-  ) {
-    activateRoute.paramMap.subscribe((param) => {
-      let orderId = param.get('id');
-      if (orderId != null) {
-        this.searchOrder(orderId);
-        console.log(this.order);
-      }
-    });
-
-    this._service.getCart().subscribe({
-      next: (data) => {
-        this.cartItems = data;
-        this.quantityItem = this.cartItems.length;
-        if (this.cartItems.length > 0) {
-          this.displayNumberItem = false;
+    private router: Router)
+  {
+    activateRoute.paramMap.subscribe(
+      (param) => {
+        let id = param.get('id');
+        if (id != null) {
+          this.searchOrder(id);
         }
-      },
-      error: (err) => {
-        this.errMessage = err;
       }
-    });
-
-    this.currentUser = this._authService.getCurrentUser();
-
+    );
   }
 
-  searchOrder(orderId: string) {
-    this._orderService.getOrder(orderId).subscribe({
+  searchOrder(_id: string) {
+    this._orderService.getOrder(_id).subscribe({
       next: (data) => {
         this.order = data;
       },
-      error: (err) => {
-        this.errMessage = err;
-      },
+      error: (err) => { this.errMessage = err; }
     });
+  }
+
+  //tìm thành tiền cho từng sản phẩm
+  findSum(item: any) {
+    this.price = parseFloat(item.Price.replace(".", ""));
+    this.total = this.price * item.quantity;
+    return this.total.toLocaleString("vi-VN", { minimumFractionDigits: 0 });
   }
 
   gotoHome() {
@@ -66,6 +53,5 @@ export class OrderDetailComponent {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
-
 }
 
