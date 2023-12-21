@@ -1,6 +1,5 @@
 * {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, ‘Segoe UI’, Roboto, Oxygen, Ubuntu, Cantarell, ‘Open Sans’, ‘Helvetica Neue’, sans-serif;
-  padding: 0;
+  font-family: 'Be Vietnam Pro', sans-serif;
   margin: 0;
   box-sizing: border-box;
   
@@ -35,6 +34,7 @@
   flex-basis: 100%;
   background-color: #Fff;
   padding: 12px;
+  border-radius: 10px;
 }
 .shopping__cart-left--header h3{
   color: #000;
@@ -73,18 +73,13 @@
 .shopping__cart-left--detail-row-check {
   width: 10%;
 }
-
-.shopping__cart-left--detail-row-info {
-  display: flex;
-  align-items: center;
-  width: 40%;
+.table-responsive table thead {
+  border-bottom: 1px solid #f2f2f2;
 }
-.shopping__cart-left--detail-row-info img {
-  width: 80px;
-  height: auto;
-  background-color: transparent;
-  border-radius: 12px;
-  margin-right: 15px;
+tbody:before {
+  content: "";
+  display: block;
+  height: 40px;
 }
 .shopping__cart-left--detail-row-price {
   width: 20%;
@@ -95,7 +90,6 @@
     display: flex;
     align-items: center;
     margin-right: auto;
-    margin-left: 40px;
 }
 
 .shopping__cart-left--detail-row-quantity input {

@@ -1,9 +1,11 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
-<link rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,500,0,0" />
-<link rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
 <div class="main-shopping">
   <p class="shopping-navigate"><a routerLink="/app-home">Trang chủ</a> / <a routerLink="/app-cart">Giỏ hàng</a></p>
   <div class="shopping__cart">
@@ -18,33 +20,63 @@
 
       </div>
       <ng-template #viewItem>
-        <div class="shopping__cart-left--detail">
-          <div class="shopping__cart-left--detail-row">
-            <p class="shopping__cart-left--detail-row1"></p>
-            <p class="shopping__cart-left--detail-row2">Sản phẩm</p>
-            <p class="shopping__cart-left--detail-row3">Đơn giá</p>
-            <p class="shopping__cart-left--detail-row4">Số lượng</p>
-            <p class="shopping__cart-left--detail-row5"></p>
-          </div>
-          <div class="shopping__cart-left--detail-row" *ngFor="let item of cartItems">
-            <div class="shopping__cart-left--detail-row-check">
-              <input type="checkbox" (click)="calculateTotalPrice(item)">
-            </div>
-            <div class="shopping__cart-left--detail-row-info">
-              <img src="{{ item.Image }}" alt="">
-              <p>{{ item.Name }}</p>
-            </div>
-            <p class="shopping__cart-left--detail-row-price">{{item.Price}} VNĐ</p>
-            <div class="shopping__cart-left--detail-row-quantity">
-              <button (click)="decrease(item)">-</button>
-              <input type="text" [(ngModel)]="item.quantity" (input)="updateQuantity(item)">
-              <button (click)="increase(item)">+</button>
-            </div>
-            <button (click)="removeFromCart(item._id)"
-              class="material-icons-outlined shopping__cart-left--detail-row-delete ">
-              delete
-            </button>
-          </div>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col" class="border-0 align-left">
+                  <div class="p-2 px-3 text-uppercase"></div>
+                </th>
+                <th scope="col" class="border-0  align-left">
+                  <div>Sản phẩm</div>
+                </th>
+                <th scope="col" class="border-0  align-left">
+                  <div class="p-2 px-3 text-uppercase"></div>
+                </th>
+                <th scope="col" class="border-0  align-left">
+                  <div class="py-2">Đơn giá</div>
+                </th>
+                <th scope="col" class="border-0  align-left">
+                  <div class="py-2">Số lượng</div>
+                </th>
+                <th scope="col" class="border-0  align-left">
+                  <div class="py-2">Remove</div>
+                </th>
+              </tr>
+            </thead>
+            <tbody class="table-body-spacing">
+              <tr *ngFor="let item of cartItems">
+                <td class="border-0 align-left">
+                  <div class="p-2">
+                    <div class="shopping__cart-left--detail-row-check">
+                      <input type="checkbox" (click)="calculateTotalPrice(item)">
+                    </div>
+                  </div>
+                </td>
+                <td class="border-0 align-center">
+                  <div>
+                    <div>
+                      <img src="{{ item.Image }}" alt="" width="70" class="img-fluid rounded shadow-sm">
+                    </div>
+                  </div>
+                </td>
+                <td class="border-0 align-left">{{item.Name}} VNĐ</td>
+                <td class="border-0 align-left">{{item.Price}} VNĐ</td>
+                <td class="border-0 align-left">
+                  <div class="shopping__cart-left--detail-row-quantity">
+                    <button (click)="decrease(item)">-</button>
+                    <input type="text" [(ngModel)]="item.quantity" (input)="updateQuantity(item)">
+                    <button (click)="increase(item)">+</button>
+                  </div>
+                </td>
+                <td class="border-0 align-center">
+                  <button (click)="removeFromCart(item._id)" class="material-icons-outlined shopping__cart-left--detail-row-delete">
+                    delete
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </ng-template>
     </div>

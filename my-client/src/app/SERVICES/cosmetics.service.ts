@@ -82,14 +82,14 @@ export class CosmeticService {
       );
   }
 
-  addToCart(med: any): Observable<any> {
-    return this._http.post('/cart', med);
+  addToCart(cos: any): Observable<any> {
+    return this._http.post('/cart', cos);
   }
-  removeFromCart(medId: string): Observable<any> {
-    return this._http.delete('/cart/delete/' + medId);
+  removeFromCart(cosId: string): Observable<any> {
+    return this._http.delete('/cart/delete/' + cosId);
   }
-  updateQuantityCart(med: any): Observable<any> {
-    return this._http.put('/cart', med);
+  updateQuantityCart(cos: any): Observable<any> {
+    return this._http.put('/cart', cos);
   }
   getCart(): Observable<any> {
     return this._http.get('/cart');
