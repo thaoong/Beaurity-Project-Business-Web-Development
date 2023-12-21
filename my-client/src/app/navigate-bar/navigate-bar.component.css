@@ -4,46 +4,27 @@
 }
 
 #logo{
-  width: 140px;
+  width: 130px;
   object-fit: contain;
   align-items: center;
   border-radius: 10px;
-  margin-bottom: -8px;
-}
-
-#icon-img1{
-  width: 28px;
-  margin-bottom: -8px;
-}
-#icon-img2{
-  width: 22px;
-  margin-bottom: -8px;
-}
-
-#icon-img3{
-  width:auto;
-  height: 25px;
-  margin-bottom: -10px;
-  margin-bottom: -10px;
-  margin-left: 7px;
-  padding-top: -2px;
-  padding-bottom: 0px;
-  
-}
-text-menubar{
-  position:relative;
-
+  margin-bottom: -18px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .header {
   background: white;
   display: inline-block;
   width: auto;
+  
 }
 
 .header__top {
   background: white;
   padding: 0;
+  
 }
 
 .header__top__left p {
@@ -59,6 +40,7 @@ text-menubar{
 .header__top__links {
   background: white;
   display: inline-block;
+  
 }
 
 .header-col-6 {
@@ -68,7 +50,8 @@ text-menubar{
 .menubar .header__top__links {
   background: white;
   display: inline-block;
-  margin-right: 25px;
+  margin-right: 5px;
+  
 }
 
 .header__top__links a {
@@ -77,6 +60,7 @@ text-menubar{
   text-transform: uppercase;
   letter-spacing: 5px;
   margin-right: 8px;
+  
   display: inline-block;
 }
 
@@ -97,7 +81,7 @@ text-menubar{
 
 .header__top__hover span {
   color: green;
-  font-size: 13px;
+  font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 10px;
   display: inline-block;
@@ -105,7 +89,7 @@ text-menubar{
 }
 
 .header__top__hover span i {
-  font-size: 15px;
+  font-size: 13px;
   position: relative;
   top: 3px;
   right: 2px;
@@ -144,14 +128,12 @@ text-menubar{
   left: 0px;
   right: 0px;
   background-color: white;
-  
 }
 
 .header__menu ul li {
   list-style: none;
   display: inline-block;
-  margin-right: 25px;
-  position: relative;
+  margin-right: 20px;
 }
 
 .header__menu ul li a:hover {
@@ -176,62 +158,82 @@ text-menubar{
 }
 */
 
+/* Dropdown Sản phẩm */
+.dropdown {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
 
-.header__menu ul li:hover .dropdown {
-  top: 32px;
-  opacity: 1;
+.dropdown .dropdown-center {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  display: none;
+  visibility: hidden;
+  width: max-content;
+  border-radius: 0 0 10px 10px;
+  z-index: 3;
+  padding: 8px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  background: #ceefcd !important;
+}
+
+.dropdown:hover .dropdown-center {
+  display: block;
   visibility: visible;
 }
 
-.header__menu ul li:last-child {
-  margin-right: 0;
+.dropdown .dropdown-center ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.header__menu ul li .dropdown {
-  position: absolute;
-  left: -25px;
-  width: 190px;
-  padding-left: 10px;
-  background: #2D982A;
-  color: white;
-  text-align: left;
-  visibility: hidden;
-  -webkit-transition: all, 0.3s;
-  -o-transition: all, 0.3s;
-  transition: all, 0.3s;
+.dropdown .dropdown-center ul li {
+  width: 100%;
+  padding: 8px 0;
+  background: #ffffff !important;
+  border-radius: 5px;
+  text-align: center;
+  margin-top: 5px;
 }
 
-.header__menu ul li .dropdown li {
+.dropdown .dropdown-center ul li:last-child {
+  display: flex;
+  align-items: center;
+  align-self: center;
+}
+
+.dropdown .dropdown-center ul li:hover {
+  background: #ceefcd !important;
+}
+
+.dropdown .dropdown-center ul li:hover a {
+  color: #2d982a !important;
+  font-weight: 600;
+}
+
+.dropdown .dropdown-center ul li a {
+  text-decoration: none;
+  cursor: pointer;
+  color: #000 !important;
   display: block;
-  margin-right: 0;
+  overflow: hidden;
+  font-weight: 450;
+  line-height: 16px;
+  font-size: 15px;
+  width: 100%;
 }
-
-.header__menu ul li .dropdown li a {
-  font-size: 14px;
-  color: white;
-  font-weight: 400;
-  padding: 5px 10px;
-  text-transform: capitalize;
-}
-
-.header__menu ul li .dropdown li a:hover {
-  font-size: 14px;
-  font-weight: 800;
-  padding: 5px 10px;
-  text-transform: capitalize;
-}
-
-.header__menu ul li .dropdown li a:after {
-  display: none;
-}
+/* *** */
 
 .header__menu ul li a {
-  font-size: 20px;
+  font-size: 18px;
   color: green;
-  display:block;
+  display: flex;
+  align-items: center;
   font-weight: 600;
   position: relative;
-  padding: 3% 0;
   text-decoration: none;
 }
 
@@ -263,15 +265,14 @@ text-menubar{
   margin-right: 0;
 }
 
+/* Css Search */
 .search {
   display: flex;
   align-items: center;
   border: 1px solid #008000;
-  width: 340px;
+  width: 270px;
   height: 40px;
   border-radius: 20px;
-  margin-top: 10px;
-  padding: 0 2px;
 }
 
 .search button {
@@ -283,7 +284,7 @@ text-menubar{
   background-color: #2D982A;
   font-weight: 500;
   color: white;
-  font-size: 15px;
+  font-size: 13px;
   padding-right: 10px;
   transition: opacity 0.3s ease;
 }
@@ -298,7 +299,7 @@ text-menubar{
   border: none;
   color: green;
   font-size: 15px;
-  padding: 10px 0;
+  padding: 5px 0;
 }
 
 /*css user*/
@@ -380,4 +381,55 @@ text-menubar{
   color:#2D982A;
   font-weight: lighter;
   font-size: 15px;
+  padding-left: 8px;
+
+}
+
+.pd{
+  padding-top: 30px;
+}
+.material-icons-outlined {
+  color: green;
+  font-size: 30px;
+  margin-top: 0px;
+  padding-bottom: -15px;
+}
+
+.item {
+  display: inline-block;
+  vertical-align: middle;
+  padding-bottom: 30px;
+}
+
+.item button {
+  background-color: green;
+  color: white;
+  border-radius: 30px;
+  font-size: 13px;
+  border: none;
+}
+
+
+/* Fixed-navbar */
+.fixed-navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: green;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.fixed-navbar #home a,
+.fixed-navbar .header__menu ul li a {
+  color: green;
+}
+
+.fixed-navbar #home a:hover,
+.fixed-navbar .header__menu ul li a:hover {
+  color: rgb(29, 175, 18);
+}
+
+.header {
+  transition: background-color 0.3s ease-in-out;
 }

@@ -31,7 +31,7 @@ export class ProfileComponent {
   delivery = new Delivery();
 
   orders: [] = [];
-  cusOrders: [] = [];
+  cusOrders: any;
 
   customer = new Customers();
   deliverys: any;
@@ -57,11 +57,19 @@ export class ProfileComponent {
     this._orderService.getOrders().subscribe({
       next: (data) => {
         this.orders = data;
-        for(let or of this.orders){
-          if(or['Phone'] == this.currentUser.phonenumber){
-            this.cusOrders.push(or);
-          }
-        }
+        // for(let or of this.orders){
+        //   if(or['Phone'] == this.currentUser.phonenumber){
+        //     this.cusOrders.push(or);
+        //   }
+        // }
+      },
+      error: (err) => {
+        this.errMessage = err;
+      }
+    });
+    this._orderService.getOrderCustomer(this.currentUser.Name).subscribe({
+      next: (data) => {
+        this.cusOrders = data;
       },
       error: (err) => {
         this.errMessage = err;
@@ -71,7 +79,7 @@ export class ProfileComponent {
   }
 
   viewOrderDetail(orderId: any) {
-    this.router.navigate(['/app-orderdetail/detail/', orderId]);
+    this.router.navigate(['/app-order-detail/detail/', orderId]);
   }
 
   Name: any;

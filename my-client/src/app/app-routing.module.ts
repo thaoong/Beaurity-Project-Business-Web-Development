@@ -55,7 +55,6 @@ const routes: Routes = [
   { path: "app-footer", component: FooterComponent },
   { path: "app-header", component: HeaderComponent },
   { path: "app-navigation-bar", component: NavigateBarComponent },
-  { path: "app-order-detail", component: OrderDetailComponent },
   { path: "app-order-detail/detail/:id", component: OrderDetailComponent },
   { path: "app-payment", component: PaymentComponent },
   { path: "app-payment-momo", component: PaymentMomoComponent },
