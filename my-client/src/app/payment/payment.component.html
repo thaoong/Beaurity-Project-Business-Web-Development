@@ -200,8 +200,8 @@
           </p>
         </div>
         <div class="order__row">
-          <input type="checkbox" [(ngModel)]="isChecked_Confirm">
-          <span>Đồng ý với các chính sách của Beaurity để hoàn tất đơn hàng</span>
+          <input type="checkbox" id ="agree" [(ngModel)]="isChecked_Confirm">
+          <span> <label for="agree">Đồng ý với các chính sách của Beaurity để hoàn tất đơn hàng</label></span>
         </div>
         <div class="orer__row-button">
           <button (click)="onComplete()">Hoàn tất</button>
