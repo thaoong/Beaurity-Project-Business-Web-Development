@@ -224,12 +224,12 @@ export class PaymentComponent implements OnInit {
   @Input() message: string = '';
   @Output() confirmed = new EventEmitter<boolean>();
 
-  viewDetail(orderId: string) {
-    this.confirmed.emit(true);
-    this.router.navigate(['/app-order-detail/detail/', orderId]).then(() => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
+  //viewDetail(orderId: string) {
+    //this.confirmed.emit(true);
+    //this.router.navigate(['/app-order-detail/detail/', orderId]).then(() => {
+      //window.scrollTo({ top: 0, behavior: 'smooth' });
+    //});
+ // }
 
   goHome() {
     this.confirmed.emit(false);
