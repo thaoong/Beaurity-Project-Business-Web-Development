@@ -538,7 +538,9 @@ input[type="file"] {
     font-weight: 700;
     font-size: 25px;
     line-height: 29px;
-    padding: 30px 0 0 65px;
+    padding: 10px 0 0 65px;
+    color: #2D982A;
+    margin-top: 10px;
 }
 
 .box__status {
@@ -560,7 +562,6 @@ input[type="file"] {
     color: black;
     text-decoration: none;
     border-radius: 5px;
-    font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -614,11 +615,12 @@ input[type="file"] {
     background-color: #FFFFFF;
     border-radius: 15px;
     padding: 18px 23px;
+    margin-bottom: 20px;
 }
 
 .box__history--order--title {
     width: 804px;
-    height: 55px;
+    height: 50px;
     display: flex;
     justify-content: space-between;
     border-bottom: 2px solid #7C7C7C;
@@ -630,14 +632,12 @@ input[type="file"] {
     height: 23px;
     display: flex;
     flex-direction: row;
-
-    font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
     font-size: 20px;
     line-height: 23px;
+    color: #060000;
 
-    color: #000000;
 }
 
 .box__history--order--title h3 span {
@@ -646,8 +646,9 @@ input[type="file"] {
     height: max-content;
     text-align: center;
     color: white;
-    border-radius: 15px;
+    border-radius: 10px;
     margin-left: 15px;
+    margin-top: -3px;
 }
 
 .cancelled {
@@ -669,13 +670,14 @@ input[type="file"] {
 }
 
 .box__history--order--title button {
-    height: max-content;
-    width: 100px;
-
+    height: 30px;
+    width: 140px;
     background: #F2F2F2;
     border: 1px solid #000000;
-    border-radius: 15px;
+    border-radius: 10px;
     float: right;
+    cursor: pointer;
+    margin-top: 10px;
 }
 
 .cart__main {
