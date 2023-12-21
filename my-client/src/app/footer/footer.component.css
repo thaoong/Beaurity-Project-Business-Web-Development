@@ -99,12 +99,14 @@ height: 40.43px;
     align-items: flex-start;
     padding: 0px;
     gap: 10px;
+    cursor: pointer;
 }
 .footer__content--title{
     font-size: 20px;
     width: 245.51px;
     height: 31.5px;
     margin-bottom: 5px;
+    
 }
 .list-link a{
     color: grey;
