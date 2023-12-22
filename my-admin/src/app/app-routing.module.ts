@@ -20,7 +20,7 @@ import { AdminOrderDetailComponent } from './admin-order/admin-order-detail/admi
 import { PopupDeleteComponent } from './admin-caterogy/popup-delete/popup-delete.component';
 import { MatButton } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card'; 
-
+import { NgChartsModule } from 'ng2-charts';
 const routes: Routes = [
   { path: "", redirectTo:"admin-login", pathMatch:"full"},
   { path: "admin-login", component: AdminLoginComponent},
@@ -46,7 +46,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), MatCardModule],
+  imports: [RouterModule.forRoot(routes), MatCardModule, NgChartsModule],
   exports: [RouterModule]
 })
 

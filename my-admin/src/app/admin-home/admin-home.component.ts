@@ -23,7 +23,7 @@ export class AdminHomeComponent {
   orders: any;
   uncompletedOrders: any;
   errMessage: string = '';
-  
+
   constructor(
     public _service: AdminCosmeticService,
     public category_service: AdminCategoryService,
@@ -90,13 +90,18 @@ export class AdminHomeComponent {
   createChart() {
     const ctx = this.myChart.nativeElement.getContext('2d');
 
+    // Lấy dữ liệu số lượng sản phẩm của từng category
+    const categoryData = this.getCategoryData();
+    const categoryName = this.getCateName();
+    const cate = ["combo", "Chăm sóc da"]
+
     const myChart = new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: ['Label 1', 'Label 2', 'Label 3'],
+        labels: cate, 
         datasets: [{
-          label: 'Dataset 1',
-          data: [10, 20, 30],
+          label: 'Số lượng sản phẩm',
+          data: categoryData,
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',
@@ -115,13 +120,36 @@ export class AdminHomeComponent {
           yAxes: [{
             ticks: {
               beginAtZero: true
-            } 
+            }
           }]
         }
-      } as any // Cast the entire options object as 'any'
-    });
+      }
+    } as any);
   }
 
+  // Phương thức lấy dữ liệu số lượng sản phẩm của từng category
+  getCategoryData() {
+    const categoryData = [];
+
+    for (const category of this.categories) {
+      // Tính số lượng sản phẩm của category
+      const categoryProductCount = this.cosmetics.filter((cosmetic: { categoryId: any; }) => cosmetic.categoryId === category.id).length;
+      categoryData.push(categoryProductCount);
+    }
+
+    return categoryData;
+  }
+
+  getCateName() {
+    if (this.cosmetics && this.cosmetics.length > 0) {
+      // Lấy mảng tên category từ mảng cosmetics
+      const categoryNames = Array.from(new Set(this.cosmetics.map((cosmetic: { categoryName: any; }) => cosmetic.categoryName)));
+      return categoryNames;
+    } else {
+      // Hoặc bạn có thể xử lý khi không có dữ liệu
+      return [];
+    }
+  }
 
   totalCosmetic(data: any) {
     return this.totalCosmetics = data.length;

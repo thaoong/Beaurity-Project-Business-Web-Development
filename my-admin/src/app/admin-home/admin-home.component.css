@@ -116,7 +116,7 @@ html {
 
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  margin: 8px;
+  /* margin: 8px; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -146,7 +146,7 @@ html {
   font-size: 27pt !important;
   font-weight: bold;
   margin-bottom: 2px;
-  /* margin-bottom: 25px; */
+  padding: 2px;
 }
 
 .button-container {
@@ -154,18 +154,20 @@ html {
   justify-content: center;
   align-items: center;
   margin-top: auto;
+  
 }
 
 button {
   border: none;
   outline: 0;
   display: inline-block;
-  padding: 8px;
+  padding: 10px;
   color: white;
   font-weight: 500;
   background-color: #2D982A;
   cursor: pointer;
   width:60%;
+  height: 50%;
   border-radius: 10px;
 }
 .chart-container {
