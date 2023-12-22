@@ -196,3 +196,11 @@ thead td{
     border-radius: 10px;
     background-color: #e8fae7 ;
 }
+
+.imgbg{
+    background-color: #e8fae7 ;
+    text-align: center;
+    border-radius: 10px;
+    padding: 25px 25px;
+    width:1000px
+}
