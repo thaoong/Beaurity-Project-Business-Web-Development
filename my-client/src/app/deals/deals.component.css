@@ -3,14 +3,15 @@
     font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, ‘Open Sans’, ‘Helvetica Neue’, sans-serif;
   }
 
-.banner{
-  width: 100%;
-  height: auto;
+.voucher{
+  display: grid;
+  grid-template-columns: 3fr 3fr 3fr;
 }
 
 .voucher img{
-  width: 30%;
+  width: 100%;
   height: auto;
+  align-items: center;
 }
 
 .header {

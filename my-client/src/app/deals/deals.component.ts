@@ -17,6 +17,7 @@ export class DealsComponent implements OnInit, OnDestroy {
   quantityItem: any;
   display!: boolean;
   currentUser: any;
+center: any;
 
   constructor(
     private activateRoute: ActivatedRoute,
