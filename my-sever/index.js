@@ -416,7 +416,7 @@ app.post("/orders", cors(), async (req, res) => {
   res.send(req.body);
 });
 
-app.delete("orders/:id", cors(), async (req, res) => {
+app.delete("/orders/:id", cors(), async (req, res) => {
   //find detail Order with id
   var o_id = new ObjectId(req.params["id"]);
   const result = await orderCollection.find({ _id: o_id }).toArray();
