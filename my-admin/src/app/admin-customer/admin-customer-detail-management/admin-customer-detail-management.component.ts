@@ -58,4 +58,8 @@ export class AdminCustomerDetailManagementComponent {
   goBack(){
     this.router.navigate(['admin-custoner-management'])
   }
+  
+  viewOrderDetail(f: any) {
+    this.router.navigate(['admin-order-detail', f._id])
+  }
 }

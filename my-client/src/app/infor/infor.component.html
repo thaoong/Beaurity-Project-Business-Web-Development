@@ -3,25 +3,25 @@
         <div class="navbar">
             <h4>Tất cả bài viết</h4>
             <div class="list">
-                <a  id="brandstory" [class.active]="id === 'brandstory'" (click)="tabChange('brandstory')" style="cursor: pointer">
+                <a  id="brandstory" [class.active]="id === 'brandstory'" (click)="tabChange('brandstory', $event)" style="cursor: pointer">
                     <p class="list-item" >Câu chuyện thương hiệu</p> 
                 </a>
-                <a  id="ingredientstory" [class.active]="id === 'ingredientstory'" (click)="tabChange('ingredientstory')" style="cursor: pointer">
+                <a  id="ingredientstory" [class.active]="id === 'ingredientstory'" (click)="tabChange('ingredientstory', $event)" style="cursor: pointer">
                     <p class="list-item" >Câu chuyện nguyên liệu</p> 
                 </a>
-                <a id="policydelivery" [class.active]="id === 'policydelivery'" (click)="tabChange('policydelivery')" style="cursor: pointer">
-                    <p class="list-item">Chính sách giao hàng</p>
+                <a id="policydelivery" [class.active]="id === 'policydelivery'" (click)="tabChange('policydelivery', $event)" style="cursor: pointer">
+                    <p class="list-item">Chính sách bán hàng</p>
                 </a>
-                <a id="policypayment" [class.active]="id === 'policypayment'" (click)="tabChange('policypayment')" style="cursor: pointer">
+                <a id="policypayment" [class.active]="id === 'policypayment'" (click)="tabChange('policypayment', $event)" style="cursor: pointer">
                     <p class="list-item">Chính sách thanh toán</p>
                 </a>
-                <a id="policywarranty" [class.active]="id === 'policywarranty'" (click)="tabChange('policywarranty')" style="cursor: pointer">
+                <a id="policywarranty" [class.active]="id === 'policywarranty'" (click)="tabChange('policywarranty', $event)" style="cursor: pointer">
                     <p class="list-item">Chính sách đổi trả, bảo hành</p>
                 </a>
-                 <a id="policysecurity" [class.active]="id === 'policysecurity'" (click)="tabChange('policysecurity')" style="cursor: pointer">
+                 <a id="policysecurity" [class.active]="id === 'policysecurity'" (click)="tabChange('policysecurity', $event)" style="cursor: pointer">
                     <p class="list-item">Chính sách bảo mật</p>
                 </a>
-                <a id="instruction" [class.active]="id === 'instruction'" (click)="tabChange('instruction')" style="cursor: pointer">
+                <a id="instruction" [class.active]="id === 'instruction'" (click)="tabChange('instruction', $event)" style="cursor: pointer">
                     <p class="list-item">Hướng dẫn mua hàng Online</p>
                 </a>           
              </div>
@@ -33,7 +33,7 @@
             <a class="sub-header" >CÂU CHUYỆN THƯƠNG HIỆU CỦA BEAURITY</a>
             <br>
             <div class="tiltle-sub-content">
-                <p class="sub-header">
+                <p class="sub-header-2">
                     I. Về thương hiệu Beaurity
                 </p>
                 <p class="content--item">
@@ -57,7 +57,7 @@
                     <li>Email: beaurityvietnam@gmail.com</li>
                 </ul>
 
-                <p class="sub-header">II. Tầm nhìn của Beaurity</p>
+                <p class="sub-header-2">II. Tầm nhìn của Beaurity</p>
                 <p class="content--item">
                     Phát triển thương hiệu mỹ phẩm thuần chay từ những nguyên liệu đơn giản trong đời sống hằng ngày,
                      trở thành thương hiệu dẫn đầu trong phân khúc mỹ phẩm thuần chay, từ đó xây dựng một thế giới 
@@ -66,7 +66,7 @@
                      chuyện, kiến thức và kinh nghiệm về làm đẹp tự nhiên, giúp khách hàng hiểu rõ hơn về tầm quan 
                      trọng của việc chăm sóc bản thân và tạo dựng sự tự tin và tự yêu thương.
                 </p>
-                <p class="sub-header">
+                <p class="sub-header-2">
                     III. Sứ mệnh của Beaurity
                 </p>
                 <p class="content--item">
@@ -87,7 +87,7 @@
             <div class="right_content" *ngIf="id === 'ingredientstory'">
                 <p class="sub-header"> BEAURITY | HÀNH TRÌNH ĐI TÌM NGUYÊN LIỆU</p>
                 <div class="tiltle-sub-content">
-                    <p class="sub-header">
+                    <p class="sub-header-2">
                         Theo Dấu Chân Xanh - Hành trình tìm kiếm nguyên liệu trên vùng đất mới
                     </p>
                     <p class="content--item">
@@ -126,9 +126,8 @@
 
                 <br>
                 <p class="sub-header"> BEAURITY | CÂU CHUYỆN NGUYÊN LIỆU THIÊN NHIÊN TỪ VÙNG ĐẤT VIỆT</p>
-                
                 <div class="tiltle-sub-content">
-                    <p class="sub-header">
+                    <p class="sub-header-2">
                         Vùng nguyên liệu 100% từ Hoàng Su Phì, Hà Giang, Việt Nam
                     </p>
                     <p class="content--item">
@@ -163,45 +162,43 @@
             </div>
         
             <div class="right_content" *ngIf="id === 'policydelivery'">
-                    <p class="sub-header">CHÍNH SÁCH GIAO HÀNG</p>
-            <table>
-                <thead>
-                    <tr>
-                        <td>Khoảng cách</td>
-                        <td>Giá trị đơn hàng</td>
-                        <td>Phí vận chuyển</td>
-                        <td>Thời gian giao hàng</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td rowspan="2"><= 10km</td>
-                        <td><300.000đ</td>
-                        <td>25.000đ</td>
-                        <td rowspan="2">Trong 2 - 4h ngày làm việc</td>
-                    </tr>
-                    <tr>
-                        <!-- <td ></td> -->
-                        <td>>=300.000đ</td>
-                        <td>Miễn Phí</td>
-                        <!-- <td></td> -->
-                    </tr>
-                    <tr>
-                        <td rowspan="2">> 10km</td>
-                        <td><300.000đ</td>
-                        <td>25.000đ</td>
-                        <td rowspan="2">Trong 3 - 7 ngày làm việc</td>
-                    </tr>
-                    <tr>
-                        <!-- <td ></td> -->
-                        <td>300.000đ</td>
-                        <td>Miễn phí</td>
-                        <!-- <td></td> -->
-                    </tr>
-                </tbody>
-            </table>
-            <p class="content--item">(Thời gian trên gồm tất cả các ngày trong tuần)
-            </p>        
+                    <p class="sub-header">CHÍNH SÁCH BÁN HÀNG</p>
+                    <br>
+                    <p class="content--item">
+                        Beaurity có dịch vụ giao hàng tận nơi trên toàn quốc, áp dụng cho khách mua 
+                        hàng trên Website, Fanpage và gọi điện thoại vào Hotline của Beaurity. Đơn hàng sẽ 
+                        được chuyển phát đến địa chỉ khách hàng cung cấp thông qua đơn vị vận chuyển trung 
+                        gian là GIAO HÀNG TIẾT KIỆM hoặc 247EXPRESS. Đặc biệt, thông tin hóa đơn dán bên 
+                        ngoài kiện hàng luôn luôn có logo của thương hiệu để nhận biết các sản phẩm 
+                        là chính hãng.
+                    </p>
+                    <div class="tiltle-sub-content">
+                        <p class="sub-header-2">
+                            I. Chính sách giá
+                        </p>
+                        <p class="content--item">
+                            Giá sản phẩm niêm yết tại Website là giá đã bao gồm thuế theo quy định pháp luật hiện hành, 
+                            phí đóng gói và các chi phí khác liên quan đến việc mua hàng trừ các chi phí phát sinh khác 
+                            được xác nhận qua Hotline hoặc Email của Beaurity và được sự chấp thuận của khách hàng trong 
+                            quá trình xác nhận đơn đặt hàng, giao nhận hàng hoá.
+                        </p>
+        
+                        <p class="sub-header-2">II. Thời gian giao hàng</p>
+                        <p class="content--item">
+                            <ul>
+                                <li>Đơn hàng nội thành TP.HCM: Thời gian giao hàng là 2-3 ngày sau khi đặt hàng.</li>
+                                <li>Đơn hàng ở ngoại thành TP.HCM và các tỉnh thành khác: Thời gian là 2-5 ngày đối với khu vực 
+                                    trung tâm tỉnh thành phố và 5-6 ngày đối với khu vực huyện, xã, thị trấn…</li>
+                                <li>Tuy nhiên, vẫn có những giới hạn và sự chậm trễ do nguyên nhân khách quan 
+                                    như lễ, tết, địa chỉ nhận hàng khó tìm, sự chậm trễ từ dịch vụ chuyển phát,…
+                                    Beaurity mong quý khách thông cảm vì những lý do ngoài sự chi phối của chúng tôi.</li>
+                                <li>Trường hợp có sự chậm trễ khi giao hàng xảy ra, Beaurity sẽ thông báo ngay 
+                                    đến bạn đồng thời sẽ tiếp tục giao hàng hoặc hỗ trợ huỷ đơn hàng nếu bạn 
+                                    muốn. Chúng tôi sẽ không chịu trách nhiệm do việc giao hàng chậm trễ trừ 
+                                    trách nhiệm hoàn trả tiền nếu bạn đã thanh toán mà chưa nhận được sản phẩm.</li>
+                            </ul>
+                        
+                    </div>
             </div>
         
     
@@ -511,7 +508,8 @@
                 
             </ul>           
             
-            <ul>II. Thương hiệu và bản quyền</ul>
+            <ul>II. 
+                Thương hiệu và bản quyền</ul>
                 <p class="content--item">
                     Mọi quyền sở hữu trí tuệ (đã đăng ký hoặc chưa đăng ký) bao gồm nhưng không giới hạn nội 
                     dung thông tin và tất cả các thiết kế, văn bản, đồ họa, phần mềm, hình ảnh, video, 
