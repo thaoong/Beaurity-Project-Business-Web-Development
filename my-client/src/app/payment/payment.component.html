@@ -4,6 +4,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
 <div class="main-payment-banking container-fluid">
   <p class="navigate">Trang chủ / Giỏ hàng / Thanh toán</p>
   <div class="main-info container-fluid">
@@ -11,12 +13,9 @@
       <div class="left col-lg-8 col-12">
         <div class="cart">
           <div class="cart__top">
-            <p class="cart__top-header">
+            <p class="cart__top-header" *ngFor="let item of selectedItems" >
               Giỏ hàng ({{ quantityItem }})
             </p>
-            <div class="cart__top-button">
-              <button><a routerLink="/app-cart">Chỉnh sửa giỏ hàng</a></button>
-            </div>
           </div>
           <div class="cart__main">
             <div class="cart__main-row">
@@ -54,6 +53,9 @@
               </p>
             </div>
           </div>
+        </div>
+        <div class="btn btn-success" style="text-align: center; color: white; width:fit-content; ">
+          <button (click)="goToCart()" style="border: none; outline: none; color: white; background-color: transparent;">Chỉnh sửa giỏ hàng</button>
         </div>
 
         <div class="information">
@@ -221,7 +223,7 @@
       <br>Vui lòng theo dõi đơn hàng nhé!
     </p>
     <div class="popup-buttons">
-      <button class="popup-button">Xem chi tiết</button>
+      <button class="popup-button" (click)="viewOrderDetail()">Xem chi tiết</button>
       <button class="popup-button" (click)="goHome()">Trở lại</button>
     </div>
   </div>

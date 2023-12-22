@@ -8,7 +8,7 @@
 
 <div class="main-shopping">
   <p class="shopping-navigate"><a routerLink="/app-home">Trang chủ</a> / <a routerLink="/app-cart">Giỏ hàng</a></p>
-  <div class="shopping__cart">
+  <div class="container shopping__cart">
     <div class="shopping__cart-left">
       <div class="shopping__cart-left--header">
         <h3>Giỏ hàng ({{quantityItem}})</h3>
@@ -28,19 +28,19 @@
                   <div class="p-2 px-3 text-uppercase"></div>
                 </th>
                 <th scope="col" class="border-0  align-left">
-                  <div>Sản phẩm</div>
+                  <div>SẢN PHẨM</div>
                 </th>
                 <th scope="col" class="border-0  align-left">
                   <div class="p-2 px-3 text-uppercase"></div>
                 </th>
                 <th scope="col" class="border-0  align-left">
-                  <div class="py-2">Đơn giá</div>
+                  <div class="py-2">ĐƠN GIÁ</div>
                 </th>
                 <th scope="col" class="border-0  align-left">
-                  <div class="py-2">Số lượng</div>
+                  <div class="py-2">SỐ LƯỢNG</div>
                 </th>
                 <th scope="col" class="border-0  align-left">
-                  <div class="py-2">Remove</div>
+                  <div class="py-2">REMOVE</div>
                 </th>
               </tr>
             </thead>
@@ -56,11 +56,10 @@
                 <td class="border-0 align-center">
                   <div>
                     <div>
-                      <img src="{{ item.Image }}" alt="" width="70" class="img-fluid rounded shadow-sm">
-                    </div>
+                      <img src="{{ item.Image }}" alt="" class="img-fluid rounded shadow-sm" style="object-fit: cover; height: 70px; width: 70px">                    </div>
                   </div>
                 </td>
-                <td class="border-0 align-left">{{item.Name}} VNĐ</td>
+                <td class="border-0 align-left">{{item.Name}}</td>
                 <td class="border-0 align-left">{{item.Price}} VNĐ</td>
                 <td class="border-0 align-left">
                   <div class="shopping__cart-left--detail-row-quantity">

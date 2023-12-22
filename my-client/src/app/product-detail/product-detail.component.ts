@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { CosmeticService } from '../SERVICES/cosmetic.service'; 
 import { Cosmetics } from '../Interfaces/Cosmetic'; 
 import { AuthService } from '../SERVICES/auth.service'; 
@@ -97,23 +97,31 @@ export class ProductDetailComponent {
     this._service.addToCart(cos).subscribe(
       response => {
         console.log(response);
-        // alert("Thêm sản phẩm vào giỏ hàng thành công");
-        // this.router.navigate(['app-payment'])
-        // Thêm sản phẩm vào giỏ hàng thành công
-        if(this.currentUser != null){
-          this.router.navigate(['app-payment']);
-          // routerLink="app-payment" 
+        
+        // Set the 'checked' property of the first checkbox element to true
+        const checkboxElement = document.querySelector('.shopping__cart-left--detail-row-check input[type="checkbox"]') as HTMLInputElement;
+        if (checkboxElement) {
+          checkboxElement.checked = true;
+        }
+        
+        // Navigate to the payment page
+        if (this.currentUser != null) {
+          const navigationExtras: NavigationExtras = {
+            queryParams: {
+              selectedItems: JSON.stringify([cos])
+            }
+          };
+          this.router.navigate(['app-payment'], navigationExtras);
         } else {
           this.isLogin = true;
         }
       },
       error => {
         console.log(error);
-        // Xảy ra lỗi khi thêm sản phẩm vào giỏ hàng
+        // Handle error when adding the product to the cart
       }
     );
   }
-
   viewCosmeticDetail(f: any) {
     this.router.navigate(['app-product-detail', f._id]).then(() => {
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });

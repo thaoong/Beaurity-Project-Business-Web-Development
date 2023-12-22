@@ -48,8 +48,8 @@ export class PaymentComponent implements OnInit {
     this._service.getCart().subscribe({
       next: (data) => {
         this.cartItems = data;
-        this.quantityItem = this.cartItems.length;
-        if (this.cartItems.length > 0) {
+        this.quantityItem = this.selectedItems.length;
+        if (this.selectedItems.length > 0) {
           this.displayNumberItem = false;
         }
 
@@ -103,6 +103,10 @@ export class PaymentComponent implements OnInit {
     }
     this.prePrice = this.totalPrice + this.discountPrice;
     this.price = this.prePrice + this.deliveryFee;
+  }
+
+  goToCart(): void {
+    this.router.navigate(['/app-cart']);
   }
 
   onComplete() {
@@ -230,7 +234,15 @@ export class PaymentComponent implements OnInit {
       //window.scrollTo({ top: 0, behavior: 'smooth' });
     //});
  // }
+ viewOrderDetail() {
+  // Assuming you have the `orderID` in your component
+  const orderID = this.order.OrderID;
 
+  if (orderID) {
+    // Navigate to the order detail page with the order ID as a parameter
+    this.router.navigate(['/order-detail', orderID]);
+  }
+}
   goHome() {
     this.confirmed.emit(false);
     this.router.navigate(['/app-home']);
