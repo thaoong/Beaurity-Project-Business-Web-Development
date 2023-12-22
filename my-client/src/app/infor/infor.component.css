@@ -8,13 +8,13 @@ h4{
     font-weight: bold;
     color: #2D982A;
     padding-left: 10px;
+    font-size: 20px;
 }
 
 .list-item {
     font-size: 16px;
-    padding: 10px;
-    color: #2D982A
-
+    padding: 5px;
+    color: #2D982A;
 }
 
 .list {
@@ -22,10 +22,18 @@ h4{
 }
 
 .list p:hover{
-    background-color: #CEEFCD;
-    border-radius: 10px; 
+    background-color: #edf9e6;
+    border-radius: 7px; 
 }
+.list-item.selected {
+    background-color: #edf9e6;
+    border-radius: 7px;
+    font-weight: bold;
+  }
 
+  .list-item.active {
+    color: #2D982A;
+  }
 .container{
     max-width: 95%;
     margin: 175px auto 100px;
@@ -38,13 +46,16 @@ h4{
 
 .box-left{ 
     width: 25%; 
-    margin-top: -40px;
+    margin-top: -22px;
 }
 
 .navbar{
-    padding: 30px ;
-    /* flex: 16%; */
+    padding: 15px 15px;
     max-height: 700px;
+    background-color: #C2F4C0;
+    margin-top: 20px;
+    border-radius: 10px;
+    width: 270px;
 }
 
 .content-posts{
@@ -56,14 +67,20 @@ h4{
 }
 
 .sub-header{
-    font-size: 15px;
+    font-size: 20px;
     font-weight: bold;
-    color: #2D982A
+    color: #2D982A;
+
+        display: flex;
+        justify-content: center;
+        text-align: center;
+
 }
 
 .sub-header-2{
-    font-size: 15px;
-    font-style: italic;
+    font-size: 18px;
+    font-weight: bold;
+    color: #2D982A
 }
 
 .content--item{
@@ -103,7 +120,7 @@ a{
     display: flex;
     width: 75%;
     padding-left: -105px;
-    margin-top: -10px;
+    margin-top: -27px;
 }
 
 .active{
@@ -120,6 +137,7 @@ a{
 
 .right_content{
     margin: 20px 20px -70px;
+    
 }
 
 .tiltle-sub-content{
