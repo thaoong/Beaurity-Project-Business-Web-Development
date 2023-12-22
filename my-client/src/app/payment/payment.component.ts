@@ -31,7 +31,6 @@ export class PaymentComponent implements OnInit {
   orders: any;
   order = new Orders();
   isDonePayment: boolean = false;
-
   customers: any;
   deliveries: any;
   currentUser: any;
@@ -130,7 +129,6 @@ export class PaymentComponent implements OnInit {
     } else if (this.isChecked_MoMo) {
       this.order.PaymentMethod = 'Thanh toán qua ví điện tử Momo';
     }
-
     if (this.isChecked_Confirm) {
       if (this.isChecked_COD) {
         this.isDonePayment = true;
@@ -155,6 +153,8 @@ export class PaymentComponent implements OnInit {
         this._orderService.postOrder(this.order).subscribe({
           next: (data) => {
             this.order = data;
+            this.selectedItems = [];
+
           },
           error: (err) => {
             this.errMessage = err;
@@ -228,21 +228,22 @@ export class PaymentComponent implements OnInit {
   @Input() message: string = '';
   @Output() confirmed = new EventEmitter<boolean>();
 
-  //viewDetail(orderId: string) {
-    //this.confirmed.emit(true);
-    //this.router.navigate(['/app-order-detail/detail/', orderId]).then(() => {
-      //window.scrollTo({ top: 0, behavior: 'smooth' });
-    //});
- // }
- viewOrderDetail() {
-  // Assuming you have the `orderID` in your component
-  const orderID = this.order.OrderID;
+  viewDetail() {
+    this.confirmed.emit(true);
+    this._orderService.getOrders().subscribe({
+      next: (data) => {
+        this.orders = data;
 
-  if (orderID) {
-    // Navigate to the order detail page with the order ID as a parameter
-    this.router.navigate(['/order-detail', orderID]);
+        this.router.navigate(['/app-order-detail/detail/', this.orders[this.orders.length - 1]._id]).then(() => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      },
+      error: (err) => {
+        this.errMessage = err;
+      }
+    });
   }
-}
+  
   goHome() {
     this.confirmed.emit(false);
     this.router.navigate(['/app-home']);
@@ -252,5 +253,5 @@ export class PaymentComponent implements OnInit {
     const sum: number = price * item.quantity;
     return sum.toString(); // Convert the sum to a string without formatting
   }
-  
+
 }

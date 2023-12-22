@@ -7,6 +7,7 @@ import { Orders } from '../Interfaces/Order';
   providedIn: 'root'
 })
 export class OrdersService {
+  [x: string]: any;
 
   constructor(private _http:HttpClient) { }
   getOrders(): Observable<any> {
