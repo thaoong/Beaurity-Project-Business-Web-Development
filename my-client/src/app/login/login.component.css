@@ -159,3 +159,18 @@ h2{
     font-weight: bold;
     margin-bottom: 30px;
 }
+
+.imggt{
+    background-color: #e8fae7 ;
+    text-align: center;
+    border-radius: 10px;
+    padding: 25px 25px;
+    width:200px
+}
+.imgbg{
+    /* background-color: #e8fae7 ; */
+    text-align: center;
+    /* border-radius: 10px; */
+    /* padding: 25px 25px; */
+    width:1000px
+}
