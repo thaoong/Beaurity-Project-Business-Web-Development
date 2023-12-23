@@ -1,8 +1,5 @@
-import { ChangeDetectorRef, Component, HostListener } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SearchService } from '../SERVICES/search.service';
-import { HttpClient } from '@angular/common/http';
-import { AuthService } from '../SERVICES/auth.service';
 import { CosmeticService } from '../SERVICES/cosmetic.service';
 
 @Component({
@@ -22,18 +19,15 @@ export class FooterComponent {
   Name: any;
 
   constructor(
-    private searchService: SearchService,
-    private _http: HttpClient,
     public _service: CosmeticService,
     private router: Router,
-    private activateRoute: ActivatedRoute,
-    private cd: ChangeDetectorRef,
-    private authService: AuthService
-  ) { 
+    private activateRoute: ActivatedRoute  ) {
     this.loadData();
   }
   navigateToCategory(category: string): void {
-    this.router.navigate(['/app-category', category]);
+    this.router.navigate(['/app-category', category]).then(() => {
+      this.scrollToTop();
+    });
   }
   navigateToHome() {
     this.router.navigate(['/']).then(() => {
@@ -43,6 +37,19 @@ export class FooterComponent {
       }
     });
   }
+
+  ngAfterViewInit(): void {
+    this.activateRoute.fragment.subscribe(fragment => {
+      if (fragment === 'top') {
+        this.scrollToTop();
+      }
+    });
+  }
+
+  scrollToTop(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  
 
   loadData(): void {
     this._service.getCosmetics().subscribe({
@@ -75,7 +82,9 @@ export class FooterComponent {
   }
 
   selectCategory(category: string): void {
-    this.router.navigate(['/app-category', category]);
+    this.router.navigate(['/app-category', category]).then(() => {
+      this.scrollToTop();
+    });
   }
   isFixed = false;
 
