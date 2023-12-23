@@ -1,8 +1,10 @@
 
-<p class="imgbg"><img src="assets/images/BG.png" style="width: 1000px;"></p>
-  <p class="imggt"><img src="assets/images/GT.png" style="width: 200px;"></p>
-    <div>
+<div class="imgbg"><img src="assets/images/BG.png" ></div>
+<div class="frame">
+    <div class="content">
+      <div class="imggt"><img src="assets/images/GT.png" ></div>
       <form (ngSubmit)="onSubmit()" class="login_form">
+        <div class="content--top"><a href="app-home"><b>&lt;</b></a></div>
       <h2>ĐĂNG NHẬP</h2>
       <p class="bold">Chào mừng bạn đến với Beaurity</p>
       <div class="container">
@@ -10,7 +12,7 @@
           <div>
             <div class="container__input--item">
               <div class="input--content">
-                <input type="text" placeholder="Tên đăng nhập" name="phonenumber" [(ngModel)]="phonenumber" required (blur)="checkPhoneNumber()" id="phone" value="{{ phonenumber }}"/>
+                <input type="text" placeholder="Số điện thoại" name="phonenumber" [(ngModel)]="phonenumber" required (blur)="checkPhoneNumber()" id="phone" value="{{ phonenumber }}"/>
                 <span class="material">*</span>
               </div>
             </div>
@@ -30,8 +32,8 @@
           <a href = "app-forgot-password">Quên mật khẩu?</a>
         </div>
 
-        <div>
-          <button type="submit" class="login_button" >ĐĂNG NHẬP</button>
+        <div class="login_button">
+          <button type="submit">ĐĂNG NHẬP</button>
         </div>
       </div>
       <div class="content--bottom">
@@ -39,5 +41,6 @@
         <a href = "app-signup">Đăng ký ngay</a>
       </div>
     </form>
+  </div>
     </div>
 
