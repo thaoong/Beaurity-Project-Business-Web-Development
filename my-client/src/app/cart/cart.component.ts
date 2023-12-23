@@ -159,6 +159,11 @@ export class CartComponent implements OnInit {
 
   makePayment(){
     if(this.currentUser != null){
+      // Kiểm tra xem có mục nào được chọn không
+      if(this.selectedItems.length === 0){
+        alert('Vui lòng chọn sản phẩm để thanh toán giỏ hàng');
+        return;
+      }
       const navigationExtras: NavigationExtras = {
         queryParams: {
           selectedItems: JSON.stringify(this.selectedItems)
