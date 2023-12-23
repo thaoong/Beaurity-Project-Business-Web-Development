@@ -452,9 +452,9 @@
 /* Adjust styles for the category navigation */
 .category-navigation {
     width: 10%;
-    /* Set a fixed width for the navigation */
     background-color: #C2F4C0;
     padding: 30px 20px;
+    border-radius: 10px;
 }
 
 .category-navigation strong {

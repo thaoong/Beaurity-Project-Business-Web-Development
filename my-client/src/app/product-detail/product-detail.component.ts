@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
-import { CosmeticService } from '../SERVICES/cosmetic.service'; 
-import { Cosmetics } from '../Interfaces/Cosmetic'; 
-import { AuthService } from '../SERVICES/auth.service'; 
+import { CosmeticService } from '../SERVICES/cosmetic.service';
+import { Cosmetics } from '../Interfaces/Cosmetic';
+import { AuthService } from '../SERVICES/auth.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -16,6 +16,7 @@ export class ProductDetailComponent {
   cosmetics: any;
   currentUser: any;
   isLogin: boolean = false;
+  categories: any[] | undefined;
 
   declare window: Window & typeof globalThis;
   constructor(
@@ -42,6 +43,41 @@ export class ProductDetailComponent {
     });
 
     this.currentUser = this._authService.getCurrentUser();
+  }
+
+  loadData(): void {
+    this._service.getCosmetics().subscribe({
+      next: (data) => {
+        this.cosmetics = data;
+        this.categories = this.extractCategories(data);
+      },
+      error: (err) => {
+        this.errMessage = err;
+      },
+    });
+  }
+
+  extractCategories(data: any[]): any[] {
+    const categories = Array.from(
+      new Set(data.map((x: { Category: any }) => x.Category))
+    );
+    return categories.map((category) => {
+      return {
+        Category: category,
+        SubCategories: Array.from(
+          new Set(
+            data
+              .filter((x: { Category: any }) => x.Category === category)
+              .map((x: { SubCategory: any }) => x.SubCategory)
+          )
+        ),
+      };
+    });
+  }
+
+
+  navigateToCategory(category: string): void {
+    this.router.navigate(['/app-category', category])
   }
 
   searchCosmetic(cosmeticId: string) {
@@ -71,7 +107,7 @@ export class ProductDetailComponent {
     this.expandDiv = true;
   }
 
-  HiddenMore(){
+  HiddenMore() {
     this.expandDiv = false;
   }
 
@@ -92,18 +128,27 @@ export class ProductDetailComponent {
     );
   }
 
+  // Add this method to handle subcategory change
+  onSubCategoryChange(subCategory: string): void {
+    this.router.navigate(['/app-category', this.cosmetic.Category], { queryParams: { subCategory: subCategory } });
+  }
+
+  selectCategory(category: string): void {
+    this.router.navigate(['/app-category', category])
+  }
+
   addToCartToBuy(cos: any): void {
     this.cosmetic.quantity = this.quantity;
     this._service.addToCart(cos).subscribe(
       response => {
         console.log(response);
-        
+
         // Set the 'checked' property of the first checkbox element to true
         const checkboxElement = document.querySelector('.shopping__cart-left--detail-row-check input[type="checkbox"]') as HTMLInputElement;
         if (checkboxElement) {
           checkboxElement.checked = true;
         }
-        
+
         // Navigate to the payment page
         if (this.currentUser != null) {
           const navigationExtras: NavigationExtras = {
@@ -156,8 +201,8 @@ export class ProductDetailComponent {
   // }
 
   //popup
-  @Input() title: string='';
-  @Input() message: string='';
+  @Input() title: string = '';
+  @Input() message: string = '';
   @Output() confirmed = new EventEmitter<boolean>();
 
   onLogin() {

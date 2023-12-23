@@ -8,10 +8,15 @@
 <div class="container">
     <div class="section-navigate">
         <ol>
-            <li> <a routerLink="/app-home"> Trang chủ</a>
-            <li> <a routerLink="/app-category">{{ cosmetic.Category }}</a> </li>
-            <li> <a routerLink="/app-product-detail/{{ cosmetic.Id }}">{{ cosmetic.Name }}</a> </li>
-    
+            <li>
+                <a routerLink="/app-home">Trang chủ</a>
+            </li>
+            <li *ngIf="cosmetic?.Category">
+                <a (click)="navigateToCategory(cosmetic.Category)">{{ cosmetic.Category }}</a>
+            </li>
+            <li>
+                <a routerLink="/app-product-detail/{{ cosmetic.Id }}">{{ cosmetic.Name }}</a>
+            </li>
         </ol>
     </div>
     <div class="content">
@@ -170,14 +175,14 @@
 </div>
 
 <!-- popup  -->
- <div class="popup" *ngIf="isLogin">
-  <div class="popup-container">
-    <h2 class="popup-title">Đặt hàng</h2>
-    <hr>
-    <p class="popup-message">Bạn vui lòng <span class="main-color">đăng nhập</span> để tiếp tục đặt hàng nhé!</p>
-    <div class="popup-buttons">
-      <button class="popup-button" (click)="onLogin()">Đăng nhập</button>
-      <button class="popup-button" (click)="onBack()">Trở lại</button>
+<div class="popup" *ngIf="isLogin">
+    <div class="popup-container">
+        <h2 class="popup-title">Đặt hàng</h2>
+        <hr>
+        <p class="popup-message">Bạn vui lòng <span class="main-color">đăng nhập</span> để tiếp tục đặt hàng nhé!</p>
+        <div class="popup-buttons">
+            <button class="popup-button" (click)="onLogin()">Đăng nhập</button>
+            <button class="popup-button" (click)="onBack()">Trở lại</button>
+        </div>
     </div>
-  </div>
 </div>
