@@ -97,13 +97,21 @@ export class PaymentComponent implements OnInit {
     this.isChecked_COD = false;
   }
   applyDiscountCode() {
-    if (this.discountCode == '666666') {
-      this.discountPrice = this.totalPrice * 0.05;
-    } else {
-      this.discountPrice = 0;
+    switch (this.discountCode) {
+      case 'WELCOME_10':
+        this.discountPrice = this.totalPrice * 0.10; // giảm 10%
+        break;
+      case 'XMAS_BEAURITY':
+        this.discountPrice = this.totalPrice * 0.12; // giảm 12%
+        break;
+      case 'BEAURITY_23':
+        this.discountPrice = this.totalPrice * 0.23; // giảm 23%
+        break;
+      default:
+        this.discountPrice = 0;
     }
-    this.prePrice = this.totalPrice + this.discountPrice;
-    this.price = this.prePrice + this.deliveryFee;
+    this.prePrice = this.totalPrice - this.discountPrice; // giá sau khi đã áp dụng mã giảm giá
+    this.price = this.prePrice + this.deliveryFee; // tổng cộng sau khi đã bao gồm phí giao hàng
   }
 
   goToCart(): void {
