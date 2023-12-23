@@ -1,7 +1,131 @@
 * {
-    box-sizing: border-box;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, ‘Open Sans’, ‘Helvetica Neue’, sans-serif;
-  }
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.content_top {
+  display: grid;
+  grid-template-columns: 3fr 7fr;
+  background-color: #03aa65;
+  text-align: left;
+  color: white;
+  height: 100%;
+}
+
+.content_top_left {
+  width: 100%;
+  height: 100%;
+}
+
+.content_top img {
+  width: 100%;
+  height: 100%;
+  object-fit:cover;
+}
+
+.content_top_right {
+  text-align: justify;
+  font-size: 18px;
+  align-self: center;
+}
+
+.content_center {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.content_top_right_WM {
+  text-align: center;
+}
+
+.content_top_right_WM img {
+  width: 40%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.button-container {
+  text-align: center;
+}
+
+.button {
+  background-color: white;
+  color: #2D982A;
+  font-weight: bold;
+  border-radius: 20px;
+  border: none;
+  width: fit-content;
+  height: 40px;
+  font-size: 18px;
+  margin: 5px;
+  transition: opacity 0.3s ease;
+}
+
+.introduction {
+  display: grid;
+  grid-template-columns: 5fr 5fr;
+  background-color: #03aa65;
+  text-align: left;
+  color: white;
+  height: 100%;
+}
+
+.center-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-image img {
+  width: 70%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.mockup_left {
+  display: grid;
+  grid-template-columns: 2fr 8fr;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px 5px;
+}
+
+.mockup_right {
+  display: grid;
+  grid-template-columns: 7fr 3fr;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px 5px;
+}
+
+.text-container {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.img-container1 img {
+  width: 45%;
+  align-self: flex-end;
+}
+
+.img-container2 img {
+  width: 95%;
+  align-self: flex-end;
+  padding-left: 15px;
+}
+
+.img-container3 img {
+  width: 85%;
+  align-self: flex-end;
+}
 
 .voucher{
   display: grid;
@@ -113,5 +237,10 @@
     font-size: 12px;
     transition: opacity 0.3s ease;
   }
+
+#snowfallCanvas{
+  height:0px;
+  width: 0px;
+}
 
   
