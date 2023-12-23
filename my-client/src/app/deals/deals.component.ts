@@ -3,7 +3,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CosmeticService } from '../SERVICES/cosmetics.service';
 import { AuthService } from '../SERVICES/auth.service';
-import { SnowfallService } from '../snowfall.service';
+import { SnowfallService } from '../SERVICES/snowfall.service';
 
 @Component({
   selector: 'app-deals',

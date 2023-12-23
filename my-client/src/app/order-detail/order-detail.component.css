@@ -76,10 +76,10 @@
 }
 
 .order_table{
-  table-layout: auto;
-  width: 90%;
+  width: 100%;
   text-align: center;
   padding: 10px;
+  margin: auto;
   border-spacing: 0px;
 }
 .table_title{
@@ -102,7 +102,9 @@ td.text-end{
 td.total{
   font-weight: bold;
   padding: 20px;
+  padding-bottom: 3px;
   font-size: 15pt;
+  border-bottom: 0px !important;
 }
 
 .button_continue button {
