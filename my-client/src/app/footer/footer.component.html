@@ -56,13 +56,13 @@
         </div>
         <div>&nbsp;</div>
         <div class="footer__content--infor">
-            <div class="list-link">
+            <div class="list-link" id="scrollToTop">
               <p class="footer__content--title" class="bold">DANH MỤC SẢN PHẨM</p>
               <div *ngFor="let category of categories">
                 <a (click)="navigateToCategory(category.Category)">{{ category.Category }}</a>
               </div>
             </div>
-          </div>
+          </div>    
         <div>&nbsp;</div>
         <div class="footer__content--logo">
             <div>
