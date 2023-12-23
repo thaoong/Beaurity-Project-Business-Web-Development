@@ -46,19 +46,21 @@ export class PaymentComponent implements OnInit {
   {
     this._service.getCart().subscribe({
       next: (data) => {
-        this.cartItems = data;
+        // Lọc ra những mục đã được chọn
+        this.cartItems = data.filter((item: any) => this.selectedItems.includes(item));
         this.quantityItem = this.selectedItems.length;
+    
         if (this.selectedItems.length > 0) {
           this.displayNumberItem = false;
         }
-
+    
         for (let item of this.selectedItems) {
           const price: number = parseFloat(
             item.Price.replace(' đ/Hộp', '').replace('.', '')
           );
           this.totalPrice += price * item.quantity;
         }
-
+    
         this.prePrice = this.totalPrice + this.discountPrice;
         this.price = this.prePrice + this.deliveryFee;
       },
