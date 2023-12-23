@@ -11,6 +11,7 @@
     color: #776F6F;
     font-size: 14px;
     text-decoration: none;
+    cursor: pointer;
   }
 .container {
     display: flex;
