@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { CosmeticService } from '../SERVICES/cosmetics.service';
 import { AuthService } from '../SERVICES/auth.service';
@@ -11,7 +11,7 @@ import { AuthService } from '../SERVICES/auth.service';
   
 })
 
-export class CartComponent {
+export class CartComponent implements OnInit {
   cartItems: any;
   errMessage: string = '';
   cosmetics: any;
@@ -25,6 +25,10 @@ export class CartComponent {
   selectedItems: any[] = [];
   currentUser: any;
   isLogin: boolean = false;
+  isDeleted: boolean = false;
+  private _orderService: any;
+  order: any;
+
 
   constructor(
     private activateRoute: ActivatedRoute,
@@ -60,13 +64,15 @@ export class CartComponent {
     });
     this.currentUser = this._authService.getCurrentUser();
   }
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
 
   viewCosmeticDetail(f: any) {
     this.router.navigate(['app-product-detail', f._id]).then(() => {
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     });
   }
-
   calculateTotalPrice(item: any) {
     const price: number = parseFloat(item.Price.replace(".", ""));
     if (this.selectedItems.includes(item)) {
@@ -165,6 +171,22 @@ export class CartComponent {
     // } else {
     //   // this.router.navigate(['payment-kvl']);
     // }
+  }
+  createOrder(isDeleted: boolean) {
+    // Thực hiện logic tạo đơn hàng (gọi API hoặc sử dụng service)
+    this._orderService.createOrder(this.order).subscribe({
+      next: () => {
+        // Nếu tạo đơn hàng thành công và isDeleted là true, hãy xóa giỏ hàng
+        if (isDeleted) {
+          this._service.deleteCart();
+        }
+        this.isDeleted = false; // Reset trạng thái xóa
+        // Thực hiện các hành động khác sau khi tạo đơn hàng thành công
+      },
+      error: (error: any) => {
+        // Xử lý lỗi tạo đơn hàng
+      }
+    });
   }
 
   //popup
