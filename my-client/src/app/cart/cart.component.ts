@@ -208,4 +208,7 @@ export class CartComponent implements OnInit {
     this.confirmed.emit(false);
     this.isLogin = false;
   }
+  returnHome() {
+    this.router.navigate(['/app-home']);
+  }
 }

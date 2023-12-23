@@ -13,11 +13,12 @@
       <div class="shopping__cart-left--header">
         <h3>Giỏ hàng ({{quantityItem}})</h3>
       </div>
-      <div class="content-error" *ngIf="display; else viewItem">
-        <img class="img_icon" src="assets/image/shopping-cart/empty-cart.png" alt="">
-        <h4 style="color:rgb(116, 116, 116);">Bạn chưa có sản phẩm nào trong giỏ hàng!</h4>
-        <button class="orther__product-item--add" style="margin-top: 20px; margin-bottom: 20px; width:18%; background-color:#E0F8E4; border-color:#2D982A ;" id="clicktoreturn">Về trang chủ</button>
-
+      <div class="content-error" id="displayview"  *ngIf="display; else viewItem">
+        <img class="img_icon" style="height: 300px;" src="assets/images/emptycart.jpg" alt="">
+        <h4 style="color:rgb(116, 116, 116);">Không có sản phẩm trong giỏ hàng</h4>
+        <p>
+          <button class="orther__product-item--add" style="margin-top: 20px; margin-bottom: 20px; width:30%; font-size: 14px; font-weight: 500;background-color:#2D982A; border-color:#2D982A ;" id="clicktoreturn" (click)="returnHome()">Về trang chủ</button>
+        </p>
       </div>
       <ng-template #viewItem>
         <div class="table-responsive">
