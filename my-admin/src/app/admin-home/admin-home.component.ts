@@ -5,6 +5,7 @@ import { AdminCustomerService } from '../services/admin-customer.service';
 import { AdminOrderService } from '../services/admin-order.service';
 // import * as Chart from 'chart.js';
 import { Chart } from 'chart.js';
+import { forkJoin } from 'rxjs/internal/observable/forkJoin';
 
 @Component({
   selector: 'app-admin-home',
@@ -23,6 +24,57 @@ export class AdminHomeComponent {
   orders: any;
   uncompletedOrders: any;
   errMessage: string = '';
+
+  loadData() {
+    this._service.getCosmetics().subscribe({
+      next: (data) => {
+        // Lấy danh sách các Cosmetics
+        this.cosmetics = data;
+
+        this._service.getCosmeticCategory(this.categories).subscribe({
+          next: (categoryData) => {
+            // Lấy danh sách các Categories
+            this.categories = categoryData;
+
+            // Nếu có dữ liệu, vẽ biểu đồ
+            if (this.cosmetics && this.cosmetics.length > 0) {
+              this.createChart();
+            }
+          },
+          error: (err) => {
+            this.errMessage = err;
+          },
+        });
+      },
+      error: (err) => {
+        this.errMessage = err;
+      },
+    });
+  }
+
+  // getDataAndDrawChart() {
+  //   // Use forkJoin to combine multiple observables
+  //   forkJoin([
+  //     this._service.getCosmetics(),
+  //     this.category_service.getCategories(),
+  //     this.customer_service.getCustomers(),
+  //     this.order_service.getOrders(),
+  //     this.order_service.searchUncompletedOrder()
+  //   ]).subscribe(
+  //     ([cosmetics, categories, customers, orders, uncompletedOrders]) => {
+  //       this.cosmetics = cosmetics;
+  //       this.categories = categories;
+  //       this.customers = customers;
+  //       this.orders = orders;
+  //       this.uncompletedOrders = uncompletedOrders;
+
+  //       this.createChart();
+  //     },
+  //     error => {
+  //       this.errMessage = error;
+  //     }
+  //   );
+  // }
 
   constructor(
     public _service: AdminCosmeticService,
@@ -93,12 +145,11 @@ export class AdminHomeComponent {
     // Lấy dữ liệu số lượng sản phẩm của từng category
     const categoryData = this.getCategoryData();
     const categoryName = this.getCateName();
-    const cate = ["combo", "Chăm sóc da"]
 
     const myChart = new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: cate, 
+        labels: categoryData,
         datasets: [{
           label: 'Số lượng sản phẩm',
           data: categoryData,
