@@ -18,7 +18,7 @@ export class CosmeticService {
       headers: headers,
       responseType: 'text',
     };
-    return this._http.get<any>('/cosmetics/', requestOptions).pipe(
+    return this._http.get<any>('/cosmetics', requestOptions).pipe(
       map((res) => JSON.parse(res) as Array<Cosmetics>),
       retry(3),
       catchError(this.handleError)

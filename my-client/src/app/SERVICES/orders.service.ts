@@ -19,7 +19,7 @@ export class OrdersService {
       headers: headers,
       responseType: 'text',
     };
-    return this._http.get<any>('/orders/', requestOptions).pipe(
+    return this._http.get<any>('/orders', requestOptions).pipe(
       map((res) => JSON.parse(res) as Array<Orders>),
       retry(3),
       catchError(this.handleError)

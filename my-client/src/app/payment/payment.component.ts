@@ -56,12 +56,12 @@ export class PaymentComponent implements OnInit {
     
         for (let item of this.selectedItems) {
           const price: number = parseFloat(
-            item.Price.replace(' đ/Hộp', '').replace('.', '')
+            item.Price.replace('.', '')
           );
           this.totalPrice += price * item.quantity;
         }
     
-        this.prePrice = this.totalPrice + this.discountPrice;
+        this.prePrice = this.totalPrice - this.discountPrice;
         this.price = this.prePrice + this.deliveryFee;
       },
       error: (err) => {
@@ -128,7 +128,7 @@ export class PaymentComponent implements OnInit {
       this.order.Email = this.currentUser.Mail,
       this.order.Address = this.currentUser.Address,
       this.order.TotalPrice = this.price,
-      this.order.PrePrice = this.prePrice,
+      this.order.PrePrice = this.totalPrice,
       this.order.DeliveryFee = this.deliveryFee,
       this.order.DiscountPrice = this.discountPrice,
       this.order.OrderCosmetic = this.selectedItems
@@ -261,9 +261,8 @@ export class PaymentComponent implements OnInit {
     this.router.navigate(['/app-home']);
   }
   findSum(item: any): string {
-    const price: number = parseFloat(item.Price.replace(' VNĐ', '').replace('.', ''));
+    const price: number = parseFloat(item.Price.replace('.', '').replace('.', ''));
     const sum: number = price * item.quantity;
-    return sum.toString(); // Convert the sum to a string without formatting
+    return sum.toLocaleString("vi-VN", { minimumFractionDigits: 0 }); 
   }
-
 }

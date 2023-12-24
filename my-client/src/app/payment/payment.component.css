@@ -112,10 +112,13 @@
 }
 .cart__main-row--price {
   width: 15%;
-  font-weight: bold;
 }
 .cart__main-row--quantity {
   width: 15%;
+}
+.cart__main-row--sum {
+  width: 19%;
+  font-weight: bold;
 }
 .order {
   flex-basis: 30%;

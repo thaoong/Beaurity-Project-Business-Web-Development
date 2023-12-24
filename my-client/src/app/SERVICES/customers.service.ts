@@ -18,7 +18,7 @@ export class CustomersService {
       headers: headers,
       responseType: 'text',
     };
-    return this._http.get<any>('/customers/', requestOptions).pipe(
+    return this._http.get<any>('/customers', requestOptions).pipe(
       map((res) => JSON.parse(res) as Array<Customers>),
       retry(3),
       catchError(this.handleError)

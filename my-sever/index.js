@@ -185,19 +185,19 @@ app.get("/contact", cors(), (req, res) => {
 })
 
 app.post("/cart/", cors(), (req, res) => {
-  const med = req.body
+  const cosmetic = req.body
   if (req.session.carts == null) {
     req.session.carts = []
   }
-  const existingMed = req.session.carts.find((m) => m._id === med._id);
+  const existingCosmetic = req.session.carts.find((c) => c._id === cosmetic._id);
 
-  if (existingMed) {
+  if (existingCosmetic) {
     // Nếu sản phẩm đã tồn tại trong giỏ hàng, tăng số lượng sản phẩm của sản phẩm đó
-    existingMed.quantity += med.quantity;
+    existingCosmetic.quantity += cosmetic.quantity;
   } else {
-    req.session.carts.push(med)
+    req.session.carts.push(cosmetic)
   }
-  res.send(med)
+  res.send(cosmetic)
 })
 app.get("/cart", cors(), (req, res) => {
   res.send(req.session.carts)

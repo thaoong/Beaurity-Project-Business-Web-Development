@@ -19,7 +19,7 @@ export class CategoryService {
       headers: headers,
       responseType: 'text',
     };
-    return this._http.get<any>('/categories/', requestOptions).pipe(
+    return this._http.get<any>('/categories', requestOptions).pipe(
       map((res) => JSON.parse(res) as Array<Category>),
       retry(3),
       catchError(this.handleError)

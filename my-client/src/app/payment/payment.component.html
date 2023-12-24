@@ -3,9 +3,9 @@
 
 <div class="main-payment-banking">
   <div class="navigate">
-    <a routerLink="/app-home">Trang chủ</a> /
-    <a routerLink="/app-cart">Giỏ hàng</a> /
-    <a routerLink="/app-payment">Thanh toán</a>
+    <a routerLink="/app-home">Trang chủ&nbsp;</a>/
+    <a routerLink="/app-cart">&nbsp;Giỏ hàng&nbsp;</a>/
+    <a routerLink="/app-payment">&nbsp;Thanh toán</a>
   </div>  
   <div class="main-info">
     <div class="left">
@@ -22,10 +22,13 @@
               Sản phẩm
             </p>
             <p class="cart__main-row--price">
-              Giá thành
+              Đơn giá
             </p>
             <p class="cart__main-row--quantity">
               Số lượng
+            </p>
+            <p class="cart__main-row--sum">
+              Thành tiền
             </p>
           </div>
 
@@ -36,8 +39,9 @@
               </div>
               <p class="cart__main-row--product-info"> {{ item.Name }}</p>
             </div>
-            <p class="cart__main-row--price">{{ item.Price }}</p>
+            <p class="cart__main-row--price">{{ item.Price }} VNĐ</p>
             <p class="cart__main-row--quantity">{{ item.quantity }}</p>
+            <p class="cart__main-row--sum">{{ findSum(item) }} VNĐ</p>
           </div>
         </div>
 
@@ -140,7 +144,7 @@
           Tổng tiền
         </p>
         <p class="order__row-right">
-          {{ totalPrice.toLocaleString("vi-VN", { minimumFractionDigits: 0 }) }}đ
+          {{ totalPrice.toLocaleString("vi-VN", { minimumFractionDigits: 0 }) }} VNĐ
         </p>
       </div>
       <div class="order__row">
@@ -148,7 +152,7 @@
           Giảm giá
         </p>
         <p class="order__row-right">
-          {{ discountPrice.toLocaleString("vi-VN", { minimumFractionDigits: 0 }) }}đ
+          {{ discountPrice.toLocaleString("vi-VN", { minimumFractionDigits: 0 }) }} VNĐ
         </p>
       </div>
       <div class="order__row">
@@ -156,7 +160,7 @@
           Tạm tính
         </p>
         <p class="order__row-right">
-          {{ prePrice.toLocaleString("vi-VN", { minimumFractionDigits: 0 }) }}đ
+          {{ prePrice.toLocaleString("vi-VN", { minimumFractionDigits: 0 }) }} VNĐ
         </p>
       </div>
       <div class="order__row">
@@ -164,7 +168,7 @@
           Phí vận chuyển
         </p>
         <p class="order__row-right">
-          {{ deliveryFee.toLocaleString("vi-VN", { minimumFractionDigits: 0 }) }}đ
+          {{ deliveryFee.toLocaleString("vi-VN", { minimumFractionDigits: 0 }) }} VNĐ
         </p>
       </div>
       <div class=" order__row-discount">
@@ -178,12 +182,12 @@
           Thành tiền
         </p>
         <p class="order__row-right">
-          {{ price.toLocaleString("vi-VN", { minimumFractionDigits: 0 }) }}đ
+          {{ price.toLocaleString("vi-VN", { minimumFractionDigits: 0 }) }} VNĐ
         </p>
       </div>
       <div class="order__row">
-        <input type="checkbox" [(ngModel)]="isChecked_Confirm">
-        <span>Đồng ý với các chính sách của Nhà thuốc Benzen để hoàn tất đơn hàng</span>
+        <input id="agree" type="checkbox" [(ngModel)]="isChecked_Confirm">
+        <span><label for="agree">Đồng ý với các chính sách của Beaurity để hoàn tất đơn hàng</label></span>
       </div>
       <div class="orer__row-button">
         <button (click)="onComplete()">Hoàn tất</button>
