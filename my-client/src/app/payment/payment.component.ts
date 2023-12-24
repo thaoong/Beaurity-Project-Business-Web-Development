@@ -131,7 +131,7 @@ export class PaymentComponent implements OnInit {
       this.order.PrePrice = this.prePrice,
       this.order.DeliveryFee = this.deliveryFee,
       this.order.DiscountPrice = this.discountPrice,
-      this.order.OrderCosmetic = this.cartItems
+      this.order.OrderCosmetic = this.selectedItems
     if (this.isChecked_COD) {
       this.order.PaymentMethod = 'Thanh toán khi nhận hàng';
     } else if (this.isChecked_Banking) {
