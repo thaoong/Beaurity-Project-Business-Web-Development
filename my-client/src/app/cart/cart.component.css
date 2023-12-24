@@ -1,13 +1,48 @@
 * {
-  font-family: 'Be Vietnam Pro', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   margin: 0;
   box-sizing: border-box;
   
 }
+.table-container {
+  display: flex;
+  justify-content: center;
+}
+
+.table {
+  border-collapse: collapse;
+  width: 95%;
+}
+
+.table td {
+  padding: 8px;
+  text-align: left;
+  font-size: 16px;
+}
+
+.table th {
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  font-size: 16px;
+}
+
+.table img {
+  object-fit: cover;
+  height: 70px;
+  width: 70px;
+  border-radius: 10%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.table button {
+  padding: 4px 8px;
+  border: none;
+  background-color: #ffffff;
+  cursor: pointer;
+}
 .main-shopping {
-  margin-top: 16px;
   background-color: #F8F8F8;
-  padding: 24px;
 }
 .img_icon{
   width: 300px;
@@ -19,7 +54,8 @@
 .shopping-navigate {
   color: #776F6F;
   font-size: 14px;
-  margin: 0 0 12px 100px;;
+  margin: 0 20px 24px 100px;
+  padding-top: 20px;
 }
 .shopping-navigate a {
   color: #776F6F;
@@ -39,47 +75,15 @@
 .shopping__cart-left--header h3{
   color: #000;
   font-size: 30px;
-}
-.shopping__cart-left--detail-row {
+  margin-bottom: 30px;
   display: flex;
-  align-items: center;
-  text-align: center;
-  padding: 5px;
+  justify-content: space-between;
 }
-.shopping__cart-left--detail-row:hover {
-  background-color: #f2f2f2;
-}
-.shopping__cart-left--detail-row:nth-child(1):hover {
-  background-color: transparent;
-}
-.shopping__cart-left--detail-row:nth-child(1) {
-  font-weight: bold;
-}
-.shopping__cart-left--detail-row1 {
-  width: 10%;
-}
-.shopping__cart-left--detail-row2 {
-  width: 40%;
-}
-.shopping__cart-left--detail-row3 {
-  width: 20%;
-}
-.shopping__cart-left--detail-row4 {
-  width: 20%;
-}
-.shopping__cart-left--detail-row5 {
-  width: 10%;
-}
-.shopping__cart-left--detail-row-check {
-  width: 10%;
-}
-.table-responsive table thead {
-  border-bottom: 1px solid #f2f2f2;
-}
+
 tbody:before {
   content: "";
   display: block;
-  height: 40px;
+  height: 15px;
 }
 .shopping__cart-left--detail-row-price {
   width: 20%;
