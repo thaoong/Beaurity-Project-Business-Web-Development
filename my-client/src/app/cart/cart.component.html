@@ -22,13 +22,11 @@
             <thead>
               <tr style="margin-bottom: 3px;">
                 <th scope="col" class="border-0 align-left">
-                  <div></div>
                 </th>
                 <th scope="col" class="border-0  align-left">
                   <div>SẢN PHẨM</div>
                 </th>
                 <th scope="col" class="border-0  align-left">
-                  <div></div>
                 </th>
                 <th scope="col" class="border-0  align-left">
                   <div>ĐƠN GIÁ</div>
@@ -37,12 +35,11 @@
                   <div>SỐ LƯỢNG</div>
                 </th>
                 <th scope="col" class="border-0  align-left">
-                  <div>REMOVE</div>
                 </th>
               </tr>
             </thead>
             <tbody class="table-body">
-              <tr *ngFor="let item of cartItems">
+              <tr scope="col" *ngFor="let item of cartItems">
                 <td class="border-0 align-left">
                   <div class="p-2">
                     <div class="shopping__cart-left--detail-row-check">
@@ -50,7 +47,7 @@
                     </div>
                   </div>
                 </td>
-                <td class="border-0 align-center">
+                <td class="border-0 align-left">
                   <div>
                     <div>
                       <img src="{{ item.Image }}" alt="" class="img-fluid rounded shadow-sm" style="object-fit: cover; height: 70px; width: 70px">                    </div>
@@ -60,12 +57,12 @@
                 <td class="border-0 align-left">{{item.Price}} VNĐ</td>
                 <td class="border-0 align-left">
                   <div class="shopping__cart-left--detail-row-quantity">
-                    <button (click)="decrease(item)">-</button>
+                    <button id="clickdecrease" (click)="decrease(item)">-</button>
                     <input type="text" [(ngModel)]="item.quantity" (input)="updateQuantity(item)">
-                    <button (click)="increase(item)">+</button>
+                    <button id="clickincrease" (click)="increase(item)">+</button>
                   </div>
                 </td>
-                <td class="border-0 align-center">
+                <td class="border-0 align-left">
                   <button (click)="removeFromCart(item._id)" class="material-icons-outlined shopping__cart-left--detail-row-delete">
                     delete
                   </button>

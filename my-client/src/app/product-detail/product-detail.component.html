@@ -48,8 +48,6 @@
                         <button (click)="increase()" id="clickincrease"><span
                                 class="material-symbols-outlined">add</span></button>
                     </div>
-
-
                 </div>
                 <div class="item--button">
                     <button class="buy--button" (click)="addToCartToBuy(cosmetic)">MUA NGAY</button>
@@ -75,28 +73,28 @@
         </div>
     </div>
 
-
     <div class="content__description">
         <h2 style="text-align: center;">{{ cosmetic.Name }}</h2>
         <div class="img-container">
             <img src="{{ cosmetic.Image }}" class="img">
         </div>
-
-        <h3>Thành phần</h3>
-        <p>{{ cosmetic.Ingredients }}</p>
-
         <div>
-            <h3>Công dụng</h3>
+            <h3>Thành phần:</h3>
+            <p>{{ cosmetic.Ingredients }}</p>
+        </div>
+        <div>
+            <h3>Công dụng:</h3>
             <p>{{ cosmetic.Uses }}</p>
         </div>
         <div>
-            <h3>Bảo quản</h3>
+            <h3>Bảo quản:</h3>
             <p>{{ cosmetic.Store }}</p>
         </div>
-        <h3>Lưu ý</h3>
+        <div>
+            <h3>Lưu ý:</h3>
+        </div>
         <div [ngClass]="{'expanded': expandDiv==true}" *ngIf="expandDiv">
             <div>
-
                 <p>{{ cosmetic.Warnings }}</p>
             </div>
             <div class="more--button" (click)="HiddenMore()">
@@ -104,7 +102,6 @@
                 <span class="material-symbols-outlined">expand_less</span>
             </div>
         </div>
-
         <div *ngIf="!expandDiv" (click)="showMore()" class="more--button">
             Xem thêm
             <span class="material-symbols-outlined">expand_more</span>
