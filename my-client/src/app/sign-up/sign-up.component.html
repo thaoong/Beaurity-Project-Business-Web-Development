@@ -9,7 +9,7 @@
         <div class="container__input--item name">
           <label for="name">Họ và tên: <span class="material">*</span> </label>
           <div class="input--content">
-            <input type="text" name="name" id="name" [(ngModel)]="account.Name" #name="ngModel" required />
+            <input type="text" name="name" id="name" placeholder="Họ và tên" [(ngModel)]="account.Name" #name="ngModel" required />
           </div>
         </div>
 
@@ -17,7 +17,7 @@
           <div class="container__input--item phone">
             <label for="phonenumber">Số điện thoại:<span class="material">*</span> </label>
             <div class="input--content">
-              <input type="text" name="phonenumber" id="phonenumber" [(ngModel)]="account.phonenumber" #name="ngModel"
+              <input type="text" name="phonenumber" id="phonenumber" placeholder="Số điện thoại" [(ngModel)]="account.phonenumber" #name="ngModel"
                 (blur)="checkPhoneNumber()" required />
             </div>
           </div>
@@ -28,7 +28,7 @@
           <div class="container__input--item email">
             <label for="email">Email:</label><span class="material">*</span>
             <div class="input--content">
-              <input type="text" name="email" id="email" [(ngModel)]="account.Mail" #name="ngModel"
+              <input type="text" name="email" id="email" placeholder="Email" [(ngModel)]="account.Mail" #name="ngModel"
                 (blur)="checkMail()">
 
             </div>
@@ -40,7 +40,7 @@
         <div class="container__input--item address">
           <label for="address">Địa chỉ: <span class="material">*</span> </label>
           <div class="input--content">
-            <input type="text" name="address" id="address" [(ngModel)]="account.Address" #name="ngModel" />
+            <input type="text" name="address" id="address" placeholder="Địa chỉ" [(ngModel)]="account.Address" #name="ngModel" />
           </div>
         </div>
 
@@ -55,7 +55,7 @@
         <div class="container__input--item pass">
           <label for="psw">Mật khẩu: <span class="material">*</span> </label>
           <div class="input--content">
-            <input type="password" name="psw" id="psw" [(ngModel)]="account.password" #name="ngModel"
+            <input type="password" name="psw" id="psw" placeholder="Mật khẩu" [(ngModel)]="account.password" #name="ngModel"
               (blur)="onChecked()" #passwordInput required />
           </div>
         </div>
@@ -63,7 +63,7 @@
         <div class="container__input--item repass">
           <label for="enterpsw">Nhập lại mật khẩu: <span class="material">*</span> </label>
           <div class="input--content">
-            <input type="password" name="psw" id="enterpsw" [(ngModel)]="confirmPassword" #confirmPasswordInput
+            <input type="password" name="psw" id="enterpsw" placeholder="Nhập lại mật khẩu" [(ngModel)]="confirmPassword" #confirmPasswordInput
               (blur)="checkPasswordsMatch()" required />
           </div>
         </div>

@@ -10,7 +10,7 @@
     </div>
 
     <div class="input--content">
-      <input type="text" id="otp-input" [(ngModel)]="verificationCode" name="verificationCode"
+      <input type="text" id="otp-input" placeholder="Nhập mã OTP" [(ngModel)]="verificationCode" name="verificationCode"
         (blur)="checkVerificationCode()">
     </div>
     <div *ngIf="!isVerificationCodeValid" class="error-message">Mã xác nhận không hợp lệ</div>
