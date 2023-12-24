@@ -1,10 +1,8 @@
-
-<div class="imgbg"><img src="assets/images/BG.png" ></div>
+<div class="imgbg"><img src="assets/images/BG.png"></div>
 <div class="frame">
-    <div class="content">
-      <div class="imggt"><img src="assets/images/GT.png" ></div>
-      <form (ngSubmit)="onSubmit()" class="login_form">
-        <div class="content--top"><a href="app-home"><b>&lt;</b></a></div>
+  <div class="content">
+    <div class="imggt"><a href="app-home"><img src="assets/images/GT.png"></a></div>
+    <form (ngSubmit)="onSubmit()" class="login_form">
       <h2>ĐĂNG NHẬP</h2>
       <p class="bold">Chào mừng bạn đến với Beaurity</p>
       <div class="container">
@@ -12,7 +10,8 @@
           <div>
             <div class="container__input--item">
               <div class="input--content">
-                <input type="text" placeholder="Số điện thoại" name="phonenumber" [(ngModel)]="phonenumber" required (blur)="checkPhoneNumber()" id="phone" value="{{ phonenumber }}"/>
+                <input type="text" placeholder="Số điện thoại" name="phonenumber" [(ngModel)]="phonenumber" required
+                  (blur)="checkPhoneNumber()" id="phone" value="{{ phonenumber }}" />
                 <span class="material">*</span>
               </div>
             </div>
@@ -20,16 +19,17 @@
           </div>
           <div class="container__input--item">
             <div class="input--content">
-              <input type="password" placeholder="Mật khẩu" name="psw" [(ngModel)]="password" required id="password" value="{{ password }}" />
+              <input type="password" placeholder="Mật khẩu" name="psw" [(ngModel)]="password" required id="password"
+                value="{{ password }}" />
               <span class="material">*</span>
             </div>
           </div>
         </div>
 
         <div class="container__checkbox">
-            <input type="checkbox" name="remember" class="checkbox" [(ngModel)]="rememberMe" id="rememberMe" />
-            <label for="rememberMe"> Ghi nhớ mật khẩu</label>
-          <a href = "app-forgot-password">Quên mật khẩu?</a>
+          <input type="checkbox" name="remember" class="checkbox" [(ngModel)]="rememberMe" id="rememberMe" />
+          <label for="rememberMe"> Ghi nhớ mật khẩu</label>
+          <a href="app-forgot-password">Quên mật khẩu?</a>
         </div>
 
         <div class="login_button">
@@ -38,9 +38,8 @@
       </div>
       <div class="content--bottom">
         <p>Bạn chưa có tài khoản?</p>
-        <a href = "app-signup">Đăng ký ngay</a>
+        <a href="app-signup">Đăng ký ngay</a>
       </div>
     </form>
   </div>
-    </div>
-
+</div>

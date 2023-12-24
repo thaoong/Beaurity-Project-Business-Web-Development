@@ -11,12 +11,13 @@
   display: flex;
   text-align: center;
   margin: 0px 10px;
+
 }
 .header__menu img{
   width: 130px;
   border-radius: 10px;
   margin-right: -11px;
-  margin-left: 120px;
+  margin-left: 100px;
   margin-top: 23px;
 }
 
