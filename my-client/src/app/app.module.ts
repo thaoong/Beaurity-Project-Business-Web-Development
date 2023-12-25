@@ -42,6 +42,8 @@ import { SignupOtpComponent } from './sign-up/signup-otp/signup-otp.component';
 import { ProductsComponent } from './products/products.component';
 import { AccountcustomerService } from './SERVICES/accountcustomer.service';
 import { DealsComponent } from './deals/deals.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -81,6 +83,7 @@ import { DealsComponent } from './deals/deals.component';
     SignupOtpComponent,
     ProductsComponent,
     DealsComponent,
+    
     
   ],
   imports: [
