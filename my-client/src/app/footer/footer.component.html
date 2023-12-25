@@ -57,12 +57,12 @@
         <div>&nbsp;</div>
         <div class="footer__content--infor">
             <div class="list-link" id="scrollToTop">
-              <p class="footer__content--title" class="bold">DANH MỤC SẢN PHẨM</p>
-              <div *ngFor="let category of categories">
-                <a (click)="navigateToCategory(category.Category)">{{ category.Category }}</a>
-              </div>
+                <p class="footer__content--title" class="bold">DANH MỤC SẢN PHẨM</p>
+                <div *ngFor="let category of categories">
+                    <a (click)="navigateToCategory(category.Category)">{{ category.Category }}</a>
+                </div>
             </div>
-          </div>    
+        </div>
         <div>&nbsp;</div>
         <div class="footer__content--logo">
             <div>
@@ -94,7 +94,9 @@
     </div>
 </div>
 
-<a href="https://www.facebook.com/messages/t/129018113636026"><img src="/assets/images/messenger.png" id="boxchat"></a>
+<a href="https://www.facebook.com/messages/t/129018113636026">
+    <img src="/assets/images/messenger.png" target="_blank" id="boxchat">
+</a>
 
 <div class="footer__copyright">
     <p>
