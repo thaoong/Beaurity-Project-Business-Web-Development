@@ -73,112 +73,111 @@
 
 
         <div class="content__description">
-            <div class="content">
-                <h2 style="text-align: center;">{{ cosmetic.Name }}</h2>
-                <div class="img-container" style="width:30%; height:10%; align-self: center; border-radius: 20px;">
-                    <img src="{{ cosmetic.Image }}" class="img">
+            <h2 style="text-align: center; margin-top: 20px; color:#2D982A">{{ cosmetic.Name }}</h2>
+            <div class="img-container">
+                <img src="{{ cosmetic.Image }}" class="img">
+            </div>
+            <h3>Thành phần</h3>
+            <p>{{ cosmetic.Ingredients }}</p>
+            <h3>Công dụng</h3>
+            <p>{{ cosmetic.Uses }}</p>
+            <div [ngClass]="{'expanded': expandDiv==true}" *ngIf="expandDiv">
+                <h3>Bảo quản</h3>
+                <p>{{ cosmetic.Store }}</p>
+                <h3>Lưu ý</h3>
+                <p>{{ cosmetic.Warnings }}</p>
+                <div class="more--button" (click)="HiddenMore()">
+                    Thu hẹp
+                    <span class="material-symbols-outlined">expand_less</span>
                 </div>
-                <h3>Thành phần</h3>
-                <p>{{ cosmetic.Ingredients }}</p>
-                <h3>Công dụng</h3>
-                <p>{{ cosmetic.Uses }}</p>
-                <div [ngClass]="{'expanded': expandDiv==true}" *ngIf="expandDiv">
-                    <h3>Bảo quản</h3>
-                    <p>{{ cosmetic.Store }}</p>
-                    <h3>Lưu ý</h3>
-                    <p>{{ cosmetic.Warnings }}</p>
-                    <div class="more--button" (click)="HiddenMore()">
-                        Thu hẹp
-                        <span class="material-symbols-outlined">expand_less</span>
-                    </div>
-                </div>
-                <div *ngIf="!expandDiv" (click)="showMore()" class="more--button">
-                    Xem thêm
-                    <span class="material-symbols-outlined">expand_more</span>
-                </div>
+            </div>
+            <div *ngIf="!expandDiv" (click)="showMore()" class="more--button">
+                Xem thêm
+                <span class="material-symbols-outlined">expand_more</span>
             </div>
         </div>
-        <div class="comment">
-            <p style="color:#2D982A">Đánh giá của khách hàng</p>
-            <div class="comment__box--input">
-                <div class="commit__infor">
-                    <div class="commit--gender">
-                        <label class="gender">
-                            <input type="radio" checked="checked" name="radio">Anh
-                        </label>
-                        <label class="gender">
-                            <input type="radio" checked="checked" name="radio">Chị
-                        </label>
-                    </div>
-                    <div class="commit--name">
-                        <label for="name">
-                            <input type="text" id="name" placeholder="Họ và tên">
-                            <span class="material">*</span>
-                        </label>
-                        <label for="phone">
-                            <input type="text" id="phone" placeholder="Số điện thoại">
-                        </label>
-                    </div>
+    </div>
+    <div class="comment">
+        <p style="color:#2D982A">Đánh giá của khách hàng</p>
+        <div class="comment__box--input">
+            <div class="commit__infor">
+                <div class="commit--gender">
+                    <label class="gender">
+                        <input type="radio" checked="checked" name="radio">Anh
+                    </label>
+                    <label class="gender">
+                        <input type="radio" checked="checked" name="radio">Chị
+                    </label>
                 </div>
-                <textarea name="comment" id="comment" placeholder="Nhập nội dung..."></textarea>
-                <div class="sendComment">
-                    <button id="sendComment">Gửi bình luận</button>
+                <div class="commit--name">
+                    <label for="name">
+                        <input type="text" id="name" placeholder="Họ và tên">
+                        <span class="material">*</span>
+                    </label>
+                    <label for="phone">
+                        <input type="text" id="phone" placeholder="Số điện thoại">
+                    </label>
                 </div>
             </div>
-            <div class="comment__cus">
-                <div class="comment__box--cus" style="width: 95%">
-                    <div class="comment__cus--content">
-                        <div class="profile">
-                            <img src="assets\images\customer.jpg" alt="Avatar" class="avatar">
-                            <h3>Mỹ Kim</h3>
-                        </div>
-                        <p>Cho em hỏi mình có ship về Vũng Tàu không ạ? Em muốn đặt hàng ạ
-                        </p>
-                    </div>
-                    <div class="comment__cus--reply">
-                        <div class="profile">
-                            <img src="assets\images\employee.jpg" alt="Avatar" class="avatar">
-                            <h3>Nhân viên Beaurity</h3>
-                        </div>
-                        <p>Chào chị, Beaurity có giao đến Vũng Tàu nhé.
-                        </p>
-                    </div>
-                </div>
+            <textarea name="comment" id="comment" placeholder="Nhập nội dung..."></textarea>
+            <div class="sendComment">
+                <button id="sendComment">Gửi bình luận</button>
             </div>
+        </div>
+        <div class="comment__cus">
             <div class="comment__box--cus" style="width: 95%">
                 <div class="comment__cus--content">
                     <div class="profile">
                         <img src="assets\images\customer.jpg" alt="Avatar" class="avatar">
-                        <h3>Huỳnh Như</h3>
+                        <h3>Mỹ Kim</h3>
                     </div>
-                    <p>Loại này dùng cho da dầu có ổn không ạ</p>
+                    <p>Cho em hỏi mình có ship về Vũng Tàu không ạ? Em muốn đặt hàng ạ
+                    </p>
                 </div>
                 <div class="comment__cus--reply">
                     <div class="profile">
                         <img src="assets\images\employee.jpg" alt="Avatar" class="avatar">
                         <h3>Nhân viên Beaurity</h3>
                     </div>
-                    <p>Beaurity chào chị. Loại này bên em được bác sĩ da liễu khuyên dùng cho da dầu đó ạ.
-                    <p>
+                    <p>Chào chị, Beaurity có giao đến Vũng Tàu nhé.
+                    </p>
                 </div>
             </div>
-            <div class="comment__button--more">
-                <button><span class="material-symbols-outlined">chevron_left</span> Trước</button>
-                <button>Sau <span class="material-symbols-outlined">chevron_right</span></button>
+        </div>
+        <div class="comment__box--cus" style="width: 95%">
+            <div class="comment__cus--content">
+                <div class="profile">
+                    <img src="assets\images\customer.jpg" alt="Avatar" class="avatar">
+                    <h3>Huỳnh Như</h3>
+                </div>
+                <p>Loại này dùng cho da dầu có ổn không ạ</p>
+            </div>
+            <div class="comment__cus--reply">
+                <div class="profile">
+                    <img src="assets\images\employee.jpg" alt="Avatar" class="avatar">
+                    <h3>Nhân viên Beaurity</h3>
+                </div>
+                <p>Beaurity chào chị. Loại này bên em được bác sĩ da liễu khuyên dùng cho da dầu đó ạ.
+                <p>
             </div>
         </div>
+        <div class="comment__button--more">
+            <button><span class="material-symbols-outlined">chevron_left</span> Trước</button>
+            <button>Sau <span class="material-symbols-outlined">chevron_right</span></button>
+        </div>
     </div>
+</div>
 
-    <!-- popup  -->
-    <div class="popup" *ngIf="isLogin">
-        <div class="popup-container">
-            <h2 class="popup-title">Đặt hàng</h2>
-            <hr>
-            <p class="popup-message">Bạn vui lòng <span class="main-color">đăng nhập</span> để tiếp tục đặt hàng nhé!
-            </p>
-            <div class="popup-buttons">
-                <button class="popup-button" (click)="onLogin()">Đăng nhập</button>
-                <button class="popup-button" (click)="onBack()">Trở lại</button>
-            </div>
+<!-- popup  -->
+<div class="popup" *ngIf="isLogin">
+    <div class="popup-container">
+        <h2 class="popup-title">Đặt hàng</h2>
+        <hr>
+        <p class="popup-message">Bạn vui lòng <span class="main-color">đăng nhập</span> để tiếp tục đặt hàng nhé!
+        </p>
+        <div class="popup-buttons">
+            <button class="popup-button" (click)="onLogin()">Đăng nhập</button>
+            <button class="popup-button" (click)="onBack()">Trở lại</button>
         </div>
     </div>
+</div>
