@@ -27,17 +27,17 @@
                 </div>
                 <div class="item__infor">
                     <p class="item__infor--title">{{cosmetic.Name}}</p>
+                    <hr>
                     <h3 class="item__infor--price">{{cosmetic.Price}} VNĐ</h3>
+                    <ul style="margin-left: 0px">
+                        <li><b> Thành phần: </b>{{cosmetic.Ingredients}}</li>
+                        <li><b> Công dụng: </b>{{cosmetic.Uses}}</li>
+                    </ul>
+                    <p> <b> Mô tả sản phẩm: </b> </p>
                     <p>{{cosmetic.Description}}</p>
-                    <hr style="height: auto; margin-bottom: 20px">
-                    <p> <b> Thành phần </b> </p>
-                    <p> {{cosmetic.Ingredients}} </p>
-                    <p> <b> Công dụng </b> </p>
-                    <p> {{cosmetic.Uses}} </p>
-                    <hr style="height: auto; margin-bottom: 20px;">
                     <div class="amount">
                         <p style="display: inline-block;">
-                            Chọn số lượng:
+                            <b>Chọn số lượng</b>
                         </p>
                         <div class="item--amount">
                             <button (click)="decrease()" id="clickdecrease"><span
@@ -47,6 +47,7 @@
                                     class="material-symbols-outlined">add</span></button>
                         </div>
                     </div>
+                    <hr style="height: auto; margin-bottom: 20px;">
                     <div class="item--button">
                         <button class="buy--button" (click)="addToCartToBuy(cosmetic)">MUA NGAY</button>
                         <button class="add--cart" (click)="addToCart(cosmetic)">THÊM VÀO GIỎ HÀNG</button>
@@ -77,18 +78,26 @@
             <div class="img-container">
                 <img src="{{ cosmetic.Image }}" class="img">
             </div>
-            <h3>Thành phần</h3>
-            <p>{{ cosmetic.Ingredients }}</p>
-            <h3>Công dụng</h3>
-            <p>{{ cosmetic.Uses }}</p>
-            <div [ngClass]="{'expanded': expandDiv==true}" *ngIf="expandDiv">
-                <h3>Bảo quản</h3>
+            <div>
+                <h3>Thành phần:</h3>
+                <p>{{ cosmetic.Ingredients }}</p>
+            </div>
+            <div>
+                <h3>Công dụng:</h3>
+                <p>{{ cosmetic.Uses }}</p>
+            </div>
+            <div>
+                <h3>Bảo quản:</h3>
                 <p>{{ cosmetic.Store }}</p>
-                <h3>Lưu ý</h3>
-                <p>{{ cosmetic.Warnings }}</p>
-                <div class="more--button" (click)="HiddenMore()">
-                    Thu hẹp
-                    <span class="material-symbols-outlined">expand_less</span>
+            </div>
+            <div>
+                <h3>Lưu ý:</h3>
+                <div [ngClass]="{'expanded': expandDiv==true}" *ngIf="expandDiv">
+                    <p>{{ cosmetic.Warnings }}</p>
+                    <div class="more--button" (click)="HiddenMore()">
+                        Thu hẹp
+                        <span class="material-symbols-outlined">expand_less</span>
+                    </div>
                 </div>
             </div>
             <div *ngIf="!expandDiv" (click)="showMore()" class="more--button">
