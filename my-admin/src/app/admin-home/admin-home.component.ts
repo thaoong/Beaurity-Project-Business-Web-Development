@@ -3,9 +3,7 @@ import { AdminCosmeticService } from '../services/admin-cosmetic.service';
 import { AdminCategoryService } from '../services/admin-category.service';
 import { AdminCustomerService } from '../services/admin-customer.service';
 import { AdminOrderService } from '../services/admin-order.service';
-// import * as Chart from 'chart.js';
 import { Chart } from 'chart.js';
-import { forkJoin } from 'rxjs/internal/observable/forkJoin';
 
 @Component({
   selector: 'app-admin-home',
@@ -21,60 +19,12 @@ export class AdminHomeComponent {
   cosmetics: any;
   categories: any;
   customers: any;
-  orders: any;
+
   uncompletedOrders: any;
   errMessage: string = '';
 
-  loadData() {
-    this._service.getCosmetics().subscribe({
-      next: (data) => {
-        // Lấy danh sách các Cosmetics
-        this.cosmetics = data;
-
-        this._service.getCosmeticCategory(this.categories).subscribe({
-          next: (categoryData) => {
-            // Lấy danh sách các Categories
-            this.categories = categoryData;
-
-            // Nếu có dữ liệu, vẽ biểu đồ
-            if (this.cosmetics && this.cosmetics.length > 0) {
-              this.createChart();
-            }
-          },
-          error: (err) => {
-            this.errMessage = err;
-          },
-        });
-      },
-      error: (err) => {
-        this.errMessage = err;
-      },
-    });
-  }
-
-  // getDataAndDrawChart() {
-  //   // Use forkJoin to combine multiple observables
-  //   forkJoin([
-  //     this._service.getCosmetics(),
-  //     this.category_service.getCategories(),
-  //     this.customer_service.getCustomers(),
-  //     this.order_service.getOrders(),
-  //     this.order_service.searchUncompletedOrder()
-  //   ]).subscribe(
-  //     ([cosmetics, categories, customers, orders, uncompletedOrders]) => {
-  //       this.cosmetics = cosmetics;
-  //       this.categories = categories;
-  //       this.customers = customers;
-  //       this.orders = orders;
-  //       this.uncompletedOrders = uncompletedOrders;
-
-  //       this.createChart();
-  //     },
-  //     error => {
-  //       this.errMessage = error;
-  //     }
-  //   );
-  // }
+  orders: any;
+  chart: any;
 
   constructor(
     public _service: AdminCosmeticService,
@@ -133,6 +83,27 @@ export class AdminHomeComponent {
     });
   }
 
+  ngOnInit() {
+    this._service.getCosmetics().subscribe({
+      next: (data) => {
+        // Lấy danh sách các Cosmetics
+        this.cosmetics = data;
+  
+        // Gọi hàm tạo biểu đồ sau khi có dữ liệu
+        this.createChart();
+      },
+      error: (err) => {
+        this.errMessage = err;
+      },
+    });
+
+  }
+
+  getUniqueCategories() {
+    const uniqueCategories = Array.from(new Set(this.cosmetics.map((cosmetic: { categoryId: any; }) => cosmetic.categoryId)));
+    return uniqueCategories;
+  }
+
   @ViewChild('myChart') private myChart!: ElementRef;
 
   ngAfterViewInit() {
@@ -144,14 +115,15 @@ export class AdminHomeComponent {
 
     // Lấy dữ liệu số lượng sản phẩm của từng category
     const categoryData = this.getCategoryData();
-    const categoryName = this.getCateName();
+    const categoryName = this.getCateNames();
+
 
     const myChart = new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: categoryData,
+        labels: categoryData ,
         datasets: [{
-          label: 'Số lượng sản phẩm',
+          label: '', 
           data: categoryData,
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
@@ -181,26 +153,35 @@ export class AdminHomeComponent {
   // Phương thức lấy dữ liệu số lượng sản phẩm của từng category
   getCategoryData() {
     const categoryData = [];
+    const categoryCountMap = new Map();
 
+    // Tính số lần xuất hiện của mỗi danh mục sản phẩm
+    for (const cosmetic of this.cosmetics) {
+      const categoryId = cosmetic.categoryName;
+      categoryCountMap.set(categoryId, (categoryCountMap.get(categoryId) || 0) + 1);
+    }
+
+    // Lưu số lần xuất hiện vào mảng categoryData
     for (const category of this.categories) {
-      // Tính số lượng sản phẩm của category
-      const categoryProductCount = this.cosmetics.filter((cosmetic: { categoryId: any; }) => cosmetic.categoryId === category.id).length;
-      categoryData.push(categoryProductCount);
+      const categoryId = category.id;
+      const categoryCount = categoryCountMap.get(categoryId) || 0;
+      categoryData.push(categoryCount);
     }
 
     return categoryData;
   }
 
-  getCateName() {
-    if (this.cosmetics && this.cosmetics.length > 0) {
-      // Lấy mảng tên category từ mảng cosmetics
-      const categoryNames = Array.from(new Set(this.cosmetics.map((cosmetic: { categoryName: any; }) => cosmetic.categoryName)));
-      return categoryNames;
+
+  getCateNames() {
+    if (this.categories && this.categories.length > 0) {
+      const uniqueCategories = Array.from(new Set(this.cosmetics.map((cosmetic: { categoryId: any; }) => cosmetic.categoryId)));
+      return uniqueCategories
+      this.categories.map((category: { name: any; }) => category.name);
     } else {
-      // Hoặc bạn có thể xử lý khi không có dữ liệu
       return [];
     }
   }
+
 
   totalCosmetic(data: any) {
     return this.totalCosmetics = data.length;
