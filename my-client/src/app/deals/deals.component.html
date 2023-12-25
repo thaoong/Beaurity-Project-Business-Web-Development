@@ -26,10 +26,9 @@
 
 <!-- File deals.component.html -->
 <p class="header">🎄 X_BEAURITY 🎄</p>
-
 <div class="danhmucproduct">
   <div class="product" *ngFor="let cosmetic of cosmetics">
-    <div class="product-item" *ngIf="logCategoryValue(cosmetic.Category)">
+    <div class="product-item">
       <div (click)="viewCosmeticDetail(cosmetic)">
         <div class="product-item--img">
           <img src="{{ cosmetic.Image }}" style="width: 180px;">
@@ -38,9 +37,9 @@
         <p class="product-item--price">{{ cosmetic.Price }} VNĐ</p>
       </div>
       <button class="product-item--add" (click)="addToCart(cosmetic)">Thêm vào giỏ hàng</button>
-      </div>
     </div>
   </div>
+</div>
 
 
 <br />

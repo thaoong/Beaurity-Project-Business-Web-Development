@@ -18,7 +18,7 @@ export class DealsComponent implements OnInit, OnDestroy {
   quantityItem: any;
   display!: boolean;
   currentUser: any;
-center: any;
+  center: any;
 
   constructor(
     private activateRoute: ActivatedRoute,
@@ -28,7 +28,7 @@ center: any;
     private snowfallService: SnowfallService
   ) {
 
-    this._service.getCosmetics().subscribe({
+    this._service.getCosmeticCategory('X_Beaurity').subscribe({
       next: (data: any) => {
         this.cosmetics = data;
       },
@@ -76,14 +76,4 @@ center: any;
   ngOnDestroy() {
     this.snowfallService.removeSnowfall();
   }
-
-  logCategoryValue(category: string): boolean {
-    return category.toLowerCase() === 'x_beaurity';
-  }
-
-  navigateToCategory(category: string): void {
-    this.router.navigate(['/app-category', category])
-  }
-
-
 }
