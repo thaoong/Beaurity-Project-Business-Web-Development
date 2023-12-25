@@ -16,7 +16,10 @@
       Sử dụng app Momo hoặc ứng dụng Camera hỗ trợ QR Code để quét mã
     </p>
   </div>
+<div class="button-container">
   <button class="payment-done" (click)="onComplete()">Hoàn tất</button>
+  <button class="payment-done" (click)="goHome()">Trở lại</button>
+</div>
 </div>
 <!-- popup -->
 <div class="popup" *ngIf="isDonePayment">
