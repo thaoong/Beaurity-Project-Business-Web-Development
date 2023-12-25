@@ -47,20 +47,6 @@
                 </div>
             </div>
 
-            <!-- <div class="column">
-                <div class="card">
-                    <div class="container">
-                        <h2 class="title p-1">Total Customer</h2>
-                        <h1 class="text-center">{{ totalCustomer(customers) }}</h1>
-                        <p class="button-container">
-                            <button [routerLink]="['/admin-customer-management']">
-                                View Customers
-                            </button>
-                        </p>
-                    </div>
-                </div>
-            </div> -->
-
             <div class="column">
                 <div class="card">
                     <div class="container">
@@ -87,34 +73,6 @@
                         </p>
                     </div>
                 </div>
-            </div>
-            <div class="column">
-                <div class="card">
-                    <div class="container">
-                        <h2 class="title p-1">Category Distribution</h2>
-                        <canvas #myChart width="400" height="400"></canvas>
-                    </div>
-                </div>
-            </div>
-            <!-- <div class="column">
-                <div class="card">
-                  <div class="container">
-                    <h2 class="title p-1">Category Product Counts</h2>
-                    <ul>
-                      <li *ngFor="let category of categoryCounts">
-                        {{ category.name }}: {{ category.count }} products
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div> -->
-            <div>
-                <h3>All Categories</h3>
-                <ul>
-                    <li *ngFor="let cosmetic of cosmetics">
-                        {{cosmetic.Category}}
-                    </li>
-                </ul>
             </div>
         </div>
     </div>

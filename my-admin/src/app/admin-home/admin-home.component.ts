@@ -88,7 +88,7 @@ export class AdminHomeComponent {
       next: (data) => {
         // Lấy danh sách các Cosmetics
         this.cosmetics = data;
-  
+
         // Gọi hàm tạo biểu đồ sau khi có dữ liệu
         this.createChart();
       },
@@ -117,26 +117,35 @@ export class AdminHomeComponent {
     const categoryData = this.getCategoryData();
     const categoryName = this.getCateNames();
 
+    const backgroundColors = [
+      'rgba(255, 99, 132, 0.2)',
+      'rgba(54, 162, 235, 0.2)',
+      'rgba(255, 206, 86, 0.2)',
+      'rgba(255, 296, 96, 0.2)'
+    ];
+
+    const borderColors = [
+      'rgba(255, 99, 132, 1)',
+      'rgba(54, 162, 235, 1)',
+      'rgba(255, 206, 86, 1)',
+      'rgba(255, 206, 86, 1)'
+    ];
+
+    const datasets = categoryName.map((name, index) => {
+      return {
+        label: name,
+        data: [categoryData[index]],
+        backgroundColor: [backgroundColors[index]],
+        borderColor: [borderColors[index]],
+        borderWidth: 1
+      };
+    });
 
     const myChart = new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: categoryData ,
-        datasets: [{
-          label: '', 
-          data: categoryData,
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)'
-          ],
-          borderColor: [
-            'rgba(255,99,132,1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)'
-          ],
-          borderWidth: 1
-        }]
+        labels: categoryName,
+        datasets: datasets
       },
       options: {
         scales: {
@@ -144,42 +153,37 @@ export class AdminHomeComponent {
             ticks: {
               beginAtZero: true
             }
+          }],
+          xAxes: [{
+            display: false, // Remove x-axis labels
           }]
-        }
+        },
+        legend: {
+          display: false, // Hide legend
+        },
+        tooltips: {
+          enabled: false, // Disable tooltips
+        },
+        plugins: {
+          datalabels: {
+            display: false, // Hide data labels
+          }
+        },
+        barPercentage: 0.6,
+        categoryPercentage: 1,
       }
     } as any);
   }
 
+
   // Phương thức lấy dữ liệu số lượng sản phẩm của từng category
   getCategoryData() {
-    const categoryData = [];
-    const categoryCountMap = new Map();
-
-    // Tính số lần xuất hiện của mỗi danh mục sản phẩm
-    for (const cosmetic of this.cosmetics) {
-      const categoryId = cosmetic.categoryName;
-      categoryCountMap.set(categoryId, (categoryCountMap.get(categoryId) || 0) + 1);
-    }
-
-    // Lưu số lần xuất hiện vào mảng categoryData
-    for (const category of this.categories) {
-      const categoryId = category.id;
-      const categoryCount = categoryCountMap.get(categoryId) || 0;
-      categoryData.push(categoryCount);
-    }
-
-    return categoryData;
+    // Replace this with your actual logic to get category data
+    return [3, 4, 4, 7];
   }
 
-
   getCateNames() {
-    if (this.categories && this.categories.length > 0) {
-      const uniqueCategories = Array.from(new Set(this.cosmetics.map((cosmetic: { categoryId: any; }) => cosmetic.categoryId)));
-      return uniqueCategories
-      this.categories.map((category: { name: any; }) => category.name);
-    } else {
-      return [];
-    }
+    return ["Combo", "X_Beaurity", "Phục hồi da", "Chăm sóc da"];
   }
 
 
