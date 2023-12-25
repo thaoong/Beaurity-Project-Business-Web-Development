@@ -44,11 +44,11 @@
             <p class="cart__main-row--sum">{{ findSum(item) }} VNĐ</p>
           </div>
         </div>
-
+        <div class="cart__top-button" style="border: none; outline: none; color: white; background-color: transparent;">
+          <button (click)="returnCart()">Chỉnh sửa giỏ hàng</button>
+        </div>
       </div>
-      <div class="cart__top-button" style="border: none; outline: none; color: white; background-color: transparent;">
-        <button (click)="returnCart()">Chỉnh sửa giỏ hàng</button>
-      </div>
+      
       <div class="information">
         <div class="information__heading">Thông tin nhận hàng</div>
         <form class="information__detail">
@@ -92,7 +92,7 @@
         </label>
         <label class="information__row" (click)="checkBanking()" for="banking">
           <input type="radio" class="information__row-input" name="check" value="Banking" [(ngModel)]="isChecked_Banking" id="banking">
-          <span class="information__row-info">Thanh toán qua thẻ ATM nội địa/ Internet Banking</span>
+          <span class="information__row-info">Thanh toán qua Internet Banking</span>
         </label>
         <label class="information__row" for="momo" (click)="checkMoMo()">
           <input type="radio" class="information__row-input" name="check" value="MoMo" [(ngModel)]="isChecked_MoMo" id="momo">
@@ -189,7 +189,7 @@
         <input id="agree" type="checkbox" [(ngModel)]="isChecked_Confirm">
         <span><label for="agree">Đồng ý với các chính sách của Beaurity để hoàn tất đơn hàng</label></span>
       </div>
-      <div class="orer__row-button">
+      <div class="order__row-button">
         <button (click)="onComplete()">Hoàn tất</button>
       </div>
     </div>
