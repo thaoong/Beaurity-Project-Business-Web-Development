@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CosmeticService } from '../SERVICES/cosmetics.service';
 import { AuthService } from '../SERVICES/auth.service';
 import { SnowfallService } from '../SERVICES/snowfall.service';
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Component({
   selector: 'app-deals',
@@ -26,6 +27,7 @@ center: any;
     private _authService: AuthService,
     private snowfallService: SnowfallService
   ) {
+
     this._service.getCosmetics().subscribe({
       next: (data: any) => {
         this.cosmetics = data;
@@ -74,4 +76,14 @@ center: any;
   ngOnDestroy() {
     this.snowfallService.removeSnowfall();
   }
+
+  logCategoryValue(category: string): boolean {
+    return category.toLowerCase() === 'x_beaurity';
+  }
+
+  navigateToCategory(category: string): void {
+    this.router.navigate(['/app-category', category])
+  }
+
+
 }
