@@ -26,7 +26,7 @@
                         <h1 class="text-center">{{ totalCategory(categories) }}</h1>
                         <p class="button-container">
                             <button [routerLink]="['/admin-category-management']">
-                                View 
+                                View
                             </button>
                         </p>
                     </div>
@@ -40,7 +40,7 @@
                         <h1 class="text-center">{{ totalCosmetic(cosmetics) }}</h1>
                         <p class="button-container">
                             <button [routerLink]="['/product-management']">
-                                View 
+                                View
                             </button>
                         </p>
                     </div>
@@ -68,7 +68,7 @@
                         <h1 class="text-center">{{ totalOrder(orders) }}</h1>
                         <p class="button-container">
                             <button [routerLink]="['/admin-order']">
-                                View 
+                                View
                             </button>
                         </p>
                     </div>
@@ -82,7 +82,7 @@
                         <h1 class="text-center">{{ totalUncompletedOrder(uncompletedOrders) }}</h1>
                         <p class="button-container">
                             <button [routerLink]="['/admin-incomplete-order']">
-                                View 
+                                View
                             </button>
                         </p>
                     </div>
@@ -91,12 +91,31 @@
             <div class="column">
                 <div class="card">
                     <div class="container">
-                        chart
+                        <h2 class="title p-1">Category Distribution</h2>
                         <canvas #myChart width="400" height="400"></canvas>
                     </div>
                 </div>
             </div>
+            <!-- <div class="column">
+                <div class="card">
+                  <div class="container">
+                    <h2 class="title p-1">Category Product Counts</h2>
+                    <ul>
+                      <li *ngFor="let category of categoryCounts">
+                        {{ category.name }}: {{ category.count }} products
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div> -->
+            <div>
+                <h3>All Categories</h3>
+                <ul>
+                    <li *ngFor="let cosmetic of cosmetics">
+                        {{cosmetic.Category}}
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
-<!--  -->
