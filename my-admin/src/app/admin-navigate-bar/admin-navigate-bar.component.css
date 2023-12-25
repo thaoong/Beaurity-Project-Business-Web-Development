@@ -19,9 +19,9 @@
 .nav__title img{
     border-radius: 10px;
     max-width: 70%;
-    height: auto; /* Maintain aspect ratio */
-    display: block; /* Remove any extra space below the image */
-    margin: auto; /* Center the image */
+    height: auto; 
+    display: block; 
+    margin: auto; 
 }
 
 .nav__content {
@@ -62,7 +62,6 @@ ul li:hover{
     visibility: hidden;
     display: none;
     cursor: pointer;
-
 }
 .item--dropdown{
     color: #024700 !important;
@@ -70,7 +69,6 @@ ul li:hover{
     padding-bottom: 10px;
     padding-top: 5px;
     padding-left: 40px;
-
 }
 .item--dropdown:hover{
     background-color: #ffffff3f;

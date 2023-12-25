@@ -2,14 +2,11 @@ import { Component } from '@angular/core';
 import { AdminOrderService } from '../services/admin-order.service';
 import { Router } from '@angular/router';
 import { AdminCustomerService } from '../services/admin-customer.service';
-import { PaginatePipe } from 'ngx-pagination';
 
 @Component({
   selector: 'app-admin-order',
   templateUrl: './admin-order.component.html',
   styleUrls: ['./admin-order.component.css'],
-  providers: [PaginatePipe]
-
 })
 export class AdminOrderComponent {
   customer: any;

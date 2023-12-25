@@ -42,25 +42,24 @@ export class PaymentComponent implements OnInit {
     private router: Router,
     private activateRoute: ActivatedRoute,
     private route: ActivatedRoute
-  ) 
-  {
+  ) {
     this._service.getCart().subscribe({
       next: (data) => {
         // Lọc ra những mục đã được chọn
         this.cartItems = data.filter((item: any) => this.selectedItems.includes(item));
         this.quantityItem = this.selectedItems.length;
-    
+
         if (this.selectedItems.length > 0) {
           this.displayNumberItem = false;
         }
-    
+
         for (let item of this.selectedItems) {
           const price: number = parseFloat(
             item.Price.replace('.', '')
           );
           this.totalPrice += price * item.quantity;
         }
-    
+
         this.prePrice = this.totalPrice - this.discountPrice;
         this.price = this.prePrice + this.deliveryFee;
       },
@@ -77,7 +76,6 @@ export class PaymentComponent implements OnInit {
         this.errMessage = err;
       }
     });
-
     this.currentUser = this._authService.getCurrentUser();
   }
 
@@ -142,10 +140,6 @@ export class PaymentComponent implements OnInit {
     if (this.isChecked_Confirm) {
       if (this.isChecked_COD) {
         this.isDonePayment = true;
-        // Delete the cart items
-        //this._service.deleteCart();
-        // Navigate to the order detail page
-        //this.router.navigate(['/app-orderdetail']);
       } else if (this.isChecked_Banking) {
         this.router.navigate(['/app-payment-banking']);
       } else if (this.isChecked_MoMo) {
@@ -156,7 +150,6 @@ export class PaymentComponent implements OnInit {
     } else {
       alert('Vui lòng đồng ý với điều khoản và điều kiện của chúng tôi');
     }
-
 
     if (this.isChecked_COD || this.isChecked_Banking || this.isChecked_MoMo) {
       if (this.isChecked_Confirm) {
@@ -178,53 +171,6 @@ export class PaymentComponent implements OnInit {
   returnCart() {
     this.router.navigate(['/app-cart']);
   }
-
-
-  // viewOrderDetail() {
-
-  //   if (this.isChecked_Confirm) {
-  //     if(!this.isChecked_COD){
-  //       return false
-  //     }
-  //     else{
-  //       this._orderService.getOrders().subscribe({
-  //         next: (data) => {
-  //           this.orders = data;
-
-  //           this.router.navigate(['/app-orderdetail/detail/', this.orders[this.orders.length - 1]._id]);
-  //         },
-  //         error: (err) => {
-  //           this.errMessage = err;
-  //         }
-  //       });
-  //       return
-  //     }
-  //   }
-  //   else{ return false}
-
-    // this._orderService.getOrders().subscribe({
-    //   next: (data) => {
-    //     this.orders = data;
-
-    //     this.router.navigate(['/app-orderdetail/detail/', this.orders[this.orders.length - 1]._id]);
-    //   },
-    //   error: (err) => {
-    //     this.errMessage = err;
-    //   }
-    // });
-    // for(let item of this.cartItems){
-    //   this._service.removeFromCart(item._id).subscribe(
-    //     response => {
-    //       console.log(response);
-    //     },
-    //     error => {
-    //       console.log(error);
-    //     }
-    //   );
-    // }
-  // }
-
-
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
@@ -255,7 +201,7 @@ export class PaymentComponent implements OnInit {
       }
     });
   }
-  
+
   goHome() {
     this.confirmed.emit(false);
     this.router.navigate(['/app-home']);
@@ -263,6 +209,6 @@ export class PaymentComponent implements OnInit {
   findSum(item: any): string {
     const price: number = parseFloat(item.Price.replace('.', '').replace('.', ''));
     const sum: number = price * item.quantity;
-    return sum.toLocaleString("vi-VN", { minimumFractionDigits: 0 }); 
+    return sum.toLocaleString("vi-VN", { minimumFractionDigits: 0 });
   }
 }

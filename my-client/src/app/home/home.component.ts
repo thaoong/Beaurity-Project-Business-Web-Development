@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Cosmetics } from '../Interfaces/Cosmetic';
-import { CustomersService } from '../SERVICES/customers.service';
 import { CosmeticService } from '../SERVICES/cosmetic.service';
 
 @Component({
@@ -60,17 +58,13 @@ export class HomeComponent implements OnInit {
   getRandomCosmetics(numRandomCosmetics: number, sourceCosmetics: any[] | undefined = this.cosmetics) {
     const totalCosmetics = sourceCosmetics?.length ?? 0;
     const randomIndices: number[] = [];
-
-    // Generate a single set of random indices
     while (randomIndices.length < numRandomCosmetics && totalCosmetics > 0) {
       const randomIndex = Math.floor(Math.random() * totalCosmetics);
       if (!randomIndices.includes(randomIndex)) {
         randomIndices.push(randomIndex);
       }
     }
-    // Retrieve the corresponding products using the random indices
     const randomCosmetics = randomIndices.map(index => sourceCosmetics?.[index]);
-
     return randomCosmetics;
   }
 }

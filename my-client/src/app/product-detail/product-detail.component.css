@@ -64,9 +64,7 @@
 .item__img--main img {
     height: rem;
     border-radius: 10px;
-    /* Add rounded corners */
     width: 80%;
-    /* Chiếm toàn bộ chiều rộng của .item__img */
 }
 
 .item__img--extra {
@@ -220,14 +218,12 @@
 }
 
 .item--button {
-    /* width: 70%; */
     justify-content: space-evenly;
 }
 
 .item--button button:hover {
     transform: scale(1.05);
     cursor: pointer;
-
 }
 
 .content__description {
@@ -244,7 +240,6 @@
     margin: 20px 0;
     margin-left: 100px;
     position: relative;
-
 }
 
 .content__description h2 {
@@ -311,9 +306,7 @@
 .more--item {
     display: flex;
     flex-wrap: nowrap;
-    /* Ensure products are on the same line and do not wrap */
     overflow-x: auto;
-    /* Enable horizontal scrolling if needed */
     justify-content: center;
     align-items: center;
     margin: 40px 0;
@@ -321,9 +314,7 @@
 
 .more_products--product {
     flex: 0 0 auto;
-    /* Ensure each product does not grow or shrink */
     margin: 0 10px;
-    /* Adjust spacing between products as needed */
 }
 
 .more_products--product>div {
@@ -341,7 +332,6 @@
     color: #000;
     margin: 0 12px;
     overflow: hidden;
-    /* Ensure the container does not exceed its width */
 }
 
 .more_products--product-detail:hover {
@@ -361,7 +351,6 @@
 .more_products--product-detail-button {
     width: 100%;
     text-align: center;
-    /* margin-top: auto; Align the button to the bottom of the container */
 }
 
 .more_products--product-detail-button input {
@@ -549,20 +538,16 @@
 .profile {
     display: flex;
     align-items: center;
-    /* Để căn giữa các phần tử theo chiều dọc */
-
 }
 
 .comment__box--cus img.avatar {
     border-radius: 50%;
     width: 40px;
     height: 40px;
-    /* margin-right: 10px; */
     border: 1px solid #e4e0e0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: left;
     border-radius: 50%;
-    /* To make the avatar circular */
     margin-right: 10px;
 
 }
@@ -586,7 +571,6 @@
     border-radius: 4px;
     background: #FFFFFF;
     justify-content: center;
-
 }
 
 .comment__button--more button .material-symbols-outlined {
@@ -668,7 +652,6 @@
     flex-wrap: wrap;
     justify-content: space-between;
     margin: 0 -5px;
-    /* Negative margin to counteract padding */
 }
 
 .product button:hover {

@@ -75,7 +75,6 @@ export class ProductDetailComponent {
     });
   }
 
-
   navigateToCategory(category: string): void {
     this.router.navigate(['/app-category', category])
   }
@@ -188,17 +187,6 @@ export class ProductDetailComponent {
       }
     );
   }
-
-  // onClickBuy(){
-  //   if(this.currentUser != null){
-  //     this.router.navigate(['app-payment']);
-  //   } else {
-  //     this.isLogin = true;
-  //   }
-  //   // } else {
-  //   //   // this.router.navigate(['payment-kvl']);
-  //   // }
-  // }
 
   //popup
   @Input() title: string = '';

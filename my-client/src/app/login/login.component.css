@@ -65,17 +65,14 @@
 .login_form {
     width: 500px;
     height: 465px;
-    /* margin: auto; */
     justify-content: center;
     align-items: center;
     display: flex;
     flex-direction: column;
     background-color: #D7F6D5;
     padding: 50px 5px;
-    /* box-shadow: 0 0 10px rgba(167, 165, 165, 0.3); */
     border-radius: 10px;
     position: relative;
-    /* margin-right: -20px; */
 }
 
 h2 {

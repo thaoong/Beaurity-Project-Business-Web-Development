@@ -175,7 +175,6 @@ export class AdminHomeComponent {
     } as any);
   }
 
-
   // Phương thức lấy dữ liệu số lượng sản phẩm của từng category
   getCategoryData() {
     // Replace this with your actual logic to get category data

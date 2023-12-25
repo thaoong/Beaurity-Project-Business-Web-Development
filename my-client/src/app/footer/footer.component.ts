@@ -50,7 +50,6 @@ export class FooterComponent {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
   
-
   loadData(): void {
     this._service.getCosmetics().subscribe({
       next: (data) => {

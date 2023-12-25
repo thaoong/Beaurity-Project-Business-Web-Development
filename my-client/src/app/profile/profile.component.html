@@ -243,25 +243,6 @@
     <!-- Order history content -->
     <div class="box__content--value" *ngIf="id === 'orderhistory'">
       <h2>Lịch sử đơn hàng</h2>
-      <!-- <div>
-        <ul class="box__status">
-          <li id="status--all" [class.active2]="st === 'status--all'" (click)="tabStatus('status--all')">
-            Tất cả
-          </li>
-          <li id="status--confirm" [class.active2]="st === 'status--confirm'" (click)="tabStatus('status--confirm')">
-            Chờ xác nhận
-          </li>
-          <li id="status--delivery" [class.active2]="st === 'status--delivery'" (click)="tabStatus('status--delivery')">
-            Đang giao
-          </li>
-          <li d="status--done" [class.active2]="st === 'status--done'" (click)="tabStatus('status--done')">
-            Hoàn thành
-          </li>
-          <li id="status--cancel" [class.active2]="st === 'status--cancel'" (click)="tabStatus('status--cancel')">
-            Đã hủy
-          </li>
-        </ul>
-      </div> -->
       <div class="box__order">
         <div class="box__history--order" *ngFor="let item of cusOrders.reverse()">
           <div class="box__history--order--title">

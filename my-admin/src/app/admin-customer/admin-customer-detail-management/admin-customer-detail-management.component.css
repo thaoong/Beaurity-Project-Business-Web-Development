@@ -6,38 +6,30 @@
     .main {
         flex-direction: column;
     }
-
     .main-left,
     .main-right {
         width: 100%;
         height: 100%;   
     }
-
     .main-right {
         padding: 0 20px;
     }
-
     .page-title p {
         font-size: 25px !important;
     }
-
     .page-search {
         margin-top: 10px;
     }
-
     .cus-info-content {
         flex-direction: column;
     }
-
     .cus-image {
         width: 100%;
         text-align: center;
     }
-
     .box__history--order--title h4 span {
         margin-left: 5px;
     }
-
     .box__history--listproduct,
     .cart__main,
     .cart__main-row--product,
@@ -59,7 +51,7 @@
 }
 
 .main-right {
-    background: #FFFFFF; /* Change the background color to white */
+    background: #FFFFFF; 
     width: 85%;
     height: auto;
     display: flex;
@@ -199,13 +191,9 @@
 }
 
 .cus-info-data-detail {
-    /* display: flex; */
     align-items: center;
     font-size: 14px;
-    /* text-decoration: none; */
-    /* flex-direction: row; */
     margin: 5px 0;
-    /* padding-left: 150px; */
     color: #000000;
 }
 
@@ -219,7 +207,6 @@
 }
 
 .cus-data {
-    /* margin-left: 20px; */
     width: 100%;
     height: 20px;
     padding-left: 15px;
@@ -308,7 +295,7 @@
     font-size: 16px;
     padding-left: 18px;
     width: 754px;
-    margin-right: 10px; /* Added margin to separate text and button */
+    margin-right: 10px; 
 }
 
 .order_detail {
@@ -317,8 +304,6 @@
     height: 20px;
     font-size: 10px;
 }
-
-
 
 .box__order {
     width: 100%;
@@ -405,7 +390,6 @@
 
 .cart__main {
     padding: 0 40px;
-    
 }
 
 .cart__main-row {
@@ -413,7 +397,6 @@
     align-items: center;
     text-align: center;
     margin: 5px 0;  
-
 }
 
 .cart__main-row:nth-child(1):hover {
@@ -442,7 +425,6 @@
 
 .cart__main-row--price {
     width: 15%;
-    /* font-weight: bold; */
 }
 
 .cart__main-row--quantity {
@@ -450,7 +432,7 @@
 }
 
 .page-history-order {
-    width: 100%; /* Set the width to 100% */
+    width: 100%; 
     margin-top: 10px;
 }
 
@@ -462,29 +444,29 @@
 }
 
 .box__history--order {
-    width: 100%; /* Set the width to 100% */
+    width: 100%; 
     display: flex;
     flex-direction: column;
     height: 100%;
     background-color: #d8efd3;
     border-radius: 10px;
     padding: 18px 23px;
-    margin-top: 10px; /* Adjust margin as needed */
+    margin-top: 10px; 
 }
 
 .box__history--listproduct {
-    width: 100%; /* Set the width to 100% */
+    width: 100%; 
 }
 
 .cart__main {
-    width: 100%; /* Set the width to 100% */
-    padding: 0 20px; /* Adjust padding as needed */
+    width: 100%; 
+    padding: 0 20px; 
 }
 
 
 .cart__main-row--product-info,
 .cart__main-row--price,
 .cart__main-row--quantity {
-    font-size: 15px; /* Adjust font size as needed */
-    color: #000000; /* Set text color to black */
+    font-size: 15px; 
+    color: #000000; 
 }

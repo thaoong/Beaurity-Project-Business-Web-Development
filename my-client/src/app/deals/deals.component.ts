@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CosmeticService } from '../SERVICES/cosmetics.service';
 import { AuthService } from '../SERVICES/auth.service';
 import { SnowfallService } from '../SERVICES/snowfall.service';
-import { Pipe, PipeTransform } from '@angular/core';
 
 @Component({
   selector: 'app-deals',

@@ -25,8 +25,7 @@ export class InforComponent implements OnInit {
   addSelectedClass(selectedListItem: HTMLElement) {
     if (this.selectedListItem) {
       this.selectedListItem.classList.remove('selected');
-    }
-    
+    }  
     selectedListItem.classList.add('selected');
     this.selectedListItem = selectedListItem;
   }

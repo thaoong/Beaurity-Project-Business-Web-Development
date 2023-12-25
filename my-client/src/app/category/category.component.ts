@@ -28,7 +28,6 @@ export class CategoryComponent implements OnInit {
         this.selectCategory(category);
       }
     });
-
     this.loadData();
   }
 
@@ -85,5 +84,4 @@ export class CategoryComponent implements OnInit {
       }
     );
   }
-
 }

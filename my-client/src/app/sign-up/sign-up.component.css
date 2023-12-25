@@ -100,8 +100,6 @@ body {
   font-weight: bolder;
 }
 
-
-
 h2 {
   width: 519px;
   height: 34px;
@@ -135,7 +133,6 @@ h2 {
   float: right;
   display: flex;
   flex-direction: row;
-
 }
 
 .input--content input {
@@ -144,7 +141,6 @@ h2 {
   border: 0px;
   background-color: #ffffff;
   margin-right: 90px;
-
 }
 
 .gender input {
@@ -176,7 +172,6 @@ h2 {
   line-height: 16px;
   align-items: flex-start;
   color: red;
-
 }
 
 .container__checkbox {

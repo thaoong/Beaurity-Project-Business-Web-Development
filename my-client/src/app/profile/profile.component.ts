@@ -11,9 +11,7 @@ import {
 import { AuthService } from '../SERVICES/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProfileService } from '../SERVICES/profile.service';
-import { Profile } from '../Interfaces/profile';
 import { Customers, Delivery } from '../Interfaces/Customer';
-import { Orders } from '../Interfaces/Order';
 import { OrdersService } from '../SERVICES/orders.service';
 
 @Component({
@@ -22,8 +20,6 @@ import { OrdersService } from '../SERVICES/orders.service';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent {
-  // @Input() customer = new Customers();
-  // changelog: string[] = [];
   isLoggedIn = true;
   currentUser: any;
   errMessage: string = '';
@@ -57,11 +53,6 @@ export class ProfileComponent {
     this._orderService.getOrders().subscribe({
       next: (data) => {
         this.orders = data;
-        // for(let or of this.orders){
-        //   if(or['Phone'] == this.currentUser.phonenumber){
-        //     this.cusOrders.push(or);
-        //   }
-        // }
       },
       error: (err) => {
         this.errMessage = err;
@@ -75,13 +66,11 @@ export class ProfileComponent {
         this.errMessage = err;
       }
     });
-
   }
 
   viewOrderDetail(orderId: any) {
     this.router.navigate(['/app-order-detail/detail/', orderId]);
   }
-
   Name: any;
   phonenumber: any;
   Mail: any;
@@ -109,23 +98,6 @@ export class ProfileComponent {
         },
       });    }
   }
-
-  // ngOnChanges(changes: SimpleChanges) {
-  //   console.log('OnChanges');
-  //   console.log(JSON.stringify(changes));
-  //   for (const propName in changes) {
-  //     const change = changes[propName];
-  //     const to  = JSON.stringify(change.currentValue);
-  //     const from = JSON.stringify(change.previousValue);
-  //     const changeLog = `${propName}: changed from ${from} to ${to} `;
-  //     this.changelog.push(changeLog);
-  // }}
-  // searchCustomer(){
-  //   this._service.getCustomer(this.customer.Phone).subscribe({
-  //     next:(data)=>{this.customers=data},
-  //     error:(err)=>{this.errMessage=err}
-  //   })
-  // }
 
   postDelivery() {
     this._service.postDelivery(this.delivery).subscribe({
@@ -190,11 +162,6 @@ export class ProfileComponent {
   }
 
   cancelEdit() {
-    // this.customer.CustomerName = this.customer.CustomerName;
-    // this.customer.Gender =  this.customer.Gender;
-    // this.customer.Phone = this.customer.Phone;
-    // this.customer.BOD = this.customer.BOD;
-    // this.customer.Mail = this.customer.Mail;
     this.editing = false;
   }
 
@@ -221,14 +188,6 @@ export class ProfileComponent {
     this.editingAddress = false;
   }
 
-  // saveAddress(){
-  //   this.nameAddressNew = this.nameAddressAdd;
-  //   this.phoneAddressNew=this.phoneAddressAdd;
-  //   this.addressDeliveryNew = this.addressDeliveryAdd;
-
-  //   this.adding= false;
-  //   this.addNewAddress=true
-  // }
 
   cancelAddress() {
     this.adding = false;
@@ -240,10 +199,6 @@ export class ProfileComponent {
   editingAddress = false;
 
   editAddress() {
-    // this.nameAddressEdit = this.Name;
-    // this.phoneAddressEdit = this.phonenumber;
-    // this.addressDeliveryEdit = this.Address;
-
     this.editingAddress = true;
     this.adding = false;
     this.editing = false;
@@ -263,16 +218,11 @@ export class ProfileComponent {
 
   saveEditAddress() {
     this.delivery.Address = this.deliverys.Address; 
-    
-    // this.Name = this.nameAddressEdit;
-    // this.phonenumber = this.phoneAddressEdit;
-    // this.Address = this.addressDeliveryEdit;
   }
   cancelEditAddress() {
     this.Name = this.Name;
     this.phonenumber = this.phonenumber;
     this.Address = this.Address;
-
     this.editingAddress = false;
   }
 }

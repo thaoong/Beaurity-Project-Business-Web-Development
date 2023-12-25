@@ -9,11 +9,13 @@
       <div class="shopping__cart-left--header">
         <h3>Giỏ hàng ({{quantityItem}})</h3>
       </div>
-      <div class="content-error" id="displayview"  *ngIf="display; else viewItem">
+      <div class="content-error" id="displayview" *ngIf="display; else viewItem">
         <img class="img_icon" style="height: 300px;" src="assets/images/emptycart.jpg" alt="">
         <h4 style="color:rgb(116, 116, 116);">Không có sản phẩm trong giỏ hàng</h4>
         <p>
-          <button class="orther__product-item--add" style="margin-top: 20px; margin-bottom: 20px; width:30%; font-size: 14px; font-weight: 500;background-color:#2D982A; border-color:#2D982A ;" id="clicktoreturn" (click)="returnHome()">Về trang chủ</button>
+          <button class="orther__product-item--add"
+            style="margin-top: 20px; margin-bottom: 20px; width:30%; font-size: 14px; font-weight: 500;background-color:#2D982A; border-color:#2D982A ;"
+            id="clicktoreturn" (click)="returnHome()">Về trang chủ</button>
         </p>
       </div>
       <ng-template #viewItem>
@@ -50,7 +52,8 @@
                 <td class="border-0 align-left">
                   <div>
                     <div>
-                      <img src="{{ item.Image }}" alt="" class="img-fluid rounded shadow-sm" style="object-fit: cover; height: 70px; width: 70px">                    
+                      <img src="{{ item.Image }}" alt="" class="img-fluid rounded shadow-sm"
+                        style="object-fit: cover; height: 70px; width: 70px">
                     </div>
                   </div>
                 </td>
@@ -64,7 +67,8 @@
                   </div>
                 </td>
                 <td class="border-0 align-left">
-                  <button (click)="removeFromCart(item._id)" class="material-icons-outlined shopping__cart-left--detail-row-delete">
+                  <button (click)="removeFromCart(item._id)"
+                    class="material-icons-outlined shopping__cart-left--detail-row-delete">
                     delete
                   </button>
                 </td>

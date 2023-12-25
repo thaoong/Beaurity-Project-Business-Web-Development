@@ -9,8 +9,7 @@ import { OrdersService } from '../SERVICES/orders.service';
   styleUrls: ['./payment-banking.component.css']
 })
 export class PaymentBankingComponent {
-  ngOnInit(): void {}
-
+  ngOnInit(): void { }
   orders: any;
   errMessage: string = '';
   isDonePayment: boolean = false;
@@ -20,15 +19,15 @@ export class PaymentBankingComponent {
     private _orderService: OrdersService,
     private router: Router,
     private activateRoute: ActivatedRoute
-  ) {}
+  ) { }
 
   onComplete() {
     this.isDonePayment = true;
   }
 
   //popup
-  @Input() title: string='';
-  @Input() message: string='';
+  @Input() title: string = '';
+  @Input() message: string = '';
   @Output() confirmed = new EventEmitter<boolean>();
 
   viewDetail() {

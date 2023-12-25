@@ -11,9 +11,7 @@ import { AdminProductComponent } from './admin-product/admin-product.component';
 import { AdminNavigateBarComponent } from './admin-navigate-bar/admin-navigate-bar.component';
 import { AdminCaterogyComponent } from './admin-caterogy/admin-caterogy.component';
 import { AddCaterogyLevel1Component } from './admin-caterogy/add-caterogy-level-1/add-caterogy-level-1.component';
-import { AdminBlogComponent } from './admin-blog/admin-blog.component';
 import { HttpClientModule } from '@angular/common/http';
-import { AddCategoryLevel2Component } from './admin-caterogy/add-category-level-2/add-category-level-2.component';
 import { EditCategoryLevel1Component } from './admin-caterogy/edit-category-level-1/edit-category-level-1.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { AddProductComponent } from './admin-product/add-product/add-product.component';
@@ -21,11 +19,8 @@ import { ProductDetailComponent } from './admin-product/product-detail/product-d
 import { EditProductComponent } from './admin-product/edit-product/edit-product.component';
 import { AdminCustomerDetailManagementComponent } from './admin-customer/admin-customer-detail-management/admin-customer-detail-management.component';
 import { AdminCustomerManagementComponent } from './admin-customer/admin-customer-management/admin-customer-management.component';
-import { EditCategoryLevel2Component } from './admin-caterogy/edit-category-level-2/edit-category-level-2.component';
 import { AdminIncompleteOrderComponent } from './admin-order/admin-incomplete-order/admin-incomplete-order.component';
-import { PopupStatusComponent } from './admin-order/popup-status/popup-status.component';
 import { AdminOrderDetailComponent } from './admin-order/admin-order-detail/admin-order-detail.component';
-import { NgxPaginationModule } from 'ngx-pagination';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { MatSelectModule } from '@angular/material/select';
@@ -36,8 +31,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { PopupDeleteComponent } from './admin-caterogy/popup-delete/popup-delete.component';
-
 
 @NgModule({
   declarations: [
@@ -50,8 +43,6 @@ import { PopupDeleteComponent } from './admin-caterogy/popup-delete/popup-delete
     AdminNavigateBarComponent,
     AdminCaterogyComponent,
     AddCaterogyLevel1Component,
-    AdminBlogComponent,
-    AddCategoryLevel2Component,
     EditCategoryLevel1Component,
     AdminHomeComponent,
     AddProductComponent,
@@ -59,19 +50,16 @@ import { PopupDeleteComponent } from './admin-caterogy/popup-delete/popup-delete
     EditProductComponent,
     AdminCustomerDetailManagementComponent,
     AdminCustomerManagementComponent,
-    EditCategoryLevel2Component,
     AdminIncompleteOrderComponent,
-    PopupStatusComponent,
     AdminOrderDetailComponent,
-    PopupDeleteComponent
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
     HighchartsChartModule,
-    NgxPaginationModule,
     MatTableModule,
     MatButtonModule,
     MatPaginatorModule,
@@ -81,7 +69,6 @@ import { PopupDeleteComponent } from './admin-caterogy/popup-delete/popup-delete
     MatInputModule,
     MatDialogModule,
     MatSelectModule,
-
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -112,10 +112,8 @@ height: 40.43px;
     color: grey;
     text-decoration: none;
     font-size: 14px;
-
     width: 248.37px;
     height: 28.09px;
-
     font-style: normal;
     font-weight: 400;
     line-height: 150%;
@@ -150,7 +148,7 @@ height: 40.43px;
 }
 .hotline img{
     width: auto;
-height: 24px;
+    height: 24px;
 }
 .logo-payment{
     display: flex;
@@ -188,31 +186,24 @@ height: 24px;
     right: 50px;
 }
 
-
-
-
-
-
 /* Áp dụng cho màn hình có chiều rộng nhỏ hơn hoặc bằng 768px */
 @media (max-width: 800px) {
     .footer__content {
       grid-template-columns: 3fr 3fr 3fr;
-    }
-  
+    }  
     .logo_check,
     .list-link {
       flex-direction: column;
       align-items: center;
       text-align: center;
-    }
-  
+    }  
     .logo_check img:first-child,
     .logo_check img:nth-last-child(1),
     .logo_check img:nth-last-child(2) {
       width: 100px;
       height: auto;
     }
-  
+ 
     .footer__content--title,
     .list-link a {
       width: auto;

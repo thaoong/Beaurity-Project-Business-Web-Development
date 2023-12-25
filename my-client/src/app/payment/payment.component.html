@@ -1,12 +1,12 @@
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
 
 <div class="main-payment-banking">
   <div class="navigate">
     <a routerLink="/app-home">Trang chủ&nbsp;</a>/
     <a routerLink="/app-cart">&nbsp;Giỏ hàng&nbsp;</a>/
     <a routerLink="/app-payment">&nbsp;Thanh toán</a>
-  </div>  
+  </div>
   <div class="main-info">
     <div class="left">
       <div class="cart">
@@ -14,7 +14,7 @@
           <h2 class="cart__top-header">
             Giỏ hàng ({{ quantityItem }})
           </h2>
-          
+
         </div>
         <div class="cart__main">
           <div class="cart__main-row">
@@ -48,7 +48,7 @@
           <button (click)="returnCart()">Chỉnh sửa giỏ hàng</button>
         </div>
       </div>
-      
+
       <div class="information">
         <div class="information__heading">Thông tin nhận hàng</div>
         <form class="information__detail">
@@ -79,7 +79,7 @@
           <div class="form__information-row">
             <label for="" class="form__information-label">Ghi chú</label>
             <div class="form__information-input">
-            <textarea name="" id="" cols="30" rows="3" placeholder="Nhập ghi chú..."></textarea>
+              <textarea name="" id="" cols="30" rows="3" placeholder="Nhập ghi chú..."></textarea>
             </div>
           </div>
         </form>
@@ -87,51 +87,20 @@
       <div class="information">
         <div class="information__heading">Hình thức thanh toán</div>
         <label class="information__row" for="COD" (click)="checkCOD()">
-          <input type="radio" class="information__row-input" name="check" value="COD" [(ngModel)]="isChecked_COD" id="COD">
+          <input type="radio" class="information__row-input" name="check" value="COD" [(ngModel)]="isChecked_COD"
+            id="COD">
           <span class="information__row-info">Thanh toán khi nhận hàng</span>
         </label>
         <label class="information__row" (click)="checkBanking()" for="banking">
-          <input type="radio" class="information__row-input" name="check" value="Banking" [(ngModel)]="isChecked_Banking" id="banking">
+          <input type="radio" class="information__row-input" name="check" value="Banking"
+            [(ngModel)]="isChecked_Banking" id="banking">
           <span class="information__row-info">Thanh toán qua Internet Banking</span>
         </label>
         <label class="information__row" for="momo" (click)="checkMoMo()">
-          <input type="radio" class="information__row-input" name="check" value="MoMo" [(ngModel)]="isChecked_MoMo" id="momo">
+          <input type="radio" class="information__row-input" name="check" value="MoMo" [(ngModel)]="isChecked_MoMo"
+            id="momo">
           <span class="information__row-info">Thanh toán qua ví điện tử Momo</span>
         </label>
-        <!-- <div *ngIf="isChecked_Banking">
-          <div class="information__banking">
-            <div class="information__banking-img">
-              <img src="/assets/image/thanhtoanbanking/ACB.jpg" alt="">
-            </div>
-            <div class="information__banking-img">
-              <img src="/assets/image/thanhtoanbanking/Agribank.jpg" alt="">
-            </div>
-            <div class="information__banking-img">
-              <img src="/assets/image/thanhtoanbanking/BIDV.png" alt="">
-            </div>
-            <div class="information__banking-img">
-              <img src="/assets/image/thanhtoanbanking/MBBank.jpg" alt="">
-            </div>
-            <div class="information__banking-img">
-              <img src="/assets/image/thanhtoanbanking/Sacombank.jpg" alt="">
-            </div>
-            <div class="information__banking-img">
-              <img src="/assets/image/thanhtoanbanking/SHB.jpg" alt="">
-            </div>
-            <div class="information__banking-img">
-              <img src="/assets/image/thanhtoanbanking/Techcombank.jpg" alt="">
-            </div>
-            <div class="information__banking-img">
-              <img src="/assets/image/thanhtoanbanking/TPBank.jpg" alt="">
-            </div>
-            <div class="information__banking-img">
-              <img src="/assets/image/thanhtoanbanking/VIB.jpg" alt="">
-            </div>
-            <div class="information__banking-img">
-              <img src="/assets/image/thanhtoanbanking/Vietcombank.jpg" alt="">
-            </div>
-          </div>
-        </div>-->
       </div>
     </div>
     <div class="order">
@@ -202,7 +171,8 @@
     <h2 class="popup-title">Đặt hàng thành công</h2>
     <hr>
     <p class="popup-message"><span class="main-color">Đặt hàng thành công</span>
-      <br>Vui lòng theo dõi đơn hàng nhé!</p>
+      <br>Vui lòng theo dõi đơn hàng nhé!
+    </p>
     <div class="popup-buttons">
       <button class="popup-button" (click)="viewDetail()">Xem chi tiết</button>
       <button class="popup-button" (click)="goHome()">Trở lại</button>

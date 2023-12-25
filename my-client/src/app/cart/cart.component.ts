@@ -3,7 +3,6 @@ import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { CosmeticService } from '../SERVICES/cosmetics.service';
 import { AuthService } from '../SERVICES/auth.service';
 
-
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -29,7 +28,6 @@ export class CartComponent implements OnInit {
   private _orderService: any;
   order: any;
 
-
   constructor(
     private activateRoute: ActivatedRoute,
     private _service: CosmeticService,
@@ -53,13 +51,6 @@ export class CartComponent implements OnInit {
         if(this.cartItems.length > 0){
           this.display = false;
         }
-        // for(let item of this.cartItems){
-        //   const price:number = parseFloat((item.Price.replace(" đ/Hộp", "")).replace(".", ""))
-        //   this.totalPrice += price * item.quantity;
-        // }
-        // this.prePrice = this.totalPrice;
-        // this.total = this.totalPrice.toLocaleString("vi-VN", {minimumFractionDigits: 0,});
-        // this.preprice = this.prePrice.toLocaleString("vi-VN", {minimumFractionDigits: 0,});
       }
     });
     this.currentUser = this._authService.getCurrentUser();
@@ -173,9 +164,6 @@ export class CartComponent implements OnInit {
     } else {
       this.isLogin = true;
     }
-    // } else {
-    //   // this.router.navigate(['payment-kvl']);
-    // }
   }
   createOrder(isDeleted: boolean) {
     // Thực hiện logic tạo đơn hàng (gọi API hoặc sử dụng service)

@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 export class SignupOtpComponent {
   constructor(
     private router: Router
-  ){}
+  ) { }
 
   verificationCode: string = '';
   isVerificationCodeValid: boolean = true;
@@ -17,29 +17,29 @@ export class SignupOtpComponent {
     if (this.verificationCode.trim().length === 0) {
       this.isVerificationCodeValid = true;
     } else
-    if (this.verificationCode === '666666') {
-      this.isVerificationCodeValid = true;
-    } else {
-      this.isVerificationCodeValid = false;
-    }
+      if (this.verificationCode === '666666') {
+        this.isVerificationCodeValid = true;
+      } else {
+        this.isVerificationCodeValid = false;
+      }
   }
 
-  resend(){
+  resend() {
     alert('Đã gửi lại mã xác nhận!')
   }
 
   onComplete() {
-  if(this.isVerificationCodeValid===false){
-    alert('Vui lòng nhập đúng mã xác nhận!');
-    return false;
+    if (this.isVerificationCodeValid === false) {
+      alert('Vui lòng nhập đúng mã xác nhận!');
+      return false;
     }
-  else if(this.verificationCode.trim().length === 0){
-    alert('Vui lòng nhập mã xác nhận!');
-    return false;
-  }
-  else{
-    this.router.navigate(['/app-sign-up-successfully']);
-    return true
-  }
+    else if (this.verificationCode.trim().length === 0) {
+      alert('Vui lòng nhập mã xác nhận!');
+      return false;
+    }
+    else {
+      this.router.navigate(['/app-sign-up-successfully']);
+      return true
+    }
   }
 }

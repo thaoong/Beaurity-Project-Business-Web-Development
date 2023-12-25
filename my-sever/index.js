@@ -132,7 +132,6 @@ app.get("/categories/category/:name", cors(), async (req, res) => {
   }
 });
 
-
 app.put("/categories", cors(), async (req, res) => {
   //update json Cosmetic into database
   await categoryCollection.updateOne(
@@ -258,7 +257,6 @@ app.get("/customer/:id", cors(), async (req, res) => {
   res.send(result[0])
 })
 
-
 app.get("/customers/:phonenumber", cors(), async (req, res) => {
   var phone = req.params["phonenumber"];
   const result = await customerCollection.find({ Phone: phone }).toArray();
@@ -274,8 +272,6 @@ app.post("/customers", cors(), async (req, res) => {
 });
 
 app.put("/customers", cors(), async (req, res) => {
-  //var o_id = new ObjectId(req.params["id"]);
-  //update json Fashion into database
   await customerCollection.updateOne(
     { _id: new ObjectId(req.body._id) }, //condition for update
     {
@@ -290,14 +286,12 @@ app.put("/customers", cors(), async (req, res) => {
       },
     }
   )
-  //send Fahsion after updating
   var o_id = new ObjectId(req.body._id);
   const result = await customerCollection.find({ _id: o_id }).toArray();
   res.send(result[0])
 });
 
 app.put("/customers", cors(), async (req, res) => {
-  //update json Fashion into database
   await customerCollection.updateOne(
     { _id: new ObjectId(req.body._id) }, //condition for update
     {
@@ -311,7 +305,6 @@ app.put("/customers", cors(), async (req, res) => {
       },
     }
   )
-  //send Fahsion after updating
   var o_id = req.params._id;
   const result = await customerCollection.find({ _id: o_id }).toArray();
   res.send(result[0])
@@ -335,7 +328,6 @@ app.get("/delivery/:phonenumber", cors(), async (req, res) => {
 });
 
 app.put("/delivery", cors(), async (req, res) => {
-  //update json Fashion into database
   await deliveryCustomerCollection.updateOne(
     { _id: new ObjectId(req.body._id) }, //condition for update
     {
@@ -345,13 +337,12 @@ app.put("/delivery", cors(), async (req, res) => {
       },
     }
   )
-  //send Fahsion after updating
   var o_id = req.params._id;
   const result = await deliveryCustomerCollection.find({ _id: o_id }).toArray();
   res.send(result[0])
 })
 
-//Phần này là Đăng ký và Đăng nhập
+//Đăng ký và Đăng nhập
 app.post("/accounts", cors(), async (req, res) => {
   var crypto = require('crypto');
   salt = crypto.randomBytes(16).toString('hex');
@@ -363,6 +354,7 @@ app.post("/accounts", cors(), async (req, res) => {
   await userCollection.insertOne(user)
   res.send(req.body)
 })
+
 app.post('/login', cors(), async (req, res) => {
   const { phonenumber, password } = req.body;
   const crypto = require('crypto');
@@ -379,6 +371,7 @@ app.post('/login', cors(), async (req, res) => {
     }
   }
 });
+
 app.put('/change-password', cors(), async (req, res) => {
   const { phonenumber, oldPassword, newPassword } = req.body;
   const crypto = require('crypto');

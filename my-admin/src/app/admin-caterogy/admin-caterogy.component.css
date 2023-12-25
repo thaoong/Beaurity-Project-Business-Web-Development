@@ -94,8 +94,8 @@
     table-layout: auto;
 }
 .table_content{
-    max-height: 200px !important; /* chiều cao tối đa của phần nội dung */
-    overflow-y: auto; /* thêm thanh cuộn nếu phần nội dung vượt quá max-height */
+    max-height: 200px !important; 
+    overflow-y: auto; 
     table-layout: fixed;
 }
 .table_data:hover{

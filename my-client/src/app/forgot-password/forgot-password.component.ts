@@ -23,10 +23,9 @@ export class ForgotPasswordComponent implements OnInit {
     private router: Router,
     private http: HttpClient,
     private accountService: AccountcustomerService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
-    
   }
 
   sendCode() {
@@ -51,7 +50,7 @@ export class ForgotPasswordComponent implements OnInit {
       });
     }
   }
-  
+
   resend() {
     if (!this.isPhoneNumberValid) {
       alert('Vui lòng nhập đúng số điện thoại!');
@@ -77,7 +76,7 @@ export class ForgotPasswordComponent implements OnInit {
 
   checkPhoneNumber(): void {
     const phoneNumberRegex = /^(\+84|0)[1-9][0-9]{7,8}$/; // kiểm tra chuỗi đã nhập là số điện thoại hợp lệ không?
-    
+
     if (this.phoneNumber.trim().length === 0) {
       // Nếu giá trị của phoneNumber là chuỗi rỗng hoặc không chứa ký tự nào thì bỏ qua kiểm tra
       this.isPhoneNumberValid = true;
@@ -95,11 +94,11 @@ export class ForgotPasswordComponent implements OnInit {
     if (this.verificationCode.trim().length === 0) {
       this.isVerificationCodeValid = true;
     } else
-    if (this.verificationCode === '666666') {
-      this.isVerificationCodeValid = true;
-    } else {
-      this.isVerificationCodeValid = false;
-    }
+      if (this.verificationCode === '666666') {
+        this.isVerificationCodeValid = true;
+      } else {
+        this.isVerificationCodeValid = false;
+      }
   }
 
   onComplete(event: Event) {
@@ -117,35 +116,10 @@ export class ForgotPasswordComponent implements OnInit {
           alert('Số điện thoại không tồn tại!');
         }
       },
-    // if (!this.isPhoneNumberValid) {
-      // alert('Vui lòng nhập đúng số điện thoại!');
-      // return;
-    // } else if (this.phoneNumber.trim().length === 0) {
-      // alert('Vui lòng nhập số điện thoại!');
-      // return;
-    // } else if (!this.isVerificationCodeValid) {
-      // alert('Vui lòng nhập đúng mã xác nhận!');
-      // return;
-    // } else if (this.verificationCode.trim().length === 0) {
-      // alert('Vui lòng nhập mã xác nhận!');
-      // return;
-    // } else if (!this.isPhoneNumberValid || !this.isVerificationCodeValid) {
-      // alert('Vui lòng nhập đúng số điện thoại và mã xác nhận!');
-      // return;
-    // } else {
-      // this.accountService.checkPhoneNumberExist(this.phoneNumber).subscribe({
-        // next: (data) => {
-          // this.phoneNumbers = data;
-          // if (this.phoneNumbers.phonenumber == this.phoneNumber) {
-            // this.router.navigate(['/app-reset-password'], { queryParams: { phonenumber: this.phoneNumber } });
-          // } else {
-            // alert('Số điện thoại không tồn tại!');
-          // }
-        // },
-        error: (err) => {
-          this.errorMessage = err;
-          alert('Lỗi trong quá trình kiểm tra số điện thoại!');
-        },
-      });
-    }
+      error: (err) => {
+        this.errorMessage = err;
+        alert('Lỗi trong quá trình kiểm tra số điện thoại!');
+      },
+    });
   }
+}
