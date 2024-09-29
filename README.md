@@ -3,9 +3,8 @@ This is the Final-term Project for Website Development course in University of E
 1. System analysis and Design
 2. Website implementation
 ## System analysis and Design
-In this part, we draw diagrams such as Sitemap, BPMN, Use case, DFD, ERD, Wireframe and Mockup for both Client and Administrator website.
-* [Client website system analysis and Design](https://github.com/thaoong/M_Commerce_Project/tree/main/SystemAnalysisAndDesign/MobileApplication)
-* [Administrator website system analysis and Design](https://github.com/thaoong/M_Commerce_Project/tree/main/SystemAnalysisAndDesign/AdministratorWebsite)
+In this part, we draw diagrams such as Sitemap, BPMN, Use case, ERD and Mockup for both Client and Administrator website.
+* [Full document of the project](https://drive.google.com/file/d/1u1d5cs1O2AyIXkd51q82OIh6MH8rfHGS/view?usp=sharing)
 * [Mockup](https://www.figma.com/file/JqAHXcUALvLthdxGcfvlZP/Web-%7C-Wireframe?type=design&node-id=0%3A1&mode=design&t=mCdulTAHjjfaL7wh-1)
   
 ## Website implementation
